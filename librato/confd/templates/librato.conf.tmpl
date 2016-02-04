@@ -1,0 +1,21 @@
+LoadPlugin write_http
+{{if exists "/resin/common/librato/user"}}
+<Plugin write_http>
+  <Node "librato">
+    URL "https://collectd.librato.com/v1/measurements"
+    Format "JSON"
+    BufferSize 8192
+
+    ######################################################
+    #                                                    #
+    #     Copy and paste your Librato account email      #
+    #     and token, available at:                       #
+    #     https://metrics.librato.com/integrations       #
+    #                                                    #
+    ######################################################
+    User "{{getv "/resin/common/librato/user"}}"
+    Password "{{getv "/resin/common/librato/apikey"}}"
+
+  </Node>
+</Plugin>
+{{end}}

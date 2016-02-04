@@ -7,9 +7,12 @@ COPY src/01_nodoc /etc/dpkg/dpkg.cfg.d/
 COPY src/01_buildconfig /etc/apt/apt.conf.d/
 
 RUN apt-get update \
+	&& apt-get install --install-recommends apt-transport-https gnupg-curl \
+	&& echo "deb https://packagecloud.io/librato/librato-collectd/debian/ jessie main" >> /etc/apt/sources.list \
+	&& apt-key adv --fetch-keys https://packagecloud.io/gpg.key \
+	&& apt-get update \
 	&& apt-get dist-upgrade \
 	&& apt-get install \
-		apt-transport-https \
 		build-essential \
 		ca-certificates \
 		curl \
@@ -34,6 +37,13 @@ RUN apt-get update \
 		rsyslog-gnutls \
 		vim \
 		wget \
+	&& apt-get download collectd \
+	&& apt-get install `apt-cache depends collectd | awk '/Depends:/{print$2}'` \
+	&& dpkg --unpack collectd*.deb \
+	&& sed -i 's/${SYSTEMCTL_BIN} daemon-reload//g' /var/lib/dpkg/info/collectd.postinst \
+	&& sed -i 's/${SYSTEMCTL_BIN} start collectd//g' /var/lib/dpkg/info/collectd.postinst \
+	&& dpkg --configure collectd \
+	&& rm collectd*.deb \
 	&& rm -rf /var/lib/apt/lists/*
 
 ENV NODE_VERSION 4.2.6
@@ -84,5 +94,13 @@ COPY src/dbus-no-oom-adjust.conf /etc/systemd/system/dbus.service.d/dbus-no-oom-
 VOLUME ["/sys/fs/cgroup"]
 VOLUME ["/run"]
 VOLUME ["/run/lock"]
+
+# Librato default configuration
+COPY librato/*.conf /opt/collectd/etc/collectd.conf.d/
+COPY librato/collectd.service /lib/systemd/system/collectd.service
+COPY librato/source_name.sh /opt/collectd/bin/source_name.sh
+COPY librato/confd /opt/collectd/etc/confd
+
+RUN rm /opt/collectd/etc/collectd.conf.d/swap.conf && rm /opt/collectd/etc/collectd.conf.d/librato.conf
 
 CMD env > /etc/docker.env; exec /sbin/init

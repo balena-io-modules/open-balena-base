@@ -1,0 +1,7 @@
+[template]
+src = "librato.conf.tmpl"
+dest = "/opt/collectd/etc/collectd.conf.d/librato.conf"
+keys = [
+  "/resin/common/librato/user",
+  "/resin/common/librato/apikey"
+]
