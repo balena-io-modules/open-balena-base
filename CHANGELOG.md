@@ -1,3 +1,5 @@
+# 1.2.0
+
 * Update node version to 4.2.6
 
 # 1.1.0
