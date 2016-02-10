@@ -1,0 +1,33 @@
+[Unit]
+Description=Collectd
+After=local-fs.target network.target
+Requires=local-fs.target network.target
+
+[Service]
+ExecStartPre=/bin/bash -c /opt/collectd/bin/source_name.sh
+ExecStartPre=-/usr/local/bin/confd -onetime -confdir=/opt/collectd/etc/confd -node=http://172.17.42.1:4001
+ExecStart=/opt/collectd/sbin/collectd
+EnvironmentFile=-/etc/sysconfig/collectd
+EnvironmentFile=-/etc/default/collectd
+ProtectSystem=full
+ProtectHome=true
+StandardError=null
+
+# drop all capabilities:
+CapabilityBoundingSet=CAP_SETGID CAP_SETUID
+# use this instead if you use the dns or ping plugin
+#CapabilityBoundingSet=CAP_NET_RAW
+# turn this on if you use the iptables next to the dns or ping plugin
+#CapabilityBoundingSet=CAP_NET_RAW CAP_NET_ADMIN
+
+NoNewPrivileges=false
+
+# Tell systemd it will receive a notification from collectd over it's control
+# socket once the daemon is ready. See systemd.service(5) for more details.
+Type=notify
+
+# Restart the collectd daemon after a 10 seconds delay, in case it crashes.
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

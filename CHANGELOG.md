@@ -1,3 +1,5 @@
+* Add support for reporting metrics to Librato [Praneeth]
+
 # 1.2.0
 
 * Update node version to 4.2.6
