@@ -1,13 +1,8 @@
-FROM debian:jessie
+FROM resin/amd64-systemd:latest
 
-ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm
 
-COPY src/01_nodoc /etc/dpkg/dpkg.cfg.d/
-COPY src/01_buildconfig /etc/apt/apt.conf.d/
-
 RUN apt-get update \
-	&& apt-get dist-upgrade \
 	&& apt-get install \
 		apt-transport-https \
 		build-essential \
@@ -55,23 +50,7 @@ WORKDIR /usr/src/app
 
 # systemd configuration
 
-ENV container lxc
-
-# We never want these to run in a container
-RUN systemctl mask \
-	dev-hugepages.mount \
-	dev-mqueue.mount \
-	sys-fs-fuse-connections.mount \
-	sys-kernel-config.mount \
-	sys-kernel-debug.mount \
-
-	display-manager.service \
-	getty@.service \
-	systemd-logind.service \
-	systemd-remount-fs.service \
-
-	getty.target \
-	graphical.target
+ENV INITSYSTEM on
 
 RUN systemctl disable ssh.service
 
@@ -84,5 +63,3 @@ COPY src/dbus-no-oom-adjust.conf /etc/systemd/system/dbus.service.d/dbus-no-oom-
 VOLUME ["/sys/fs/cgroup"]
 VOLUME ["/run"]
 VOLUME ["/run/lock"]
-
-CMD env > /etc/docker.env; exec /sbin/init
