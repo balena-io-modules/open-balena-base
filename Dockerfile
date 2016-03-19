@@ -14,7 +14,7 @@ RUN apt-get update \
 		ca-certificates \
 		curl \
 		dbus \
-		git \
+		git=1:2.1.4-2.1+deb8u2 \
 		htop \
 		iptables \
 		less \
