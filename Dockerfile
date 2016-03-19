@@ -17,12 +17,14 @@ RUN apt-get update \
 		git \
 		htop \
 		iptables \
+		iptraf-ng \
 		less \
 		libpq-dev \
 		libsqlite3-dev \
 		jq \
 		nano \
 		netcat \
+		net-tools \
 		ifupdown \
 		openssh-client \
 		openssh-server \
@@ -32,6 +34,7 @@ RUN apt-get update \
 		python-dev \
 		rsyslog \
 		rsyslog-gnutls \
+		strace \
 		vim \
 		wget \
 	&& rm -rf /var/lib/apt/lists/*
