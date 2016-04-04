@@ -29,7 +29,6 @@ RUN apt-get update \
 		openssh-client \
 		openssh-server \
 		openvpn \
-		parted \
 		python \
 		python-dev \
 		rsyslog \
