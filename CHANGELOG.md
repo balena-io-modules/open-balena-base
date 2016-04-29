@@ -1,5 +1,8 @@
+# 2.0.0
+
 * Updated node to 6.0.0 and npm to 3.8.8
 * Updated to confd 0.11.0
+* Removed parted
 
 # 1.4.0
 
