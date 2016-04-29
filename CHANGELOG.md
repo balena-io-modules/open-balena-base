@@ -1,3 +1,5 @@
+* Updated to confd 0.11.0
+
 # 1.4.0
 
 * Updated node to 4.4.3 and npm to 2.15.4
