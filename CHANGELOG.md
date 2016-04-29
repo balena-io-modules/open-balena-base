@@ -1,3 +1,4 @@
+* Updated node to 6.0.0 and npm to 3.8.8
 * Updated to confd 0.11.0
 
 # 1.4.0
