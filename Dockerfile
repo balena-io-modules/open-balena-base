@@ -39,8 +39,8 @@ RUN apt-get update \
 		wget \
 	&& rm -rf /var/lib/apt/lists/*
 
-ENV NODE_VERSION 4.2.6
-ENV NPM_VERSION 2.14.3
+ENV NODE_VERSION 4.4.3
+ENV NPM_VERSION 2.15.4
 
 RUN curl -SL "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" | tar xz -C /usr/local --strip-components=1 \
 	&& npm install -g npm@"$NPM_VERSION" \
