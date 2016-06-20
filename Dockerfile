@@ -38,8 +38,8 @@ RUN apt-get update \
 		wget \
 	&& rm -rf /var/lib/apt/lists/*
 
-ENV NODE_VERSION 6.2.0
-ENV NPM_VERSION 3.8.9
+ENV NODE_VERSION 6.2.2
+ENV NPM_VERSION 3.9.5
 
 RUN curl -SL "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" | tar xz -C /usr/local --strip-components=1 \
 	&& npm install -g npm@"$NPM_VERSION" \
