@@ -1,3 +1,5 @@
+* Updated node to 6.6.0
+
 # 2.5.0
 
 * Updated node to 6.5.0
