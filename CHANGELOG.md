@@ -1,3 +1,5 @@
+* Updated node to 6.9.1
+
 # 2.7.0
 
 * Updated node to 6.9.0 and npm to 3.10.8
