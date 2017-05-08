@@ -1,3 +1,5 @@
+# 2.8.1
+
 * Update rsyslog config to use ca-certificate chain from debian
 
 # 2.8.0
