@@ -1,3 +1,5 @@
+* Update rsyslog config to use ca-certificate chain from debian
+
 # 2.8.0
 
 * Updated node to 6.10.2 and npm to 4.5.0
