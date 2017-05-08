@@ -80,7 +80,6 @@ RUN systemctl disable ssh.service
 COPY src/confd.service /etc/systemd/system/
 COPY src/journald.conf /etc/systemd/
 COPY src/rsyslog.conf /etc/
-COPY src/logentries.all.crt /opt/ssl/
 COPY src/dbus-no-oom-adjust.conf /etc/systemd/system/dbus.service.d/dbus-no-oom-adjust.conf
 
 VOLUME ["/sys/fs/cgroup"]
