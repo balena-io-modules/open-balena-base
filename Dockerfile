@@ -38,12 +38,12 @@ RUN apt-get update \
 		wget \
 	&& rm -rf /var/lib/apt/lists/*
 
-ENV NODE_VERSION 6.11.5
-ENV NPM_VERSION 4.5.0
+ENV NODE_VERSION 8.9.0
+ENV NPM_VERSION 5.5.1
 
 RUN curl -SL "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" | tar xz -C /usr/local --strip-components=1 \
 	&& npm install -g npm@"$NPM_VERSION" \
-	&& npm cache clear \
+	&& npm cache clear --force \
 	&& rm -rf /tmp/*
 
 ENV CONFD_VERSION 0.13.0
