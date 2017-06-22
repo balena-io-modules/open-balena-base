@@ -1,3 +1,5 @@
+* Update rsyslog config to use disk-buffering and retry when connection to logentries fails
+
 # 2.8.1
 
 * Update rsyslog config to use ca-certificate chain from debian
