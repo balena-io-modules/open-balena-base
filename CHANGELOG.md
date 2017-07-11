@@ -1,3 +1,9 @@
+# 2.8.3
+
+* Update node to 6.11.1
+
+# 2.8.2
+
 * Update rsyslog config to use disk-buffering and retry when connection to logentries fails
 
 # 2.8.1
