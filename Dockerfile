@@ -77,6 +77,8 @@ RUN systemctl mask \
 
 RUN systemctl disable ssh.service
 
+RUN echo "RateLimitInterval=0" >> /etc/systemd/journald.conf
+
 COPY src/confd.service /etc/systemd/system/
 COPY src/journald.conf /etc/systemd/
 COPY src/rsyslog.conf /etc/
