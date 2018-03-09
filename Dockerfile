@@ -46,7 +46,7 @@ RUN curl -SL "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x
 	&& npm cache clear --force \
 	&& rm -rf /tmp/*
 
-ENV CONFD_VERSION 0.13.0
+ENV CONFD_VERSION 0.15.0
 
 RUN wget -O /usr/local/bin/confd https://github.com/kelseyhightower/confd/releases/download/v${CONFD_VERSION}/confd-${CONFD_VERSION}-linux-amd64 \
 	&& chmod a+x /usr/local/bin/confd \
