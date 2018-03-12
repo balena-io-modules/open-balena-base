@@ -5,7 +5,11 @@ Before=rsyslog.service
 [Service]
 Type=oneshot
 EnvironmentFile=/etc/docker.env
-ExecStart=-/usr/local/bin/confd -onetime -confdir=/etc/confd -node=http://172.17.42.1:4001
+ExecStart=-/bin/bash -c \
+'if [[ $CONFD_BACKEND = "ENV" ]]; \
+then /usr/local/bin/confd -onetime -confdir=/usr/src/app/config/confd_env_backend -backend env; \
+else /usr/local/bin/confd -onetime -confdir=/etc/confd -node=http://172.17.42.1:4001; \
+fi'
 
 [Install]
 WantedBy=basic.target
