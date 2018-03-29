@@ -1,0 +1,11 @@
+[Unit]
+Description=balena-root-ca
+
+[Service]
+Type=oneshot
+EnvironmentFile=/etc/docker.env
+ExecStart=/usr/sbin/configure-balena-root-ca.sh
+RemainAfterExit=true
+
+[Install]
+WantedBy=basic.target
