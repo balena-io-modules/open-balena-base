@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:stretch
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm
@@ -16,6 +16,7 @@ RUN apt-get update \
 		dbus \
 		git \
 		htop \
+		init \
 		iptables \
 		iptraf-ng \
 		less \
@@ -34,6 +35,7 @@ RUN apt-get update \
 		rsyslog \
 		rsyslog-gnutls \
 		strace \
+		systemd \
 		vim \
 		wget \
 	&& rm -rf /var/lib/apt/lists/*
