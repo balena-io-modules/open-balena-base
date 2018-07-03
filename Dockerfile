@@ -13,14 +13,17 @@ RUN apt-get update \
 		build-essential \
 		ca-certificates \
 		curl \
+		dirmngr \
 		dbus \
 		git \
+		gnupg \
 		htop \
 		init \
 		iptables \
 		iptraf-ng \
 		less \
 		libpq-dev \
+		libnss-mdns \
 		libsqlite3-dev \
 		jq \
 		nano \
@@ -57,8 +60,10 @@ RUN wget -O /usr/local/bin/confd https://github.com/kelseyhightower/confd/releas
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-# systemd configuration
+# Remove default nproc limit for Avahi for it to work in-container
+RUN sed -i "s/rlimit-nproc=3//" /etc/avahi/avahi-daemon.conf
 
+# systemd configuration
 ENV container lxc
 
 # We never want these to run in a container
@@ -68,12 +73,10 @@ RUN systemctl mask \
 	sys-fs-fuse-connections.mount \
 	sys-kernel-config.mount \
 	sys-kernel-debug.mount \
-
 	display-manager.service \
 	getty@.service \
 	systemd-logind.service \
 	systemd-remount-fs.service \
-
 	getty.target \
 	graphical.target
 
@@ -85,6 +88,7 @@ COPY src/configure-balena-root-ca.sh /usr/sbin/
 COPY src/journald.conf /etc/systemd/
 COPY src/rsyslog.conf /etc/
 COPY src/dbus-no-oom-adjust.conf /etc/systemd/system/dbus.service.d/dbus-no-oom-adjust.conf
+COPY src/nsswitch.conf /etc/nsswitch.conf
 
 VOLUME ["/sys/fs/cgroup"]
 VOLUME ["/run"]
