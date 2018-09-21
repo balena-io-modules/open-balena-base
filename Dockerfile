@@ -89,9 +89,10 @@ COPY src/journald.conf /etc/systemd/
 COPY src/rsyslog.conf /etc/
 COPY src/dbus-no-oom-adjust.conf /etc/systemd/system/dbus.service.d/dbus-no-oom-adjust.conf
 COPY src/nsswitch.conf /etc/nsswitch.conf
+COPY src/entry.sh /usr/bin/entry.sh
 
 VOLUME ["/sys/fs/cgroup"]
 VOLUME ["/run"]
 VOLUME ["/run/lock"]
 
-CMD env > /etc/docker.env; exec /sbin/init
+CMD ["/usr/bin/entry.sh"]
