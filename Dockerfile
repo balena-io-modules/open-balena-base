@@ -85,6 +85,8 @@ RUN systemctl disable ssh.service
 COPY src/confd.service /etc/systemd/system/
 COPY src/balena-root-ca.service /etc/systemd/system/
 COPY src/configure-balena-root-ca.sh /usr/sbin/
+COPY src/balena-host-envvars.service /etc/systemd/system/
+COPY src/configure-balena-host-envvars.sh /usr/sbin/
 COPY src/journald.conf /etc/systemd/
 COPY src/rsyslog.conf /etc/
 COPY src/dbus-no-oom-adjust.conf /etc/systemd/system/dbus.service.d/dbus-no-oom-adjust.conf
