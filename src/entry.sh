@@ -9,5 +9,7 @@ echo -e "${GREEN}Systemd init system enabled."
 # We need this sleep to ensure this doesn't occur, else
 # logging to the console will not work.
 sleep infinity &
-env > /etc/docker.env
+for var in $(compgen -e); do
+	printf '%q=%q\n' "$var" "${!var}"
+done > /etc/docker.env
 exec /sbin/init
