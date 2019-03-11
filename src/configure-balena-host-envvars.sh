@@ -10,63 +10,43 @@
 # List of host envvars used in services.
 # TBD:
 #  * Sentry DSNs
-HOST_ENVVARS=(
-    BALENA_API_HOST
-    BALENA_UI_HOST
-    BALENA_DELTA_HOST
-    BALENA_REGISTRY2_HOST
-    BALENA_DEVICE_URLS_BASE
-    BALENA_GIT_HOST
-    BALENA_IMAGE_MAKER_HOST
-    BALENA_VPN_HOST
-    BALENA_REGISTRY_HOST
-    BALENA_TOKEN_AUTH_CERT_ISSUER
-    BALENA_ADMIN_HOST
-    BALENA_DELTA_S3_HOST
-    BALENA_BUILDER_HOST
-    BALENA_IMAGE_MAKER_S3_HOST
-    BALENA_TOKEN_AUTH_REALM # This is slightly different, needs to be http://api.<uuid>.<tld>/auth/v1/token
-    BALENA_TOKEN_AUTH_ISSUER
-    BALENA_PROXY_HOST
-    BALENA_FILES_HOST
-    BALENA_IMAGE_MAKER_S3_HOST
-    BALENA_SENTRY_DATABASE_HOST
-    BALENA_REDIS_HOST
-    BALENA_SENTRY_URL_HOST
-)
-
-HOST_VALUES=(
-    api
-    dashboard
-    delta
-    registry2
-    devices
-    git
-    img
-    vpn
-    registry
-    api
-    admin
-    s3
-    builder
-    s3
-    api # This is slightly different, needs to be http://api.<uuid>.<tld>/auth/v1/token
-    api
-    devices
-    files
-    s3
-    db
-    redis
-    sentry
-)
+declare -A HOST_ENVVARS
+HOST_ENVVARS[BALENA_API_HOST]=api
+HOST_ENVVARS[BALENA_UI_HOST]=dashboard
+HOST_ENVVARS[BALENA_DELTA_HOST]=delta
+HOST_ENVVARS[BALENA_REGISTRY2_HOST]=registry2
+HOST_ENVVARS[BALENA_DEVICE_URLS_BASE]=devices
+HOST_ENVVARS[BALENA_GIT_HOST]=git
+HOST_ENVVARS[BALENA_IMAGE_MAKER_HOST]=img
+HOST_ENVVARS[BALENA_VPN_HOST]=vpn
+HOST_ENVVARS[BALENA_REGISTRY_HOST]=registry
+HOST_ENVVARS[BALENA_TOKEN_AUTH_CERT_ISSUER]=api
+HOST_ENVVARS[BALENA_ADMIN_HOST]=admin
+HOST_ENVVARS[BALENA_DELTA_S3_HOST]=s3
+HOST_ENVVARS[BALENA_BUILDER_HOST]=builder
+HOST_ENVVARS[BALENA_IMAGE_MAKER_S3_HOST]=s3
+HOST_ENVVARS[BALENA_TOKEN_AUTH_REALM]=api # This is slightly different, needs to be http://api.<uuid>.<tld>/auth/v1/token
+HOST_ENVVARS[BALENA_TOKEN_AUTH_ISSUER]=api
+HOST_ENVVARS[BALENA_PROXY_HOST]=devices
+HOST_ENVVARS[BALENA_FILES_HOST]=files
+HOST_ENVVARS[BALENA_IMAGE_MAKER_S3_HOST]=s3
+HOST_ENVVARS[BALENA_SENTRY_DATABASE_HOST]=db
+HOST_ENVVARS[BALENA_REDIS_HOST]=redis
+HOST_ENVVARS[BALENA_SENTRY_URL_HOST]=sentry
+HOST_ENVVARS[BALENA_MONITOR_HOST]=monitor
 
 # Go through the lists and fill in any missing envvars
-for index in $(seq 1 ${#HOST_ENVVARS[*]}); do
-    VARNAME=${HOST_ENVVARS[$index-1]}
-    VARVALUE=${!VARNAME}
-    if [[ -z "$VARVALUE" ]]; then
-        VARVALUE=${HOST_VALUES[$index-1]}
-        SUBDOMAIN="$VARVALUE.$RESIN_DEVICE_UUID.$BALENA_TLD"
+#for index in $(seq 1 ${#HOST_ENVVARS[*]}); do
+for VARNAME in "${!HOST_ENVVARS[@]}"; do
+    VARVALUE="${HOST_ENVVARS[$VARNAME]}"
+    if [[ ! -z "$VARVALUE" ]]; then
+        # Only use BALENA_DEVICE_UUID if it actually exists, else just use the
+        # full passed in TLD
+        DEVICE=""
+        if [[ ! -z "$BALENA_DEVICE_UUID" ]]; then
+            DEVICE="$BALENA_DEVICE_UUID."
+        fi
+        SUBDOMAIN="$VARVALUE.$DEVICE$BALENA_TLD"
 
         # Several vars require special formatting
         if [ "$VARNAME" == "BALENA_TOKEN_AUTH_REALM" ]; then
