@@ -1,4 +1,18 @@
 - commits:
+    - subject: 'hostname-vars: Ensure previous hostname envvars aren''t overwritten'
+      hash: 8eb1904dc5e5a99f5a92ab22e179f69636ce9e3b
+      body: ''
+      footer:
+        Connects-to: '#78'
+        connects-to: '#78'
+        Change-type: major
+        change-type: major
+        Signed-off-by: Heds Simons <heds@balena.io>
+        signed-off-by: Heds Simons <heds@balena.io>
+      author: Heds Simons
+  version: 7.0.0
+  date: 2019-03-14T16:05:18.429Z
+- commits:
     - subject: 'versionbot: Add CHANGELOG.yml (for nested changelogs)'
       hash: f7150cae490a106e8cf3d77bd0b19d2687b93a07
       body: ''
