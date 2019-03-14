@@ -1,0 +1,377 @@
+- commits:
+  - author: Heds Simons
+    body: |-
+      Adds the `BALENA_HOST_MONITOR` host and moves
+      `RESIN_DEVICE_UUID` to `BALENA_DEVICE_UUID`.
+      Should the UUID not be present, do not suffix the
+      hostnames with it.
+    footers:
+      change-type: major
+      connects-to: '#74'
+      signed-off-by: Heds Simons <heds@balena.io>
+    hash: 2ed66320598b446c385a53264f837e5545ff4317
+    subject: 'envvars: Add Monitor host and use balena UUID'
+  date: "2019-03-11T16:58:28Z"
+  version: 6.0.0
+- commits:
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: patch
+    hash: 1ed86955d086c676efe0e8a6ca90a35b300322fc
+    subject: Update node to v10.15.3
+  date: "2019-03-11T14:47:02Z"
+  version: 5.3.3
+- commits:
+  - author: Heds Simons
+    body: ""
+    footers:
+      change-type: patch
+      connects-to: '#72'
+      signed-off-by: Heds Simons <heds@balena.io>
+    hash: eb08a461be029693071daa7b50b14b2cc3f9516a
+    subject: 'codeowners: Add backend team as owners'
+  date: "2019-03-08T11:40:00Z"
+  version: 5.3.2
+- commits:
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: patch
+    hash: e446fe63fbc13004ec3adf426f2dd9651ef96d94
+    subject: Update nodejs to 10.15.2 and npm to 6.8.0
+  date: "2019-03-01T13:57:28Z"
+  version: 5.3.1
+- commits:
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: patch
+    hash: cb1b9a791bdf38ed4c978793949ddc45db0b4eef
+    subject: Update nodejs to 10.15.1
+  - author: Will Boyce
+    body: ""
+    footers:
+      change-type: minor
+      signed-off-by: Will Boyce <will@balena.io>
+    hash: b5b092ae2eedeca1e5449e5cb8e2ac0b679a538d
+    subject: 'journald: set RuntimeMaxUse=100M'
+  date: "2019-02-06T10:33:48Z"
+  version: 5.3.0
+- commits:
+  - author: Michael Angelos Simos
+    body: |-
+      We were using `env > /etc/docker.env` for storing a container's
+      environment to an envfile, to be used as `EnvironmentFile` for
+      `confd.service`. This way, backslash characters were "consumed" as
+      described [here](https://www.freedesktop.org/software/systemd/man/systemd.exec.html#EnvironmentFile=)
+    footers:
+      change-type: patch
+      signed-off-by: Michael Angelos Simos <michalis@balena.io>
+    hash: fd82073cdd505f3f3bfe0a28232529ca5e283a0b
+    subject: 'confd: Fix backslashes being removed from envvars'
+  date: "2019-02-05T16:48:59Z"
+  version: 5.2.1
+- commits:
+  - author: Will Boyce
+    body: ""
+    footers:
+      change-type: minor
+      signed-off-by: Will Boyce <will@balena.io>
+    hash: 3094d980c60009d630f4ae7e84223abf5dbab5b3
+    subject: 'confd: Update to v0.16.0'
+  date: "2019-02-04T11:27:18Z"
+  version: 5.2.0
+- commits:
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: minor
+    hash: 3840b4b1094b833507435da546644ce305c1f10a
+    subject: Update nodejs to 10.15.0 and npm to 6.7.0
+  date: "2019-01-29T12:32:42Z"
+  version: 5.1.0
+- commits:
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: patch
+    hash: f30d1d90d4544fac5868fad76b5ac7c55d753061
+    subject: Update to node 10.14.1
+  date: "2018-12-03T12:13:15Z"
+  version: 5.0.1
+- commits:
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: major
+      signed-off-by: Pagan Gazzard <page@resin.io>
+    hash: 1901c25ddd2d3af98c64548c58d91c91e3913f94
+    subject: Update nodejs to 10.x
+  date: "2018-10-30T13:20:39Z"
+  version: 5.0.0
+- commits:
+  - author: Heds Simons
+    body: |-
+      Should subdomain variables not be set for a component, this
+      base change attempts to set relevant subdomain envvars to
+      the current resin device UUID, assuming a base `BALENA_TLD`
+      envvar is present.
+    footers:
+      change-type: minor
+      connects-to: '#61'
+      signed-off-by: Heds Simons <heds@balena.io>
+    hash: fa56c916cdb7efb9f7d5a7e3f2d1803b16c153a7
+    subject: 'subdomains: Autoset subdomain envvars based on device UUID'
+  date: "2018-10-24T11:54:50Z"
+  version: 4.5.0
+- commits:
+  - author: Will Boyce
+    body: Image is now available at `balena/open-balena-base`.
+    footers:
+      change-type: patch
+      signed-off-by: Will Boyce <will@balena.io>
+    hash: 3f09996efc89b131b70a0bf691424ea76b49f977
+    subject: 'rename: s/resin/balena'
+  date: "2018-10-23T15:01:00Z"
+  version: 4.4.2
+- commits:
+  - author: Heds Simons
+    body: |-
+      Historically, aliasing of containers occured via the use
+      of the `--link` (or `links` property of `docker-compose`).
+      This would be required on each container to ensure that
+      the relevant alias would be added to the `/etc/hosts` file.
+      However, this functionality is now deprecated in favour
+      of the use of the `networks.<name>.aliases` property, set
+      on a particular service to ensure all other services can
+      reach that service using the bridge on which they exist.
+      Unfortunately, this is carried out by adding the records
+      to the Docker daemon's internal DNS, referenced before
+      propagating to the host. Whilst this is good in theory,
+      in the case where MDNS is used (and in particular the
+      recommended Avahi `libnss-mdns` NS switch config) this
+      means that MDNS is consulted *before* the Docker DNS
+      service, in effect meaning that aliases to the internal
+      IP address for a service are never used, and in effect
+      negating them.
+      To counter this, this commit ensures that DNS is
+      *always* prioritised over MDNS. This has the effect of
+      querying DNS for `.local` addresses, which can lead
+      to an initial lag in lookups (although these should then
+      be cached locally per service), and potentially more DNS
+      traffic that ideal. However, for the purposes of a
+      Devenv/OnPrem, this is acceptable.
+      It has no effect on Cloud deployed instances, as they
+      will not use `.local` suffixes.
+    footers:
+      change-type: patch
+      connects-to: '#59'
+      signed-off-by: Heds Simons <heds@resin.io>
+    hash: 953bbd6b2c375831e45fecfe26ca28f6b7338230
+    subject: 'dns: Prioritise DNS over MDNS lookups for aliases'
+  date: "2018-09-28T08:37:57Z"
+  version: 4.4.1
+- commits:
+  - author: Heds Simons
+    body: |-
+      Changes to allow backend components to output to the console
+      should they wish to.
+      Also adds a ResinCI config to allow builds to be pushed.
+    footers:
+      change-type: minor
+      connects-to: '#57'
+      signed-off-by: Heds Simons <heds@resin.io>
+    hash: 94d9496b4ae447de85db2dcfeeea257ee552c370
+    subject: "logging: Allow child components\tto log to the console"
+  date: "2018-09-24T13:05:40Z"
+  version: 4.4.0
+- commits:
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: minor
+      signed-off-by: Pagan Gazzard <page@resin.io>
+    hash: 72d6b7d45beed6853ae6d02ac0df066ad79d5335
+    subject: Update to nodejs 8.12.0 and npm 6.4.1
+  date: "2018-09-11T11:04:26Z"
+  version: 4.3.0
+- commits:
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: patch
+      signed-off-by: Pagan Gazzard <page@resin.io>
+    hash: 88729b4a687dd66ebffe4ded2b430aac0caa8e0a
+    subject: Update to nodejs 8.11.4
+  date: "2018-08-20T17:34:41Z"
+  version: 4.2.2
+- commits:
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: patch
+    hash: df71f3465fcdf922e7db0a0fc6e2e57ad848a3b3
+    subject: Update to nodejs 8.11.3
+  date: "2018-07-03T16:11:37Z"
+  version: 4.2.1
+- commits:
+  - author: Heds Simons
+    body: |-
+      Part of continued work to allow multi-target resin deployments.
+      Also moves CircleCI config to correct directory.
+    footers:
+      change-type: minor
+      connects-to: '#51'
+      signed-off-by: Heds Simons <heds@whaleway.net>
+    hash: 772ed9c19242b7b5d0785cc490eebdee46404e06
+    subject: Add `libnss-mdns` to base images for MDNS lookups.
+  date: "2018-07-03T12:14:11Z"
+  version: 4.2.0
+- commits:
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: minor
+    hash: 018fbc55bc21723547cfb837603ce801129d3fd6
+    subject: Update to nodejs 8.11.2 and npm 5.10.0
+  date: "2018-05-16T17:14:02Z"
+  version: 4.1.0
+- commits:
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: major
+    hash: 232711a2cbe3eebae76481d9247eb7ba50cc02b3
+    subject: Update to debian stretch
+  date: "2018-04-26T20:09:44Z"
+  version: 4.0.0
+- commits:
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: patch
+    hash: 828470cc6f56055c921a8745e2ce4d840712b18f
+    subject: Fix disabling systemd rate limiting.
+  date: "2018-04-24T17:04:13Z"
+  version: 3.4.1
+- commits:
+  - author: Heds Simons
+    body: |-
+      Should the `BALENA_ROOT_CA` environment variable be present in the
+      `/etc/docker.env` environment file, then the specified root CA is
+      added to the trusted certificate store.
+      Downstream components can then check the presence of the environment
+      variable and point `NODE_EXTRA_CA_CERTS` to `/etc/ssl/certs/balenaRootCA.pem`
+      if required, ensuring they Require/Want `balena-root-ca.service` in their
+      own service.
+    footers:
+      change-type: minor
+      connects-to: '#46'
+    hash: e6071936531fda927089599f3d26489ce389a770
+    subject: Add `balena-root-ca.service` unit file for self-signed CA handling.
+  date: "2018-04-11T09:09:53Z"
+  version: 3.4.0
+- commits:
+  - author: Michael Angelos Simos
+    body: |-
+      with an envvar switch (CONFD_BACKEND=ENV).
+      Default confd back-end to remain unchanged
+    footers:
+      change-type: minor
+    hash: 851bb8edb8ee75ff09b860f5edfee99f33ecc6e7
+    subject: Support confd env back-end switch,
+  - author: Michael Angelos Simos
+    body: ""
+    hash: e2bd3083fe7fab2666ca467bacdd92a78b320996
+    subject: Merge branch 'master' into 43-confd-env-backend-support
+  date: "2018-03-12T11:05:27Z"
+  version: 3.3.0
+- commits:
+  - author: Michael Angelos Simos
+    body: Version 0.15.0 introduces features and bugfixes.
+    footers:
+      change-type: minor
+    hash: 9029fdb9d7325dcd08eadddbd194976b565da675
+    subject: Upgrade confd to v0.15.0
+  date: "2018-03-09T12:59:45Z"
+  version: 3.2.0
+- commits:
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: minor
+    hash: 34f6887e50d00f6a3282a1a126bbb2321fb72bf7
+    subject: Update nodejs to 8.10.0 and npm to 5.6.0
+  date: "2018-03-08T08:05:50Z"
+  version: 3.1.0
+- commits:
+  - author: Cameron Diver
+    body: |-
+      This can often cause stack traces etc to be suppressed, which is not
+      helpful.
+    footers:
+      change-type: patch
+      signed-off-by: Cameron Diver <cameron@resin.io>
+    hash: d9a5868eaa94a264bade7fa3cb015ec6f2a23c05
+    subject: Turn off journald rate limiting
+  date: "2017-11-29T20:06:10Z"
+  version: 3.0.1
+- commits:
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: major
+    hash: 6608b8db39617e38b87b04a3ec10ff7f39aa3372
+    subject: Update nodejs to 8.9.0 and npm to 5.5.1
+  date: "2017-11-01T20:16:09Z"
+  version: 3.0.0
+- commits:
+  - author: Andreas Fitzek
+    body: ""
+    footers:
+      change-type: patch
+      connects-to: '#38'
+      signed-off-by: Andreas Fitzek <andreas@resin.io>
+    hash: 6068d4e93dc4bd860b39e376d0568a16c41259a7
+    subject: Update node to 6.11.5
+  date: "2017-10-25T17:25:53Z"
+  version: 2.9.2
+- commits:
+  - author: John (Jack) Brown
+    body: ""
+    footers:
+      change-type: patch
+    hash: 20480c5c993ebb4ecda22b354da27e030540ad66
+    subject: Fix tag detection on circle builds
+  date: "2017-09-12T15:33:56Z"
+  version: 2.9.1
+- commits:
+  - author: Lucian Buzzo
+    body: |-
+      Connects to #34
+      This version introduces support for default values in the `getv` template function
+    footers:
+      change-type: minor
+    hash: 09d70541e02bfb8640b559e8faa9c2a66caa5451
+    subject: Update confd to version 0.13.0
+  date: "2017-09-11T21:32:59Z"
+  version: 2.9.0
+- commits:
+  - author: John (Jack) Brown
+    body: ""
+    footers:
+      change-type: patch
+    hash: adc037f931336408f6115ea88c3c639b9b406d1c
+    subject: Add CircleCI integration
+  date: "2017-09-08T17:03:25Z"
+  version: 2.8.5
+- commits:
+  - author: John (Jack) Brown
+    body: ""
+    footers:
+      change-type: patch
+    hash: 168f59352e2ed59bbda7caf21ba25d5e13024de2
+    subject: Add versionist config
+  date: "2017-07-27T15:54:28Z"
+  version: 2.8.4
