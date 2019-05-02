@@ -33,8 +33,8 @@ RUN apt-get update \
 		openssh-client \
 		openssh-server \
 		openvpn \
-		python \
-		python-dev \
+		python3 \
+		python3-dev \
 		rsyslog \
 		rsyslog-gnutls \
 		strace \
