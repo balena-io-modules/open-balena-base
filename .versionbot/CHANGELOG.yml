@@ -1,4 +1,14 @@
 - commits:
+    - subject: Disable start limit for confd.service
+      hash: 8ef586e573f77b06adaead91f47093757cc0584b
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+  version: 7.0.1
+  date: 2019-05-06T10:05:10.962Z
+- commits:
     - subject: 'hostname-vars: Ensure previous hostname envvars aren''t overwritten'
       hash: 8eb1904dc5e5a99f5a92ab22e179f69636ce9e3b
       body: ''
