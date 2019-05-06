@@ -1,4 +1,14 @@
 - commits:
+    - subject: Disable the apt daily timer
+      hash: bbcc74a1b72886272bbec3071d79e0240c14a174
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+  version: 7.0.2
+  date: 2019-05-06T10:25:53.563Z
+- commits:
     - subject: Disable start limit for confd.service
       hash: 8ef586e573f77b06adaead91f47093757cc0584b
       body: ''
