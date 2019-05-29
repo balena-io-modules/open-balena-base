@@ -1,4 +1,14 @@
 - commits:
+    - subject: Update nodejs to 10.16.0 and npm to 6.9.0
+      hash: 74815baf4ab2f617d2cd3301609ef21ea8aa4079
+      body: ''
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Pagan Gazzard
+  version: 7.1.0
+  date: 2019-05-29T11:12:37.555Z
+- commits:
     - subject: Disable the apt daily timer
       hash: bbcc74a1b72886272bbec3071d79e0240c14a174
       body: ''
