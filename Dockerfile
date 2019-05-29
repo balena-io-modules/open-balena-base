@@ -83,16 +83,13 @@ RUN systemctl mask \
 
 RUN systemctl disable ssh.service
 
-COPY src/confd.service /etc/systemd/system/
-COPY src/balena-root-ca.service /etc/systemd/system/
-COPY src/configure-balena-root-ca.sh /usr/sbin/
-COPY src/balena-host-envvars.service /etc/systemd/system/
-COPY src/configure-balena-host-envvars.sh /usr/sbin/
+COPY src/confd.service src/balena-root-ca.service src/balena-host-envvars.service /etc/systemd/system/
+COPY src/configure-balena-root-ca.sh src/configure-balena-host-envvars.sh /usr/sbin/
 COPY src/journald.conf /etc/systemd/
-COPY src/rsyslog.conf /etc/
-COPY src/dbus-no-oom-adjust.conf /etc/systemd/system/dbus.service.d/dbus-no-oom-adjust.conf
-COPY src/nsswitch.conf /etc/nsswitch.conf
-COPY src/entry.sh /usr/bin/entry.sh
+COPY src/rsyslog.conf src/nsswitch.conf /etc/
+COPY src/dbus-no-oom-adjust.conf /etc/systemd/system/dbus.service.d/
+COPY src/entry.sh /usr/bin/
+COPY src/htoprc ~/.config/htop/
 
 VOLUME ["/sys/fs/cgroup"]
 VOLUME ["/run"]
