@@ -1,4 +1,14 @@
 - commits:
+    - subject: Add default htop settings to hide threads and use a tree view
+      hash: c5d98f753b326b2b684ad997d470b0510eac86d2
+      body: ''
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Pagan Gazzard
+  version: 7.2.0
+  date: 2019-05-29T12:59:56.714Z
+- commits:
     - subject: Update nodejs to 10.16.0 and npm to 6.9.0
       hash: 74815baf4ab2f617d2cd3301609ef21ea8aa4079
       body: ''
