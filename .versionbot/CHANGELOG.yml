@@ -1,4 +1,14 @@
 - commits:
+    - subject: Fix adding htoprc
+      hash: 24f7afc3559227e3c58cfcf1483aab91f034be5f
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+  version: 7.2.1
+  date: 2019-06-03T13:55:28.382Z
+- commits:
     - subject: Add default htop settings to hide threads and use a tree view
       hash: c5d98f753b326b2b684ad997d470b0510eac86d2
       body: ''
