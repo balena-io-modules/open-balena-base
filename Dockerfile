@@ -89,7 +89,7 @@ COPY src/journald.conf /etc/systemd/
 COPY src/rsyslog.conf src/nsswitch.conf /etc/
 COPY src/dbus-no-oom-adjust.conf /etc/systemd/system/dbus.service.d/
 COPY src/entry.sh /usr/bin/
-COPY src/htoprc ~/.config/htop/
+COPY src/htoprc /root/.config/htop/
 
 VOLUME ["/sys/fs/cgroup"]
 VOLUME ["/run"]
