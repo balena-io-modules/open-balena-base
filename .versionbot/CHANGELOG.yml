@@ -1,4 +1,16 @@
 - commits:
+    - subject: 'systemd: move StartLimitIntervalSec to proper conf section'
+      hash: d8e86fb27e02975a98ff271ec5c7f30c6f1dcd03
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Matthew McGinn <matthew@balena.io>
+        signed-off-by: Matthew McGinn <matthew@balena.io>
+      author: Matthew McGinn
+  version: 7.2.2
+  date: 2019-06-19T14:32:09.638Z
+- commits:
     - subject: Fix adding htoprc
       hash: 24f7afc3559227e3c58cfcf1483aab91f034be5f
       body: ''
