@@ -3,6 +3,7 @@ Description=Confd
 Before=rsyslog.service
 Requires=balena-host-envvars.service
 After=balena-host-envvars.service
+StartLimitIntervalSec=0
 
 [Service]
 Type=oneshot
@@ -12,7 +13,6 @@ ExecStart=-/bin/bash -c \
 then /usr/local/bin/confd -onetime -confdir=/usr/src/app/config/confd_env_backend -backend env; \
 else /usr/local/bin/confd -onetime -confdir=/etc/confd -node=http://172.17.42.1:4001; \
 fi'
-StartLimitIntervalSec=0
 
 [Install]
 WantedBy=basic.target
