@@ -1,4 +1,14 @@
 - commits:
+    - subject: Upgrade to debian buster
+      hash: d090290e87b279482d7e3884a0a9e93a845152fe
+      body: ''
+      footer:
+        Change-type: major
+        change-type: major
+      author: Pagan Gazzard
+  version: 8.0.0
+  date: 2019-07-08T10:31:53.488Z
+- commits:
     - subject: 'systemd: move StartLimitIntervalSec to proper conf section'
       hash: d8e86fb27e02975a98ff271ec5c7f30c6f1dcd03
       body: ''
