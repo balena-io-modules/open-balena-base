@@ -1,4 +1,20 @@
 - commits:
+    - subject: 'mdns: Ensure multipart subdomains are allowed'
+      hash: bc5903d77867c3c969f1e7193cbef69dab12eeef
+      body: |
+        Debian Buster now uses Avahi 0.7 instead of
+        0.6.32. This means that there is now a stricter
+        policy defining MDNS domains. This commit allows
+        us to use multipart subdomains.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Heds Simons <heds@balena.io>
+        signed-off-by: Heds Simons <heds@balena.io>
+      author: Heds Simons
+  version: 8.0.1
+  date: 2019-07-17T15:08:57.053Z
+- commits:
     - subject: Upgrade to debian buster
       hash: d090290e87b279482d7e3884a0a9e93a845152fe
       body: ''
