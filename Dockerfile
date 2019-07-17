@@ -90,6 +90,7 @@ COPY src/rsyslog.conf src/nsswitch.conf /etc/
 COPY src/dbus-no-oom-adjust.conf /etc/systemd/system/dbus.service.d/
 COPY src/entry.sh /usr/bin/
 COPY src/htoprc /root/.config/htop/
+COPY src/mdns.allow /etc/mdns.allow
 
 VOLUME ["/sys/fs/cgroup"]
 VOLUME ["/run"]
