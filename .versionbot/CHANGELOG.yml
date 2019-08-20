@@ -1,4 +1,18 @@
 - commits:
+    - subject: "\U0001F512: Update Node to 10.16.3 and NPM to 6.10.3"
+      hash: 8714ca3fee1ff44187e0a0c4b6c648d0c2fe550c
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Connects-to: '#91'
+        connects-to: '#91'
+        Signed-off-by: Andreas Fitzek <andreas@balena.io>
+        signed-off-by: Andreas Fitzek <andreas@balena.io>
+      author: Andreas Fitzek
+  version: 8.0.3
+  date: 2019-08-16T12:10:08.587Z
+- commits:
     - subject: Update nodejs to 10.16.1 and npm to 6.10.2
       hash: 11a141feb88985b698d5f4358505767e9065a200
       body: ''
