@@ -1,0 +1,26 @@
+---
+version: 2
+jobs:
+  build:
+    machine:
+      image: ubuntu-1604:201903-01
+    working_directory: /tmp/build
+    environment:
+      DOCKER_USERNAME: travisciresin
+      DOCKER_IMAGE: balena/open-balena-base
+    steps:
+      - checkout
+      - run:
+          name: Build
+          command: |
+            dockerBranchTag=${CIRCLE_BRANCH//[^a-zA-Z0-9_-]/-}
+            docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+            docker pull ${DOCKER_IMAGE}:no-systemd-${dockerBranchTag} || docker pull ${DOCKER_IMAGE}:no-systemd-master || true
+            docker build -f Dockerfile.no-systemd -t ${DOCKER_IMAGE}:no-systemd-${CIRCLE_SHA1} .
+      - run:
+          name: Publish
+          command: |
+            dockerBranchTag=${CIRCLE_BRANCH//[^a-zA-Z0-9_-]/-}
+            docker push ${DOCKER_IMAGE}:no-systemd-${CIRCLE_SHA1}
+            docker tag ${DOCKER_IMAGE}:no-systemd-${CIRCLE_SHA1} ${DOCKER_IMAGE}:${dockerBranchTag}
+            docker push ${DOCKER_IMAGE}:${dockerBranchTag}
