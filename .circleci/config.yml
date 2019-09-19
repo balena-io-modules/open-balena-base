@@ -22,5 +22,5 @@ jobs:
           command: |
             dockerBranchTag=${CIRCLE_BRANCH//[^a-zA-Z0-9_-]/-}
             docker push ${DOCKER_IMAGE}:no-systemd-${CIRCLE_SHA1}
-            docker tag ${DOCKER_IMAGE}:no-systemd-${CIRCLE_SHA1} ${DOCKER_IMAGE}:${dockerBranchTag}
-            docker push ${DOCKER_IMAGE}:${dockerBranchTag}
+            docker tag ${DOCKER_IMAGE}:no-systemd-${CIRCLE_SHA1} ${DOCKER_IMAGE}:no-systemd-${dockerBranchTag}
+            docker push ${DOCKER_IMAGE}:no-systemd-${dockerBranchTag}
