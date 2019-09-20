@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM debian:buster-20190910
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm
@@ -6,8 +6,13 @@ ENV TERM xterm
 COPY src/01_nodoc /etc/dpkg/dpkg.cfg.d/
 COPY src/01_buildconfig /etc/apt/apt.conf.d/
 
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+# systemd configuration
+ENV container lxc
+
 RUN apt-get update \
-	&& apt-get dist-upgrade \
 	&& apt-get install \
 		apt-transport-https \
 		build-essential \
@@ -43,13 +48,24 @@ RUN apt-get update \
 		wget \
 	&& rm -rf /var/lib/apt/lists/*
 
-ENV NODE_VERSION 10.16.3
-ENV NPM_VERSION 6.10.3
+# We never want these to run in a container
+RUN systemctl mask \
+        apt-daily.timer \
+        dev-hugepages.mount \
+        dev-mqueue.mount \
+        sys-fs-fuse-connections.mount \
+        sys-kernel-config.mount \
+        sys-kernel-debug.mount \
+        display-manager.service \
+        getty@.service \
+        systemd-logind.service \
+        systemd-remount-fs.service \
+        getty.target \
+        graphical.target \
+        ssh.service
 
-RUN curl -SL "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" | tar xz -C /usr/local --strip-components=1 \
-	&& npm install -g npm@"$NPM_VERSION" \
-	&& npm cache clear --force \
-	&& rm -rf /tmp/*
+# Remove default nproc limit for Avahi for it to work in-container
+RUN sed -i "s/rlimit-nproc=3//" /etc/avahi/avahi-daemon.conf
 
 ENV CONFD_VERSION 0.16.0
 
@@ -57,31 +73,13 @@ RUN wget -O /usr/local/bin/confd https://github.com/kelseyhightower/confd/releas
 	&& chmod a+x /usr/local/bin/confd \
 	&& ln -s /usr/src/app/config/confd /etc/confd
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+ENV NODE_VERSION 10.16.3
+ENV NPM_VERSION 6.10.3
 
-# Remove default nproc limit for Avahi for it to work in-container
-RUN sed -i "s/rlimit-nproc=3//" /etc/avahi/avahi-daemon.conf
-
-# systemd configuration
-ENV container lxc
-
-# We never want these to run in a container
-RUN systemctl mask \
-	apt-daily.timer \
-	dev-hugepages.mount \
-	dev-mqueue.mount \
-	sys-fs-fuse-connections.mount \
-	sys-kernel-config.mount \
-	sys-kernel-debug.mount \
-	display-manager.service \
-	getty@.service \
-	systemd-logind.service \
-	systemd-remount-fs.service \
-	getty.target \
-	graphical.target
-
-RUN systemctl disable ssh.service
+RUN curl -SL "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" | tar xz -C /usr/local --strip-components=1 \
+	&& npm install -g npm@"$NPM_VERSION" \
+	&& npm cache clear --force \
+	&& rm -rf /tmp/*
 
 COPY src/confd.service src/balena-root-ca.service src/balena-host-envvars.service /etc/systemd/system/
 COPY src/configure-balena-root-ca.sh src/configure-balena-host-envvars.sh /usr/sbin/
