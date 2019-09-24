@@ -10,4 +10,12 @@ if [[ "$BALENA_USE_CONFD" = "1" ]]; then
   set +a
 fi
 
+# Set some typical missing env variables (like BALENA_API_HOST) deriving them from BALENA_TLD.
+# Used in BoB.
+/usr/bin/configure-balena-host-envvars.sh
+set -a
+# It's an optional step, ok to fail.
+source /etc/docker.env 2>/dev/null && echo "info: Missing typical variables are set using BALENA_TLD"
+set +a
+
 exec $@

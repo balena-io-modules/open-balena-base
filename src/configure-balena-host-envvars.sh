@@ -36,23 +36,25 @@ HOST_ENVVARS[BALENA_SENTRY_URL_HOST]=sentry
 HOST_ENVVARS[BALENA_MONITOR_HOST]=monitor
 
 # Go through the lists and fill in any missing envvars
-for VARNAME in "${!HOST_ENVVARS[@]}"; do
-    VARVALUE=${!VARNAME}
-    if [[ -z "$VARVALUE" ]]; then
-        PREFIX="${HOST_ENVVARS[$VARNAME]}"
-        # Only use BALENA_DEVICE_UUID if it actually exists, else just use the
-        # full passed in TLD
-        DEVICE=""
-        if [[ ! -z "$BALENA_DEVICE_UUID" ]]; then
-            DEVICE="$BALENA_DEVICE_UUID."
-        fi
-        SUBDOMAIN="$PREFIX.$DEVICE$BALENA_TLD"
+if [[ -n "$BALENA_TLD" ]]; then
+  for VARNAME in "${!HOST_ENVVARS[@]}"; do
+      VARVALUE=${!VARNAME}
+      if [[ -z "$VARVALUE" ]]; then
+          PREFIX="${HOST_ENVVARS[$VARNAME]}"
+          # Only use BALENA_DEVICE_UUID if it actually exists, else just use the
+          # full passed in TLD
+          DEVICE=""
+          if [[ ! -z "$BALENA_DEVICE_UUID" ]]; then
+              DEVICE="$BALENA_DEVICE_UUID."
+          fi
+          SUBDOMAIN="$PREFIX.$DEVICE$BALENA_TLD"
 
-        # Several vars require special formatting
-        if [ "$VARNAME" == "BALENA_TOKEN_AUTH_REALM" ]; then
-            SUBDOMAIN="https://$SUBDOMAIN/auth/v1/token"
-        fi
+          # Several vars require special formatting
+          if [ "$VARNAME" == "BALENA_TOKEN_AUTH_REALM" ]; then
+              SUBDOMAIN="https://$SUBDOMAIN/auth/v1/token"
+          fi
 
-        echo "$VARNAME=$SUBDOMAIN" >> /etc/docker.env
-    fi
-done
+          echo "$VARNAME=$SUBDOMAIN" >> /etc/docker.env
+      fi
+  done
+fi

@@ -28,6 +28,9 @@ COPY src/confd-entry.sh /usr/bin/confd-entry.sh
 
 ONBUILD COPY config/confd /etc/confd
 
+# Script that derives typical environment variables from BALENA_TLD.
+COPY src/configure-balena-host-envvars.sh /usr/bin/configure-balena-host-envvars.sh
+
 # Confd binary installation.
 ENV CONFD_VERSION 0.16.0
 RUN wget -O /usr/local/bin/confd https://github.com/kelseyhightower/confd/releases/download/v${CONFD_VERSION}/confd-${CONFD_VERSION}-linux-amd64 \
