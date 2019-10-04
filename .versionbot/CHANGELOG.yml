@@ -1,4 +1,44 @@
 - commits:
+    - subject: Respect BALENA_TLD env variable in nosystemd variant
+      hash: 66ad0ec93fadc749c3104443a3313ff73bf04946
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Roman Mazur <roman@balena.io>
+        signed-off-by: Roman Mazur <roman@balena.io>
+      author: Roman Mazur
+    - subject: Optimize for caching
+      hash: 652a3e18545079de46bfe21c3891523467d6163f
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Roman Mazur <roman@balena.io>
+        signed-off-by: Roman Mazur <roman@balena.io>
+      author: Roman Mazur
+    - subject: Use balena node base image
+      hash: b7c1e12773a414a5f843cfaaba943eabf3425e71
+      body: ''
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Roman Mazur <roman@balena.io>
+        signed-off-by: Roman Mazur <roman@balena.io>
+      author: Roman Mazur
+    - subject: Add a base image without systemd
+      hash: d7e44872d9594b9ef0557f78b8f38c6e449bbe54
+      body: |
+        Also configures circleCI to publish no-systemd variant in parallel.
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Roman Mazur <roman@balena.io>
+        signed-off-by: Roman Mazur <roman@balena.io>
+      author: Roman Mazur
+  version: 8.1.0
+  date: 2019-09-24T16:07:27.946Z
+- commits:
     - subject: "\U0001F512: Update Node to 10.16.3 and NPM to 6.10.3"
       hash: 8714ca3fee1ff44187e0a0c4b6c648d0c2fe550c
       body: ''
