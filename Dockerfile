@@ -43,8 +43,8 @@ RUN apt-get update \
 		wget \
 	&& rm -rf /var/lib/apt/lists/*
 
-ENV NODE_VERSION 10.16.3
-ENV NPM_VERSION 6.10.3
+ENV NODE_VERSION 12.13.0
+ENV NPM_VERSION 6.12.0
 
 RUN curl -SL "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" | tar xz -C /usr/local --strip-components=1 \
 	&& npm install -g npm@"$NPM_VERSION" \
