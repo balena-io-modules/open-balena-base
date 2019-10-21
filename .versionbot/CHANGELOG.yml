@@ -1,4 +1,14 @@
 - commits:
+    - subject: Update to nodejs 12
+      hash: cde7021d266cfba7e6b7055421c7afb0c0dd2781
+      body: ''
+      footer:
+        Change-type: major
+        change-type: major
+      author: Pagan Gazzard
+  version: 9.0.0
+  date: 2019-10-21T09:37:45.197Z
+- commits:
     - subject: Respect BALENA_TLD env variable in nosystemd variant
       hash: 66ad0ec93fadc749c3104443a3313ff73bf04946
       body: ''
