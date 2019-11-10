@@ -43,6 +43,12 @@ RUN apt-get update \
 		wget \
 	&& rm -rf /var/lib/apt/lists/*
 
+RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
+	wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
+  apt-get update && \
+  apt-get install -y postgresql-client-11 && \
+  rm -rf /var/lib/apt/lists/*
+
 ENV NODE_VERSION 12.13.0
 ENV NPM_VERSION 6.12.0
 

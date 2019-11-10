@@ -10,6 +10,7 @@ RUN install_packages \
 		netcat \
 		net-tools \
 		ifupdown \
+		postgresql-client-11 \
 		strace \
 		vim \
 		wget
