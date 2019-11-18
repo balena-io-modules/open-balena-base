@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update node to 12 in no systemd variant
+      hash: 3de89559505f2a10d94e4f0cc955c02651bdb8a3
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Roman Mazur <roman@balena.io>
+        signed-off-by: Roman Mazur <roman@balena.io>
+      author: Roman Mazur
+  version: 9.0.1
+  date: 2019-11-15T16:14:23.953Z
+- commits:
     - subject: Update to nodejs 12
       hash: cde7021d266cfba7e6b7055421c7afb0c0dd2781
       body: ''
