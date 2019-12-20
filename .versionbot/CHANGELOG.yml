@@ -1,4 +1,16 @@
 - commits:
+    - subject: Don't use UID used in node archive when unpacking as root
+      hash: fa41cbe4adbb1355705f30d934fa4f8885d86d88
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Federico Fissore <federico@balena.io>
+        signed-off-by: Federico Fissore <federico@balena.io>
+      author: Federico Fissore
+  version: 9.0.2
+  date: 2019-12-20T12:45:38.781Z
+- commits:
     - subject: Update node to 12 in no systemd variant
       hash: 3de89559505f2a10d94e4f0cc955c02651bdb8a3
       body: ''
