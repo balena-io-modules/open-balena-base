@@ -1,4 +1,14 @@
 - commits:
+    - subject: Update nodejs to 12.14.0 and npm to 6.13.4
+      hash: 8fad0b4262e0991b52dbe217c2df80fe533b628a
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+  version: 9.0.3
+  date: 2019-12-24T13:25:53.531Z
+- commits:
     - subject: Don't use UID used in node archive when unpacking as root
       hash: fa41cbe4adbb1355705f30d934fa4f8885d86d88
       body: ''
