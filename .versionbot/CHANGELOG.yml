@@ -1,4 +1,14 @@
 - commits:
+    - subject: Update nodejs to 12.14.1 and npm to 6.13.6
+      hash: b2405095eadada2e8d8f23f258247482c99ea564
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+  version: 9.0.5
+  date: 2020-01-10T17:34:31.385Z
+- commits:
     - subject: Mask apt-daily-upgrade.timer
       hash: a714a4bebb2263baef4082c75ac42cf3e5fdf005
       body: ''
