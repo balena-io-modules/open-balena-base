@@ -1,4 +1,14 @@
 - commits:
+    - subject: 'Update nodejs to 12.16.2, npm to 6.14.4'
+      hash: 116bbb6bf4f9a548a68b959c39d54c8abc2d5bd7
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+  version: 9.2.2
+  date: 2020-04-09T12:42:03.658Z
+- commits:
     - subject: Update nodejs to 12.16.1
       hash: 7662b09a46f2f24cfd0e9bf863132e318c997a30
       body: ''
