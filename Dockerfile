@@ -93,7 +93,7 @@ COPY src/entry.sh /usr/bin/
 COPY src/htoprc /root/.config/htop/
 COPY src/mdns.allow /etc/mdns.allow
 
-VOLUME ["/sys/fs/cgroup"]
+#VOLUME ["/sys/fs/cgroup"]
 VOLUME ["/run"]
 VOLUME ["/run/lock"]
 
