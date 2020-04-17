@@ -1,4 +1,16 @@
 - commits:
+    - subject: Forward log from journald to console by default
+      hash: 60d85f6207929eb0426979fb56e5238439a3a5b8
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+  version: 9.2.3
+  date: 2020-04-15T10:39:48.849Z
+- commits:
     - subject: 'Update nodejs to 12.16.2, npm to 6.14.4'
       hash: 116bbb6bf4f9a548a68b959c39d54c8abc2d5bd7
       body: ''
