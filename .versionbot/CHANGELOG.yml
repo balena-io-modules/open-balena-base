@@ -1,4 +1,14 @@
 - commits:
+    - subject: Update nodejs to 12.16.3
+      hash: 069780c6c88a8247c684a574e57bf885c3b45be9
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+  version: 9.2.4
+  date: 2020-04-30T15:10:28.844Z
+- commits:
     - subject: Forward log from journald to console by default
       hash: 60d85f6207929eb0426979fb56e5238439a3a5b8
       body: ''
