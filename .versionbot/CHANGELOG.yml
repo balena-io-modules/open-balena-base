@@ -1,4 +1,14 @@
 - commits:
+    - subject: Update nodejs to 12.17.0 and npm to 6.14.5
+      hash: 66675b45ed52a14775a1d0d01bcf6658ee9f0aca
+      body: ''
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Pagan Gazzard
+  version: 9.3.0
+  date: 2020-05-29T17:40:11.727Z
+- commits:
     - subject: Update nodejs to 12.16.3
       hash: 069780c6c88a8247c684a574e57bf885c3b45be9
       body: ''
