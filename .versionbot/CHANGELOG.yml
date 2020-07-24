@@ -1,4 +1,14 @@
 - commits:
+    - subject: Update nodejs to 12.18.3 and npm to 6.14.7
+      hash: 4155244b8964625dac10c55f8e3cf7a6010e1ebc
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+  version: 9.4.3
+  date: 2020-07-24T13:25:50.450Z
+- commits:
     - subject: Update nodejs to 12.18.2
       hash: 7ca9da66bd3de13616642235a342f5b45feae96e
       body: ''
