@@ -1,4 +1,16 @@
 - commits:
+    - subject: remove support for etcd-based confd config
+      hash: 0d01099afeb30cb3693b554174ef2443f4d745a2
+      body: ''
+      footer:
+        Change-type: major
+        change-type: major
+        Signed-off-by: Will Boyce <will@balena.io>
+        signed-off-by: Will Boyce <will@balena.io>
+      author: Will Boyce
+  version: 10.0.0
+  date: 2020-08-26T09:47:40.813Z
+- commits:
     - subject: Update nodejs to 12.18.3 and npm to 6.14.7
       hash: 4155244b8964625dac10c55f8e3cf7a6010e1ebc
       body: ''
