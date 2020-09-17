@@ -1,4 +1,14 @@
 - commits:
+    - subject: Update nodejs to 12.18.4 and npm to 6.14.8
+      hash: 98ba722e6cc1ca083aaeacb270a6d6b1f2288a02
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+  version: 10.0.1
+  date: 2020-09-17T10:34:50.316Z
+- commits:
     - subject: remove support for etcd-based confd config
       hash: 0d01099afeb30cb3693b554174ef2443f4d745a2
       body: ''
