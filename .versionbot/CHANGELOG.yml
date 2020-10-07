@@ -1,4 +1,15 @@
 - commits:
+    - subject: Update nodejs to 12.19.0
+      hash: 8431b0e087367ac38454017f86bd1d6f8e8eb814
+      body: ''
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Pagan Gazzard
+      nested: []
+  version: 10.1.0
+  date: 2020-10-07T14:47:49.406Z
+- commits:
     - subject: Delete custom versionist.conf.js and add repo.yml
       hash: c09ff99185178766bf236b20b52c5a09cfeb8a69
       body: ''
