@@ -1,4 +1,15 @@
 - commits:
+    - subject: Fix no-systemd nodejs version
+      hash: 3b3db51c6012342fb70f868b8fa747078c2f2294
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+      nested: []
+  version: 10.1.1
+  date: 2020-10-09T16:21:15.080Z
+- commits:
     - subject: Update nodejs to 12.19.0
       hash: 8431b0e087367ac38454017f86bd1d6f8e8eb814
       body: ''
