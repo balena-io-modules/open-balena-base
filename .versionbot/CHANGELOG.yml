@@ -1,4 +1,15 @@
 - commits:
+    - subject: Publish tagged versions of the no-systemd image
+      hash: 30cd15a4e5fa065635b76f18b842a0dd43320778
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+      nested: []
+  version: 11.0.1
+  date: 2020-10-29T14:19:49.787Z
+- commits:
     - subject: Update to nodejs 14
       hash: d2c0a6a0549b85ed9daa1d8f4085cd5dd96e6f86
       body: ''
