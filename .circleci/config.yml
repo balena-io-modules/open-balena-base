@@ -2,14 +2,16 @@
 version: 2
 jobs:
   build:
-    machine:
-      image: ubuntu-1604:201903-01
-    working_directory: /tmp/build
+    docker:
+      - image: library/docker:19-git
     environment:
       DOCKER_USERNAME: travisciresin
       DOCKER_IMAGE: balena/open-balena-base
     steps:
       - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+          version: 19.03.8
       - run:
           name: Build
           command: |
@@ -21,6 +23,12 @@ jobs:
           name: Publish
           command: |
             dockerBranchTag=${CIRCLE_BRANCH//[^a-zA-Z0-9_-]/-}
-            docker push ${DOCKER_IMAGE}:no-systemd-${CIRCLE_SHA1}
+            docker push ${DOCKER_IMAGE}:no-systemd-${CIRCLE_SHA1} &
             docker tag ${DOCKER_IMAGE}:no-systemd-${CIRCLE_SHA1} ${DOCKER_IMAGE}:no-systemd-${dockerBranchTag}
-            docker push ${DOCKER_IMAGE}:no-systemd-${dockerBranchTag}
+            docker push ${DOCKER_IMAGE}:no-systemd-${dockerBranchTag} &
+            tag=$(git describe --tags --exact-match) || true
+            if [ "${tag}" != "" ]; then
+              docker tag "${DOCKER_IMAGE}:no-systemd-${CIRCLE_SHA1}" "${DOCKER_IMAGE}:no-systemd-${tag}"
+              docker push "${DOCKER_IMAGE}:no-systemd-${tag}" &
+            fi
+            wait
