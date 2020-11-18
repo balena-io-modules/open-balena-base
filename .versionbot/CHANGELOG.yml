@@ -1,4 +1,15 @@
 - commits:
+    - subject: Update nodejs to 14.15.1
+      hash: cf533d8fa978bddd6650f129a010b285be485070
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+      nested: []
+  version: 11.0.2
+  date: 2020-11-18T12:45:09.418Z
+- commits:
     - subject: Publish tagged versions of the no-systemd image
       hash: 30cd15a4e5fa065635b76f18b842a0dd43320778
       body: ''
