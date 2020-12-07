@@ -30,6 +30,7 @@ ONBUILD COPY config/confd /etc/confd
 
 # Script that derives typical environment variables from BALENA_TLD.
 COPY src/configure-balena-host-envvars.sh /usr/bin/configure-balena-host-envvars.sh
+COPY src/configure-balena-root-ca.sh /usr/sbin/configure-balena-root-ca.sh
 
 # Confd binary installation.
 ENV CONFD_VERSION 0.16.0

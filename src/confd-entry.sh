@@ -19,6 +19,9 @@ set -a
 source /etc/docker.env 2>/dev/null && echo "info: Missing typical variables are set using BALENA_TLD"
 set +a
 
+# Set up certificate pointed to by BALENA_ROOT_CA
+/usr/sbin/configure-balena-root-ca.sh
+
 if [[ "$CONFD_BACKEND" = "ENV" ]]; then
   /usr/local/bin/confd -onetime -confdir=/usr/src/app/config/confd -backend env || exit 1
   set -a
