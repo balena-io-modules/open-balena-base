@@ -1,4 +1,15 @@
 - commits:
+    - subject: Update nodejs to 14.16.1 and npm to 6.14.12
+      hash: 602c54358898ca38005824c748a0682df814d5a8
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+      nested: []
+  version: 11.1.2
+  date: 2021-04-08T16:53:39.920Z
+- commits:
     - subject: Drop CircleCI
       hash: 35e8f707fac5767b1d85c30d3ad9244caef1efd1
       body: ''
