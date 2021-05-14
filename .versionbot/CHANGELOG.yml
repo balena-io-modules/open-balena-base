@@ -1,4 +1,15 @@
 - commits:
+    - subject: Update nodejs to 14.17.0 and npm to 6.14.13
+      hash: d4a35f84c95db475b972aab4ed7781ce47515f39
+      body: ''
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Pagan Gazzard
+      nested: []
+  version: 11.2.0
+  date: 2021-05-14T15:14:39.729Z
+- commits:
     - subject: Update nodejs to 14.16.1 and npm to 6.14.12
       hash: 602c54358898ca38005824c748a0682df814d5a8
       body: ''
