@@ -1,4 +1,15 @@
 - commits:
+    - subject: Delete .github directory
+      hash: d4d32ee5b021b1dd8864e2a2285530f1f4a85829
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: dfunckt
+      nested: []
+  version: 11.3.1
+  date: 2021-06-30T15:35:52.543Z
+- commits:
     - subject: Update nodejs to 14.17.1
       hash: e0471dbbe042d4416ad3bba67ea50dcc4565de9f
       body: ''
