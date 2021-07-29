@@ -1,8 +1,8 @@
 [Unit]
 Description=Confd
 Before=rsyslog.service
-Requires=balena-host-envvars.service
-After=balena-host-envvars.service
+Requires=balena-host-envvars.service balena-root-ca.service
+After=balena-host-envvars.service balena-root-ca.service
 StartLimitIntervalSec=0
 
 [Service]
