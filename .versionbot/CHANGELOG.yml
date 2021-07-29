@@ -1,4 +1,19 @@
 - commits:
+    - subject: Add parallel HOSTs and env vars
+      hash: 7ef7a8e470f195afec8a104e837f901c9f0d1044
+      body: >
+        * allows removal of BALENA_ prefixes across all products and services
+        (aside from reserved within balenaOS/Supervisor)
+
+        * made balena-root-ca service a dependency of confd.service
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: ab77
+      nested: []
+  version: 11.3.3
+  date: 2021-07-29T16:00:40.773Z
+- commits:
     - subject: Update nodejs to 14.17.2
       hash: cc11cc5654ee0bf85af40882a567c9b7fb644f48
       body: ''
