@@ -1,4 +1,17 @@
 - commits:
+    - subject: Correct env var name and sort
+      hash: 88c075b8f7ce7ad74fbe24bdd28c3713c3730ca4
+      body: |
+        * TOKEN_AUTH_REALM => REGISTRY2_TOKEN_AUTH_REALM
+        * REGISTRY2_TOKEN_AUTH_REALM is the new name for BALENA_TOKEN_AUTH_REALM
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: ab77
+      nested: []
+  version: 11.3.4
+  date: 2021-07-30T00:05:49.402Z
+- commits:
     - subject: Add parallel HOSTs and env vars
       hash: 7ef7a8e470f195afec8a104e837f901c9f0d1044
       body: >
