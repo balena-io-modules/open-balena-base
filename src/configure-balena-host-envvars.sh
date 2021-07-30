@@ -4,7 +4,7 @@
 # Docker envvar file. This does have the caveat that potentially all
 # services end up with all hostname envvars, but they shouldn't be
 # conflicting so are simply redundant.
-# This *does* expect the `BALENA_TLD` envvar to be set to allow
+# This *does* expect the `BALENA|DNS_TLD` envvar to be set to allow
 # the setting of hosts
 
 # List of host envvars used in services.
@@ -12,7 +12,7 @@
 #  * Sentry DSNs
 declare -A HOST_ENVVARS
 
-export BALENA_TLD=${BALENA_TLD:-${DNS_TLD}}
+DNS_TLD=${DNS_TLD:-$BALENA_TLD}
 
 # (TBC) deprecate when all BALENA_ references are removed
 HOST_ENVVARS[BALENA_ADMIN_HOST]=admin
@@ -67,7 +67,7 @@ HOST_ENVVARS[UI_HOST]=dashboard
 HOST_ENVVARS[VPN_HOST]=vpn
 
 # Go through the lists and fill in any missing envvars
-if [[ -n "$BALENA_TLD" ]]; then
+if [[ -n "$DNS_TLD" ]]; then
   for VARNAME in "${!HOST_ENVVARS[@]}"; do
       VARVALUE=${!VARNAME}
       if [[ -z "$VARVALUE" ]]; then
@@ -78,7 +78,7 @@ if [[ -n "$BALENA_TLD" ]]; then
           if [[ ! -z "$BALENA_DEVICE_UUID" ]]; then
               DEVICE="$BALENA_DEVICE_UUID."
           fi
-          SUBDOMAIN="$PREFIX.$DEVICE$BALENA_TLD"
+          SUBDOMAIN="$PREFIX.$DEVICE$DNS_TLD"
 
           # Several vars require special formatting
           if [ "$VARNAME" == "BALENA_TOKEN_AUTH_REALM" ] \
