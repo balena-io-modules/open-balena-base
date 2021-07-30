@@ -12,6 +12,8 @@
 #  * Sentry DSNs
 declare -A HOST_ENVVARS
 
+export BALENA_TLD=${BALENA_TLD:-${DNS_TLD}}
+
 # (TBC) deprecate when all BALENA_ references are removed
 HOST_ENVVARS[BALENA_ADMIN_HOST]=admin
 HOST_ENVVARS[BALENA_API_HOST]=api
