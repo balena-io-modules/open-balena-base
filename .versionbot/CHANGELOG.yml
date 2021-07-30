@@ -1,4 +1,15 @@
 - commits:
+    - subject: Use DNS_TLD internally
+      hash: 90ce2fde5004cf4f3e69af4eaac19947b024b9c3
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: ab77
+      nested: []
+  version: 11.3.7
+  date: 2021-07-30T19:18:49.722Z
+- commits:
     - subject: Accept DNS_TLD in place of BALENA_TLD
       hash: a64345d362589ee037d982cb9481e476e72fb2f2
       body: |
