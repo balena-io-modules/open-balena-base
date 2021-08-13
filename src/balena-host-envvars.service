@@ -4,7 +4,7 @@ Description=balena-host-envvars
 [Service]
 Type=oneshot
 EnvironmentFile=/etc/docker.env
-ExecStart=/usr/sbin/configure-balena-host-envvars.sh
+ExecStart=/bin/sh -c 'while ! /usr/sbin/configure-balena-host-envvars.sh; do sleep 3s; done'
 RemainAfterExit=true
 
 [Install]
