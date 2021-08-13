@@ -1,4 +1,15 @@
 - commits:
+    - subject: Remove deprecated etcd config
+      hash: 00d595b6e7e525c692c522c4e3dca13e5e09015d
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: ab77
+      nested: []
+  version: 11.3.11
+  date: 2021-08-13T18:17:35.128Z
+- commits:
     - subject: Add missing init script
       hash: e794f58cb352c0b5b8a42e946edfd0c6c07a3f66
       body: |
