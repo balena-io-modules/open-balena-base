@@ -1,4 +1,16 @@
 - commits:
+    - subject: Add missing init script
+      hash: e794f58cb352c0b5b8a42e946edfd0c6c07a3f66
+      body: |
+        * balena-root-ca
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: ab77
+      nested: []
+  version: 11.3.10
+  date: 2021-08-13T16:35:37.479Z
+- commits:
     - subject: Update no-systemd variant
       hash: 7649527690631c316bb9db59e2e17d050b581fee
       body: |
