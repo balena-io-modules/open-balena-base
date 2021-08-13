@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update no-systemd variant
+      hash: 7649527690631c316bb9db59e2e17d050b581fee
+      body: |
+        * fix entrypoint script no-systemd variant
+        * add retry to oneshot services
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: ab77
+      nested: []
+  version: 11.3.9
+  date: 2021-08-13T16:04:05.364Z
+- commits:
     - subject: Update nodejs to 14.17.5
       hash: f53fdc6772da9353cd131053f350f266940997f5
       body: ''
