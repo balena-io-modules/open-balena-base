@@ -26,8 +26,6 @@ RUN mkdir /balena
 ENTRYPOINT ["/usr/bin/confd-entry.sh"]
 COPY src/confd-entry.sh /usr/bin/confd-entry.sh
 
-ONBUILD COPY config/confd /etc/confd
-
 # Script that derives typical environment variables from BALENA_TLD.
 COPY src/configure-balena-host-envvars.sh /usr/bin/configure-balena-host-envvars.sh
 COPY src/configure-balena-root-ca.sh /usr/bin/configure-balena-root-ca.sh
