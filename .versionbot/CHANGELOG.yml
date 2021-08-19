@@ -1,4 +1,15 @@
 - commits:
+    - subject: Use basic.target as the default target
+      hash: 8e886caf096ab5559f0e841b25e781549d686ce2
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+      nested: []
+  version: 12.0.1
+  date: 2021-08-19T18:17:33.672Z
+- commits:
     - subject: Update to debian bullseye
       hash: ab2063d323d09fcc7f9ea86bb8228eab9b543fd0
       body: ''
