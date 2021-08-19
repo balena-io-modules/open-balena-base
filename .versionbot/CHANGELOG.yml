@@ -1,4 +1,15 @@
 - commits:
+    - subject: Update to debian bullseye
+      hash: ab2063d323d09fcc7f9ea86bb8228eab9b543fd0
+      body: ''
+      footer:
+        Change-type: major
+        change-type: major
+      author: Pagan Gazzard
+      nested: []
+  version: 12.0.0
+  date: 2021-08-17T15:19:06.578Z
+- commits:
     - subject: Add hosts
       hash: 19693644e1a255f602229c0cd9ba7d88ded29843
       body: |
