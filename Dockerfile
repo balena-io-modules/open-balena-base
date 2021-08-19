@@ -66,23 +66,24 @@ RUN sed -i "s/rlimit-nproc=3//" /etc/avahi/avahi-daemon.conf
 # systemd configuration
 ENV container lxc
 
-# We never want these to run in a container
-RUN systemctl mask \
-	apt-daily.timer \
-	apt-daily-upgrade.timer \
-	dev-hugepages.mount \
-	dev-mqueue.mount \
-	sys-fs-fuse-connections.mount \
-	sys-kernel-config.mount \
-	sys-kernel-debug.mount \
-	display-manager.service \
-	getty@.service \
-	systemd-logind.service \
-	systemd-remount-fs.service \
-	getty.target \
-	graphical.target
-
-RUN systemctl disable ssh.service
+# We want to use the basic.target not graphical.target
+RUN systemctl set-default basic.target \
+	# We never want these to run in a container
+	&& systemctl mask \
+		apt-daily.timer \
+		apt-daily-upgrade.timer \
+		dev-hugepages.mount \
+		dev-mqueue.mount \
+		sys-fs-fuse-connections.mount \
+		sys-kernel-config.mount \
+		sys-kernel-debug.mount \
+		display-manager.service \
+		getty@.service \
+		systemd-logind.service \
+		systemd-remount-fs.service \
+		getty.target \
+		graphical.target \
+	&& systemctl disable ssh.service
 
 COPY src/confd.service src/balena-root-ca.service src/balena-host-envvars.service /etc/systemd/system/
 COPY src/configure-balena-root-ca.sh src/configure-balena-host-envvars.sh /usr/sbin/
