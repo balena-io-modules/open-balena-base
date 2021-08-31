@@ -5,11 +5,12 @@ ENV TERM xterm
 # Install ops/sre related packages.
 RUN install_packages \
 		htop \
+		ifupdown \
+		inotify-tools \
 		jq \
 		nano \
-		netcat \
 		net-tools \
-		ifupdown \
+		netcat \
 		strace \
 		vim \
 		wget

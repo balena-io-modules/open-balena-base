@@ -13,23 +13,24 @@ RUN apt-get update \
 		build-essential \
 		ca-certificates \
 		curl \
-		dirmngr \
 		dbus \
+		dirmngr \
 		git \
 		gnupg \
 		htop \
+		ifupdown \
 		init \
+		inotify-tools \
 		iptables \
 		iptraf-ng \
-		less \
-		libpq-dev \
-		libnss-mdns \
-		libsqlite3-dev \
 		jq \
+		less \
+		libnss-mdns \
+		libpq-dev \
+		libsqlite3-dev \
 		nano \
-		netcat \
 		net-tools \
-		ifupdown \
+		netcat \
 		openssh-client \
 		openssh-server \
 		openvpn \
