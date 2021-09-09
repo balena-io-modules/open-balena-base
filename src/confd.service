@@ -1,14 +1,12 @@
 [Unit]
 Description=Confd
 Before=rsyslog.service
-Requires=balena-host-envvars.service balena-root-ca.service
-After=balena-host-envvars.service balena-root-ca.service
 StartLimitIntervalSec=0
 
 [Service]
 Type=oneshot
 EnvironmentFile=/etc/docker.env
-ExecStart=/usr/local/bin/confd -onetime -confdir=/usr/src/app/config/confd -backend env
+ExecStart=/usr/sbin/configure-balena.sh
 
 [Install]
 WantedBy=basic.target

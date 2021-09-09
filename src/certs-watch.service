@@ -1,0 +1,8 @@
+[Unit]
+Description=trigger confd.service restart when /certs change
+
+[Service]
+ExecStart=systemctl restart confd.service
+
+[Install]
+WantedBy=basic.target
