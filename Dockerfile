@@ -20,7 +20,6 @@ RUN apt-get update \
 		htop \
 		ifupdown \
 		init \
-		inotify-tools \
 		iptables \
 		iptraf-ng \
 		jq \
@@ -86,14 +85,16 @@ RUN systemctl set-default multi-user.target \
 		graphical.target \
 	&& systemctl disable ssh.service
 
-COPY src/confd.service src/balena-root-ca.service src/balena-host-envvars.service /etc/systemd/system/
-COPY src/configure-balena-root-ca.sh src/configure-balena-host-envvars.sh /usr/sbin/
+COPY src/confd.service src/certs-watch.* /etc/systemd/system/
+COPY src/configure-balena.sh /usr/sbin/
 COPY src/journald.conf /etc/systemd/
 COPY src/rsyslog.conf src/nsswitch.conf /etc/
 COPY src/dbus-no-oom-adjust.conf /etc/systemd/system/dbus.service.d/
 COPY src/entry.sh /usr/bin/
 COPY src/htoprc /root/.config/htop/
 COPY src/mdns.allow /etc/mdns.allow
+
+RUN systemctl enable certs-watch.path
 
 VOLUME ["/sys/fs/cgroup"]
 VOLUME ["/run"]
