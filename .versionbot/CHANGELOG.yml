@@ -1,4 +1,53 @@
 - commits:
+    - subject: Auto-configure balenaMachine(bob)
+      hash: efb8da155b7bedec44558dfcd55cb6b535099c01
+      body: >
+        + allows balenaMachine(s)/BoB(s) to automatically configure itself
+        (without bob-cli)
+
+        + auto-configuration requires balena-ca and cert-manager to do the heavy
+        lifting prior
+
+        + corresponding [balena-on-balena
+        PR](https://github.com/balena-io/balena-on-balena/pull/261)
+
+
+        * refactor confd.service to include both root-ca and host-envvars
+        handling
+
+        * add systemd path watcher to restart confd if keys/certs change during
+        runtime
+
+        * store stack configuration available to all services in a
+        persistent/shared volume (/balena)
+
+        * change resolver order to dns => mdns (ipv4) => mdns (ipv6) => return
+
+        * configure API key and JOSE/JWT key id
+
+        * configure open-balena-vpn (PKI) environment variables
+
+        * configure Sentry DSNs
+
+        * configure API keys/tokens
+
+        * configure proxy and devices SSH keys
+
+        * bundle Git SSH keys
+
+        * refactor environment handling in non-systemd variant
+
+        * deprecate BALENA_ prefixes from confd
+      footer:
+        Change-type: minor
+        change-type: minor
+        Co-authored-by: dfunckt <dfunckt@users.noreply.github.com>
+        co-authored-by: dfunckt <dfunckt@users.noreply.github.com>
+      author: ab77
+      nested: []
+  version: 12.1.0
+  date: 2021-09-24T16:30:37.661Z
+- commits:
     - subject: Attempt to load root CA certificate bundle from file
       hash: 493bb446e99fc7a5b6ecaa4e796942aa65ad03d0
       body: |
