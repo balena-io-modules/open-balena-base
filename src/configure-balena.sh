@@ -4,8 +4,14 @@
 set -a
 
 DNS_TLD=${DNS_TLD:-$BALENA_TLD}
+if [[ -n "${BALENA_DEVICE_UUID}" ]]; then
+	# prepend the device UUID if running on balenaOS
+	TLD="${BALENA_DEVICE_UUID}.${DNS_TLD}"
+else
+	TLD="${DNS_TLD}"
+fi
 ROOT_CA=${ROOT_CA:-$BALENA_ROOT_CA}
-CONF=${CONF:-/balena/${DNS_TLD}.env}
+CONF=${CONF:-/balena/${TLD}.env}
 CERTS=${CERTS:-/certs}
 
 # all known hostnames
@@ -105,96 +111,72 @@ function upsert_ca_root {
 }
 
 function upsert_api_key {
-	local balena_device_uuid
-	balena_device_uuid="${1}"
-	[[ -n "${balena_device_uuid}" ]] || return
+	local tld
+	tld="${1}"
+	[[ -n "${tld}" ]] || return
 
-	local dns_tld
-	dns_tld="${2}"
-	[[ -n "${dns_tld}" ]] || return
-
-	if [[ -f "${CERTS}/private/api.${balena_device_uuid}.${dns_tld}.key" ]]; then
+	if [[ -f "${CERTS}/private/api.${tld}.key" ]]; then
 		replace_env_var TOKEN_AUTH_CERT_KEY \
-		  "$(cat < "${CERTS}/private/api.${balena_device_uuid}.${dns_tld}.key" | openssl base64 -A)"
+		  "$(cat < "${CERTS}/private/api.${tld}.key" | openssl base64 -A)"
 	fi
 }
 
 function upsert_api_cert {
-	local balena_device_uuid
-	balena_device_uuid="${1}"
-	[[ -n "${balena_device_uuid}" ]] || return
+	local tld
+	tld="${1}"
+	[[ -n "${tld}" ]] || return
 
-	local dns_tld
-	dns_tld="${2}"
-	[[ -n "${dns_tld}" ]] || return
-
-	if [[ -f "${CERTS}/private/api.${balena_device_uuid}.${dns_tld}.pem" ]]; then
+	if [[ -f "${CERTS}/private/api.${tld}.pem" ]]; then
 		local cert
-		cert="$(cat < "${CERTS}/private/api.${balena_device_uuid}.${dns_tld}.pem" | openssl base64 -A)"
+		cert="$(cat < "${CERTS}/private/api.${tld}.pem" | openssl base64 -A)"
 		replace_env_var TOKEN_AUTH_CERT_PUB "${cert}"
 		replace_env_var API_TOKENAUTH_CRT "${cert}"
 	fi
 }
 
 function upsert_api_kid {
-	local balena_device_uuid
-	balena_device_uuid="${1}"
-	[[ -n "${balena_device_uuid}" ]] || return
+	local tld
+	tld="${1}"
+	[[ -n "${tld}" ]] || return
 
-	local dns_tld
-	dns_tld="${2}"
-	[[ -n "${dns_tld}" ]] || return
-
-	if [[ -f "${CERTS}/private/api.${balena_device_uuid}.${dns_tld}.kid" ]]; then
+	if [[ -f "${CERTS}/private/api.${tld}.kid" ]]; then
 		replace_env_var TOKEN_AUTH_CERT_KID \
-		  "$(cat < "${CERTS}/private/api.${balena_device_uuid}.${dns_tld}.kid" | openssl base64 -A)"
+		  "$(cat < "${CERTS}/private/api.${tld}.kid" | openssl base64 -A)"
 	fi
 }
 
 function upsert_vpn_key {
-	local balena_device_uuid
-	balena_device_uuid="${1}"
-	[[ -n "${balena_device_uuid}" ]] || return
+	local tld
+	tld="${1}"
+	[[ -n "${tld}" ]] || return
 
-	local dns_tld
-	dns_tld="${2}"
-	[[ -n "${dns_tld}" ]] || return
-
-	if [[ -f "${CERTS}/private/vpn.${balena_device_uuid}.${dns_tld}.key" ]]; then
+	if [[ -f "${CERTS}/private/vpn.${tld}.key" ]]; then
 		replace_env_var VPN_OPENVPN_SERVER_KEY \
-		  "$(cat < "${CERTS}/private/vpn.${balena_device_uuid}.${dns_tld}.key" | openssl base64 -A)"
+		  "$(cat < "${CERTS}/private/vpn.${tld}.key" | openssl base64 -A)"
 	fi
 }
 
 function upsert_vpn_cert {
-	local balena_device_uuid
-	balena_device_uuid="${1}"
-	[[ -n "${balena_device_uuid}" ]] || return
+	local tld
+	tld="${1}"
+	[[ -n "${tld}" ]] || return
 
-	local dns_tld
-	dns_tld="${2}"
-	[[ -n "${dns_tld}" ]] || return
-
-	if [[ -f "${CERTS}/private/vpn.${balena_device_uuid}.${dns_tld}.pem" ]]; then
+	if [[ -f "${CERTS}/private/vpn.${tld}.pem" ]]; then
 		local cert
-		cert="$(cat < "${CERTS}/private/vpn.${balena_device_uuid}.${dns_tld}.pem" | openssl base64 -A)"
+		cert="$(cat < "${CERTS}/private/vpn.${tld}.pem" | openssl base64 -A)"
 		replace_env_var VPN_OPENVPN_SERVER_CRT "${cert}"
 		replace_env_var VPN_OPENVPN_CA_CRT "${cert}"
 	fi
 }
 
 function upsert_vpn_dhparams {
-	local balena_device_uuid
-	balena_device_uuid="${1}"
-	[[ -n "${balena_device_uuid}" ]] || return
+	local tld
+	tld="${1}"
+	[[ -n "${tld}" ]] || return
 
-	local dns_tld
-	dns_tld="${2}"
-	[[ -n "${dns_tld}" ]] || return
-
-	if [[ -f "${CERTS}/private/dhparam.${balena_device_uuid}.${dns_tld}.pem" ]]; then
+	if [[ -f "${CERTS}/private/dhparam.${tld}.pem" ]]; then
 		replace_env_var VPN_OPENVPN_SERVER_DH \
-		  "$(cat < "${CERTS}/private/dhparam.${balena_device_uuid}.${dns_tld}.pem" | openssl base64 -A)"
+		  "$(cat < "${CERTS}/private/dhparam.${tld}.pem" | openssl base64 -A)"
 	fi
 }
 
@@ -227,13 +209,9 @@ function replace_env_var {
 }
 
 function upsert_devices_keys {
-	local balena_device_uuid
-	balena_device_uuid="${1}"
-	[[ -n "${balena_device_uuid}" ]] || return
-
-	local dns_tld
-	dns_tld="${2}"
-	[[ -n "${dns_tld}" ]] || return
+	local tld
+	tld="${1}"
+	[[ -n "${tld}" ]] || return
 
 	if [[ -d "${CERTS}/private" ]]; then
 		local tmpkeys
@@ -244,7 +222,7 @@ function upsert_devices_keys {
 
 		# shellcheck disable=SC2043
 		for algo in rsa; do
-			key="${CERTS}/private/devices.${balena_device_uuid}.${dns_tld}.${algo}.key"
+			key="${CERTS}/private/devices.${tld}.${algo}.key"
 			if [[ -f "${key}" ]]; then
 				cat < "${key}" >> "${tmpkeys}"
 			fi
@@ -272,13 +250,9 @@ function upsert_ssh_private_keys {
 	cn="${1}"
 	[[ -n "${cn}" ]] || return
 
-	local balena_device_uuid
-	balena_device_uuid="${2}"
-	[[ -n "${balena_device_uuid}" ]] || return
-
-	local dns_tld
-	dns_tld="${3}"
-	[[ -n "${dns_tld}" ]] || return
+	local tld
+	tld="${2}"
+	[[ -n "${tld}" ]] || return
 
 	if [[ -d "${CERTS}/private" ]]; then
 		for ev in PROXY_SSH_KEYS_RSA \
@@ -286,7 +260,7 @@ function upsert_ssh_private_keys {
 		  PROXY_SSH_KEYS_DSA \
 		  PROXY_SSH_KEYS_ED25519; do
 			algo="$(echo "${ev}" | awk '{split($0,arr,"_"); print arr[4]}' | tr '[:upper:]' '[:lower:]')"
-			key="${CERTS}/private/${cn}.${balena_device_uuid}.${dns_tld}.${algo}.key"
+			key="${CERTS}/private/${cn}.${tld}.${algo}.key"
 			if [[ -f "${key}" ]]; then
 				replace_env_var "${ev}" "$(cat < "${key}" | openssl base64 -A)"
 			fi
@@ -295,13 +269,9 @@ function upsert_ssh_private_keys {
 }
 
 function upsert_git_ssh_keys_bundle {
-	local balena_device_uuid
-	balena_device_uuid="${1}"
-	[[ -n "${balena_device_uuid}" ]] || return
-
-	local dns_tld
-	dns_tld="${2}"
-	[[ -n "${dns_tld}" ]] || return
+	local tld
+	tld="${1}"
+	[[ -n "${tld}" ]] || return
 
 	if [ -d "${CERTS}/private" ]; then
 		pushd "${CERTS}/private" || return
@@ -314,31 +284,27 @@ function upsert_git_ssh_keys_bundle {
 		  --transform "s|.*\.ecdsa\.key\.pub|id_ecdsa\.pub|" \
 		  --transform "s|.*\.ed25519\.key|id_ed25519|" \
 		  --transform "s|.*\.ed25519\.key\.pub|id_ed25519\.pub|" \
-		  -czf - git."${balena_device_uuid}.${dns_tld}".* | openssl base64 -A)"
+		  -czf - git."${tld}".* | openssl base64 -A)"
 		replace_env_var GIT_SSHKEYS "${encoded}"
 		popd || return
 	fi
 }
 
 function upsert_all {
-	local balena_device_uuid
-	balena_device_uuid="${1}"
-	[[ -n "${balena_device_uuid}" ]] || return
+	local tld
+	tld="${1}"
+	[[ -n "${tld}" ]] || return
 
-	local dns_tld
-	dns_tld="${2}"
-	[[ -n "${dns_tld}" ]] || return
-
-	upsert_api_key "${balena_device_uuid}" "${dns_tld}"
-	upsert_api_cert "${balena_device_uuid}" "${dns_tld}"
-	upsert_api_kid "${balena_device_uuid}" "${dns_tld}"
+	upsert_api_key "${tld}"
+	upsert_api_cert "${tld}"
+	upsert_api_kid "${tld}"
 	upsert_vpn_ca
-	upsert_vpn_key "${balena_device_uuid}" "${dns_tld}"
-	upsert_vpn_cert "${balena_device_uuid}" "${dns_tld}"
-	upsert_vpn_dhparams "${balena_device_uuid}" "${dns_tld}"
-	upsert_devices_keys "${balena_device_uuid}" "${dns_tld}"
-	upsert_ssh_private_keys proxy "${balena_device_uuid}" "${dns_tld}"
-	upsert_git_ssh_keys_bundle "${balena_device_uuid}" "${dns_tld}"
+	upsert_vpn_key "${tld}"
+	upsert_vpn_cert "${tld}"
+	upsert_vpn_dhparams "${tld}"
+	upsert_devices_keys "${tld}"
+	upsert_ssh_private_keys proxy "${tld}"
+	upsert_git_ssh_keys_bundle "${tld}"
 }
 
 # always run, as the function includes legacy ROOT_CA processing
@@ -350,12 +316,7 @@ if [[ -n "${DNS_TLD}" ]]; then
 		VARVALUE=${!VARNAME}
 		if [[ -z "$VARVALUE" ]]; then
 			PREFIX="${HOST_ENVVARS[${VARNAME}]}"
-			# only prepend BALENA_DEVICE_UUID if running on balenaOS
-			DEVICE=""
-			if [[ -n "${BALENA_DEVICE_UUID}" ]]; then
-				DEVICE="${BALENA_DEVICE_UUID}."
-			fi
-			SUBDOMAIN="${PREFIX}.${DEVICE}${DNS_TLD}"
+			SUBDOMAIN="${PREFIX}.${TLD}"
 
 			# several environment variables require special formatting
 			if [ "$VARNAME" == "BALENA_TOKEN_AUTH_REALM" ] \
@@ -371,11 +332,7 @@ if [[ -n "${DNS_TLD}" ]]; then
 		VARVALUE=${!VARNAME}
 		if [[ -z "$VARVALUE" ]]; then
 			SUFFIX="${SENTRY_ENVVARS[${VARNAME}]}"
-			DEVICE=""
-			if [[ -n "${BALENA_DEVICE_UUID}" ]]; then
-				DEVICE="${BALENA_DEVICE_UUID}."
-			fi
-			DSN="https://$(openssl rand -hex 16):$(openssl rand -hex 16)@sentry.${DEVICE}${DNS_TLD}/${SUFFIX}"
+			DSN="https://$(openssl rand -hex 16):$(openssl rand -hex 16)@sentry.${TLD}/${SUFFIX}"
 			grep -q "${VARNAME}" "${CONF}" || echo "${VARNAME}=${DSN}" >> "${CONF}"
 		fi
 	done
@@ -391,7 +348,7 @@ if [[ -n "${DNS_TLD}" ]]; then
 
 	# if running on balenaOS, generate keys/certs another way
 	if [[ -n "${BALENA_DEVICE_UUID}" ]]; then
-		upsert_all "${BALENA_DEVICE_UUID}" "${DNS_TLD}"
+		upsert_all "${TLD}"
 	fi
 fi
 
