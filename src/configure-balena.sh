@@ -5,8 +5,7 @@ set -a
 
 DNS_TLD=${DNS_TLD:-$BALENA_TLD}
 ROOT_CA=${ROOT_CA:-$BALENA_ROOT_CA}
-BALENA_DEVICE_UUID=${BALENA_DEVICE_UUID:-balena}
-CONF=${CONF:-/balena/${BALENA_DEVICE_UUID}.${DNS_TLD}.env}
+CONF=${CONF:-/balena/${DNS_TLD}.env}
 CERTS=${CERTS:-/certs}
 
 # all known hostnames
@@ -330,18 +329,16 @@ function upsert_all {
 	dns_tld="${2}"
 	[[ -n "${dns_tld}" ]] || return
 
-	if [[ -n "${balena_device_uuid}" ]]; then
-		upsert_api_key "${balena_device_uuid}" "${dns_tld}"
-		upsert_api_cert "${balena_device_uuid}" "${dns_tld}"
-		upsert_api_kid "${balena_device_uuid}" "${dns_tld}"
-		upsert_vpn_ca
-		upsert_vpn_key "${balena_device_uuid}" "${dns_tld}"
-		upsert_vpn_cert "${balena_device_uuid}" "${dns_tld}"
-		upsert_vpn_dhparams "${balena_device_uuid}" "${dns_tld}"
-		upsert_devices_keys "${balena_device_uuid}" "${dns_tld}"
-		upsert_ssh_private_keys proxy "${balena_device_uuid}" "${dns_tld}"
-		upsert_git_ssh_keys_bundle "${balena_device_uuid}" "${dns_tld}"
-	fi
+	upsert_api_key "${balena_device_uuid}" "${dns_tld}"
+	upsert_api_cert "${balena_device_uuid}" "${dns_tld}"
+	upsert_api_kid "${balena_device_uuid}" "${dns_tld}"
+	upsert_vpn_ca
+	upsert_vpn_key "${balena_device_uuid}" "${dns_tld}"
+	upsert_vpn_cert "${balena_device_uuid}" "${dns_tld}"
+	upsert_vpn_dhparams "${balena_device_uuid}" "${dns_tld}"
+	upsert_devices_keys "${balena_device_uuid}" "${dns_tld}"
+	upsert_ssh_private_keys proxy "${balena_device_uuid}" "${dns_tld}"
+	upsert_git_ssh_keys_bundle "${balena_device_uuid}" "${dns_tld}"
 }
 
 # always run, as the function includes legacy ROOT_CA processing
@@ -392,7 +389,10 @@ if [[ -n "${DNS_TLD}" ]]; then
 		fi
 	done
 
-	upsert_all "${BALENA_DEVICE_UUID}" "${DNS_TLD}"
+	# if running on balenaOS, generate keys/certs another way
+	if [[ -n "${BALENA_DEVICE_UUID}" ]]; then
+		upsert_all "${BALENA_DEVICE_UUID}" "${DNS_TLD}"
+	fi
 fi
 
 # add stack global environment to system local
