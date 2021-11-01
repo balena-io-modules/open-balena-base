@@ -1,4 +1,15 @@
 - commits:
+    - subject: Update nodejs to 16.13.0 and npm 8.1.1
+      hash: ed92e55bd095696e03115761f3c396b72c801a33
+      body: ''
+      footer:
+        Change-type: major
+        change-type: major
+      author: Pagan Gazzard
+      nested: []
+  version: 13.0.0
+  date: 2021-10-30T01:26:26.658Z
+- commits:
     - subject: Update nodejs to 14.18.1 and npm to 6.14.15
       hash: 613f0a4462227bc8dc2bb16aa91b3306c1c87b16
       body: ''
