@@ -1,4 +1,15 @@
 - commits:
+    - subject: Install python3 for node-gyp 8.x which is used by npm 8
+      hash: 9b42d099d82c8c8249aef3a38ecacbcdb501c15f
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+      nested: []
+  version: 13.0.1
+  date: 2021-11-01T16:33:58.305Z
+- commits:
     - subject: Update nodejs to 16.13.0 and npm 8.1.1
       hash: ed92e55bd095696e03115761f3c396b72c801a33
       body: ''
