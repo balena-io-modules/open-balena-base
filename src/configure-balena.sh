@@ -13,82 +13,43 @@ fi
 ROOT_CA=${ROOT_CA:-$BALENA_ROOT_CA}
 CONF=${CONF:-/balena/${TLD}.env}
 CERTS=${CERTS:-/certs}
+HOSTS_CONFIG=${HOSTS_CONFIG:-ALERTMANAGER_HOST:alertmanager,ADMIN_HOST:admin,API_HOST:api,BUILDER_HOST:builder,DELTA_HOST:delta,DELTA_S3_HOST:s3,DEVICE_URLS_BASE:devices,FILES_HOST:files,GIT_HOST:git,GIT_HOSTNAME:git,IMAGE_MAKER_HOST:img,IMAGE_MAKER_S3_HOST:s3,LOKI_HOST:loki,MONITOR_HOST:monitor,PROXY_HOST:devices,REDIS_HOST:redis,REGISTRY_HOST:registry,REGISTRY2_HOST:registry2,SENTRY_DATABASE_HOST:db,SENTRY_REDIS_HOST:redis,SENTRY_URL_HOST:sentry,TOKEN_AUTH_CERT_ISSUER:api,REGISTRY2_TOKEN_AUTH_ISSUER:api,REGISTRY2_TOKEN_AUTH_REALM:api,UI_HOST:dashboard,VPN_HOST:vpn}
+SENTRY_CONFIG=${SENTRY_CONFIG:-API_DSN:2,BUILDER_DSN:3,DELTA_DSN:4,BUILDER_DSN:5,IMG_DSN:6,PROXY_DSN:7,UI_DSN:8,VPN_DSN:9}
+TOKENS_CONFIG=${TOKENS_CONFIG:-API_SERVICE_API_KEY:hex,AUTH_RESINOS_REGISTRY_CODE:hex,BUILDER_SERVICE_API_KEY:hex,COOKIE_SESSION_SECRET:hex,DELTA_SERVICE_API_KEY:hex,DIGITIZER_API_KEY:hex,GEOIP_LICENCE_KEY:hex,GEOIP_USER_ID:hex,GIT_API_KEY:hex,IMG_S3_ACCESS_KEY:hex,IMG_S3_SECRET_KEY:hex,JF_OAUTH_APP_SECRET:hex,JSON_WEB_TOKEN_SECRET:hex,MAPS_API_KEY:hex,MIXPANEL_TOKEN:hex,MONITOR_OAUTH_COOKIE_SECRET:hex,MONITOR_SECRET_TOKEN:hex,PROXY_SERVICE_API_KEY:hex,REGISTRY2_SECRETKEY:hex,SENTRY_ADMIN_APIKEY:hex,SENTRY_SECRET_KEY:hex,TOKEN_AUTH_BUILDER_TOKEN:hex,VPN_GUEST_API_KEY:hex,VPN_SERVICE_API_KEY:hex,API_VPN_SERVICE_API_KEY:API_SERVICE_API_KEY,DELTA_API_KEY:DELTA_SERVICE_API_KEY,DELTA_S3_KEY:IMG_S3_ACCESS_KEY,DELTA_S3_SECRET:IMG_S3_SECRET_KEY,GIT_SERVICE_API_KEY:GIT_API_KEY,MDNS_API_TOKEN:PROXY_SERVICE_API_KEY,REGISTRY2_TOKEN:TOKEN_AUTH_BUILDER_TOKEN,S3_MINIO_ACCESS_KEY:IMG_S3_ACCESS_KEY,S3_MINIO_SECRET_KEY:IMG_S3_SECRET_KEY}
 
-# all known hostnames
 declare -A HOST_ENVVARS
-HOST_ENVVARS[ALERTMANAGER_HOST]=alertmanager
-HOST_ENVVARS[ADMIN_HOST]=admin
-HOST_ENVVARS[API_HOST]=api
-HOST_ENVVARS[BUILDER_HOST]=builder
-HOST_ENVVARS[DELTA_HOST]=delta
-HOST_ENVVARS[DELTA_S3_HOST]=s3
-HOST_ENVVARS[DEVICE_URLS_BASE]=devices
-HOST_ENVVARS[FILES_HOST]=files
-HOST_ENVVARS[GIT_HOST]=git
-HOST_ENVVARS[GIT_HOSTNAME]=git
-HOST_ENVVARS[IMAGE_MAKER_HOST]=img
-HOST_ENVVARS[IMAGE_MAKER_S3_HOST]=s3
-HOST_ENVVARS[LOKI_HOST]=loki
-HOST_ENVVARS[MONITOR_HOST]=monitor
-HOST_ENVVARS[PROXY_HOST]=devices
-HOST_ENVVARS[REDIS_HOST]=redis
-HOST_ENVVARS[REGISTRY_HOST]=registry
-HOST_ENVVARS[REGISTRY2_HOST]=registry2
-HOST_ENVVARS[SENTRY_DATABASE_HOST]=db
-HOST_ENVVARS[SENTRY_REDIS_HOST]=redis
-HOST_ENVVARS[SENTRY_URL_HOST]=sentry
-HOST_ENVVARS[TOKEN_AUTH_CERT_ISSUER]=api
-HOST_ENVVARS[REGISTRY2_TOKEN_AUTH_ISSUER]=api
-HOST_ENVVARS[REGISTRY2_TOKEN_AUTH_REALM]=api # This is slightly different, needs to be http://api.<uuid>.<tld>/auth/v1/token
-HOST_ENVVARS[UI_HOST]=dashboard
-HOST_ENVVARS[VPN_HOST]=vpn
+hosts_config=($(echo "${HOSTS_CONFIG}" | tr ',' ' '))
+for kv in ${hosts_config[*]}; do
+    varname="$(echo "${kv}" | awk -F':' '{print $1}')"
+    varval="$(echo "${kv}" | awk -F':' '{print $2}')"
+    if [[ -n $varname ]] && [[ -n $varval ]]; then
+        HOST_ENVVARS[${varname}]="${varval}"
+    fi
+done
 
-# Sentry DSNs
 declare -A SENTRY_ENVVARS
-SENTRY_ENVVARS[API_DSN]=2
-SENTRY_ENVVARS[BUILDER_DSN]=3
-SENTRY_ENVVARS[DELTA_DSN]=4
-SENTRY_ENVVARS[BUILDER_DSN]=5
-SENTRY_ENVVARS[IMG_DSN]=6
-SENTRY_ENVVARS[PROXY_DSN]=7
-SENTRY_ENVVARS[UI_DSN]=8
-SENTRY_ENVVARS[VPN_DSN]=9
+sentry_config=($(echo "${SENTRY_CONFIG}" | tr ',' ' '))
+for kv in ${sentry_config[*]}; do
+    varname="$(echo "${kv}" | awk -F':' '{print $1}')"
+    varval="$(echo "${kv}" | awk -F':' '{print $2}')"
+    if [[ -n $varname ]] && [[ -n $varval ]]; then
+        SENTRY_ENVVARS[${varname}]="${varval}"
+    fi
+done
 
-# API keys
 declare -A API_KEYS
-API_KEYS[API_SERVICE_API_KEY]="$(openssl rand -hex 16)"
-API_KEYS[AUTH_RESINOS_REGISTRY_CODE]="$(openssl rand -hex 16)"
-API_KEYS[BUILDER_SERVICE_API_KEY]="$(openssl rand -hex 16)"
-API_KEYS[COOKIE_SESSION_SECRET]="$(openssl rand -hex 16)"
-API_KEYS[DELTA_SERVICE_API_KEY]="$(openssl rand -hex 16)"
-API_KEYS[DIGITIZER_API_KEY]="$(openssl rand -hex 16)"
-API_KEYS[GEOIP_LICENCE_KEY]="$(openssl rand -hex 16)"
-API_KEYS[GEOIP_USER_ID]="$(openssl rand -hex 16)"
-API_KEYS[GIT_API_KEY]="$(openssl rand -hex 16)"
-API_KEYS[IMG_S3_ACCESS_KEY]="$(openssl rand -hex 16)"
-API_KEYS[IMG_S3_SECRET_KEY]="$(openssl rand -hex 16)"
-API_KEYS[JF_OAUTH_APP_SECRET]="$(openssl rand -hex 16)"
-API_KEYS[JSON_WEB_TOKEN_SECRET]="$(openssl rand -hex 16)"
-API_KEYS[MAPS_API_KEY]="$(openssl rand -hex 16)"
-API_KEYS[MIXPANEL_TOKEN]="$(openssl rand -hex 16)"
-API_KEYS[MONITOR_OAUTH_COOKIE_SECRET]="$(openssl rand -hex 16)"
-API_KEYS[MONITOR_SECRET_TOKEN]="$(openssl rand -hex 16)"
-API_KEYS[PROXY_SERVICE_API_KEY]="$(openssl rand -hex 16)"
-API_KEYS[REGISTRY2_SECRETKEY]="$(openssl rand -hex 16)"
-API_KEYS[SENTRY_ADMIN_APIKEY]="$(openssl rand -hex 16)"
-API_KEYS[SENTRY_SECRET_KEY]="$(openssl rand -hex 16)"
-API_KEYS[TOKEN_AUTH_BUILDER_TOKEN]="$(openssl rand -hex 16)"
-API_KEYS[VPN_GUEST_API_KEY]="$(openssl rand -hex 16)"
-API_KEYS[VPN_SERVICE_API_KEY]="$(openssl rand -hex 16)"
-API_KEYS[API_VPN_SERVICE_API_KEY]="${API_KEYS[API_SERVICE_API_KEY]}"
-API_KEYS[DELTA_API_KEY]="${API_KEYS[DELTA_SERVICE_API_KEY]}"
-API_KEYS[DELTA_S3_KEY]="${API_KEYS[IMG_S3_ACCESS_KEY]}"
-API_KEYS[DELTA_S3_SECRET]="${API_KEYS[IMG_S3_SECRET_KEY]}"
-API_KEYS[GIT_SERVICE_API_KEY]="${API_KEYS[GIT_API_KEY]}"
-API_KEYS[MDNS_API_TOKEN]="${API_KEYS[PROXY_SERVICE_API_KEY]}"
-API_KEYS[REGISTRY2_TOKEN]="${API_KEYS[TOKEN_AUTH_BUILDER_TOKEN]}"
-API_KEYS[S3_MINIO_ACCESS_KEY]="${API_KEYS[IMG_S3_ACCESS_KEY]}"
-API_KEYS[S3_MINIO_SECRET_KEY]="${API_KEYS[IMG_S3_SECRET_KEY]}"
+tokens_config=($(echo "${TOKENS_CONFIG}" | tr ',' ' '))
+for kv in ${tokens_config[*]}; do
+    varname="$(echo "${kv}" | awk -F':' '{print $1}')"
+    varval="$(echo "${kv}" | awk -F':' '{print $2}')"
+    if [[ -n $varname ]] && [[ -n $varval ]]; then
+        if [[ $varval =~ rand|random|hex ]]; then
+            API_KEYS[${varname}]="$(openssl rand -hex 16)"
+        else
+            API_KEYS[${varname}]="${API_KEYS[${varval}]}"
+        fi
+    fi
+done
 
 function upsert_ca_root {
 	if test -n "${ROOT_CA}"; then
@@ -116,8 +77,10 @@ function upsert_api_key {
 	[[ -n "${tld}" ]] || return
 
 	if [[ -f "${CERTS}/private/api.${tld}.key" ]]; then
-		replace_env_var TOKEN_AUTH_CERT_KEY \
-		  "$(cat < "${CERTS}/private/api.${tld}.key" | openssl base64 -A)"
+		key="$(cat < "${CERTS}/private/api.${tld}.key" | openssl base64 -A)"
+		# (TBC) rename/combine environment variables (JF/balenaCloud)
+		replace_env_var TOKEN_AUTH_CERT_KEY "${key}"
+		replace_env_var REGISTRY_TOKEN_AUTH_CERT_KEY "${key}"
 	fi
 }
 
@@ -140,8 +103,10 @@ function upsert_api_kid {
 	[[ -n "${tld}" ]] || return
 
 	if [[ -f "${CERTS}/private/api.${tld}.kid" ]]; then
-		replace_env_var TOKEN_AUTH_CERT_KID \
-		  "$(cat < "${CERTS}/private/api.${tld}.kid" | openssl base64 -A)"
+		keyid="$(cat < "${CERTS}/private/api.${tld}.kid" | openssl base64 -A)"
+		# (TBC) rename/combine environment variables (JF/balenaCloud)
+		replace_env_var TOKEN_AUTH_CERT_KID "${keyid}"
+		replace_env_var REGISTRY_TOKEN_AUTH_CERT_KID "${keyid}"
 	fi
 }
 
@@ -323,7 +288,8 @@ if [[ -n "${DNS_TLD}" ]]; then
 			  || [ "$VARNAME" == "REGISTRY2_TOKEN_AUTH_REALM" ]; then
 				SUBDOMAIN="https://${SUBDOMAIN}/auth/v1/token"
 			fi
-			echo "${VARNAME}=${SUBDOMAIN}" >> /etc/docker.env
+			grep -Eq "^${VARNAME}=" "${CONF}" \
+			  || echo "${VARNAME}=${SUBDOMAIN}" >> "${CONF}"
 	  fi
 	done
 
@@ -333,7 +299,7 @@ if [[ -n "${DNS_TLD}" ]]; then
 		if [[ -z "$VARVALUE" ]]; then
 			SUFFIX="${SENTRY_ENVVARS[${VARNAME}]}"
 			DSN="https://$(openssl rand -hex 16):$(openssl rand -hex 16)@sentry.${TLD}/${SUFFIX}"
-			grep -q "${VARNAME}" "${CONF}" || echo "${VARNAME}=${DSN}" >> "${CONF}"
+			grep -Eq "^${VARNAME}=" "${CONF}" || echo "${VARNAME}=${DSN}" >> "${CONF}"
 		fi
 	done
 
