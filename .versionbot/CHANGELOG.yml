@@ -1,4 +1,17 @@
 - commits:
+    - subject: Stage stack global environment
+      hash: 1e11429dd099dbdb92dec93d11edd715fb640526
+      body: |
+        * cache environment on volume
+        * read hosts, tokens and sentry config from environment
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: ab77
+      nested: []
+  version: 13.0.2
+  date: 2021-11-19T02:02:07.272Z
+- commits:
     - subject: Install python3 for node-gyp 8.x which is used by npm 8
       hash: 9b42d099d82c8c8249aef3a38ecacbcdb501c15f
       body: ''
