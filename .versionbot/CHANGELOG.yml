@@ -1,4 +1,15 @@
 - commits:
+    - subject: Update to nodejs 16.13.2 and npm 8.3.0
+      hash: 34eb13df1c1132857f1adf8c4f77a41b3f674677
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+      nested: []
+  version: 13.0.4
+  date: 2022-01-11T20:01:46.378Z
+- commits:
     - subject: Update to nodejs 16.13.1 and npm 8.2.0
       hash: f755bed613e3c18383ba032df6c179be06e5b1d9
       body: ''
