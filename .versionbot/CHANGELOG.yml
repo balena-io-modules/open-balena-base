@@ -1,7 +1,19 @@
 - commits:
+    - subject: Refactor ROOT_CA handling/resolution
+      hash: 2c26140eab961b5f6eac6e69fabfed3f35175dbf
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: ab77
+      nested: []
+  version: 13.0.5
+  title: Refactor ROOT_CA handling
+  date: 2022-02-01T20:10:39.392Z
+- commits:
     - subject: Update to nodejs 16.13.2 and npm 8.3.0
       hash: 34eb13df1c1132857f1adf8c4f77a41b3f674677
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -12,7 +24,7 @@
 - commits:
     - subject: Update to nodejs 16.13.1 and npm 8.2.0
       hash: f755bed613e3c18383ba032df6c179be06e5b1d9
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -36,7 +48,7 @@
 - commits:
     - subject: Install python3 for node-gyp 8.x which is used by npm 8
       hash: 9b42d099d82c8c8249aef3a38ecacbcdb501c15f
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -47,7 +59,7 @@
 - commits:
     - subject: Update nodejs to 16.13.0 and npm 8.1.1
       hash: ed92e55bd095696e03115761f3c396b72c801a33
-      body: ''
+      body: ""
       footer:
         Change-type: major
         change-type: major
@@ -58,7 +70,7 @@
 - commits:
     - subject: Update nodejs to 14.18.1 and npm to 6.14.15
       hash: 613f0a4462227bc8dc2bb16aa91b3306c1c87b16
-      body: ''
+      body: ""
       footer:
         Change-type: minor
         change-type: minor
@@ -69,7 +81,7 @@
 - commits:
     - subject: Simplify config by baking the device UUID into the DNS_TLD if available
       hash: 140aaf311c000963c51f3304a04221d386209c5a
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -95,21 +107,16 @@
         + allows balenaMachine(s)/BoB(s) to automatically configure itself
         (without bob-cli)
 
-        + auto-configuration requires balena-ca and cert-manager to do the heavy
-        lifting prior
+        + auto-configuration requires balena-ca and cert-manager to do the heavy lifting prior
 
-        + corresponding [balena-on-balena
-        PR](https://github.com/balena-io/balena-on-balena/pull/261)
+        + corresponding [balena-on-balena PR](https://github.com/balena-io/balena-on-balena/pull/261)
 
 
-        * refactor confd.service to include both root-ca and host-envvars
-        handling
+        * refactor confd.service to include both root-ca and host-envvars handling
 
-        * add systemd path watcher to restart confd if keys/certs change during
-        runtime
+        * add systemd path watcher to restart confd if keys/certs change during runtime
 
-        * store stack configuration available to all services in a
-        persistent/shared volume (/balena)
+        * store stack configuration available to all services in a persistent/shared volume (/balena)
 
         * change resolver order to dns => mdns (ipv4) => mdns (ipv6) => return
 
@@ -154,7 +161,7 @@
 - commits:
     - subject: Use multi-user.target as the default target
       hash: 9006b9eb301b9a315b7fbde5fe4100681f3f4eac
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -165,7 +172,7 @@
 - commits:
     - subject: Use basic.target as the default target
       hash: 8e886caf096ab5559f0e841b25e781549d686ce2
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -176,7 +183,7 @@
 - commits:
     - subject: Update to debian bullseye
       hash: ab2063d323d09fcc7f9ea86bb8228eab9b543fd0
-      body: ''
+      body: ""
       footer:
         Change-type: major
         change-type: major
@@ -201,7 +208,7 @@
 - commits:
     - subject: Remove deprecated etcd config
       hash: 00d595b6e7e525c692c522c4e3dca13e5e09015d
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -237,7 +244,7 @@
 - commits:
     - subject: Update nodejs to 14.17.5
       hash: f53fdc6772da9353cd131053f350f266940997f5
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -248,7 +255,7 @@
 - commits:
     - subject: Use DNS_TLD internally
       hash: 90ce2fde5004cf4f3e69af4eaac19947b024b9c3
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -272,7 +279,7 @@
 - commits:
     - subject: Update nodejs to 14.17.4 and npm to 6.14.14
       hash: a4ebaa82f22a5aa4dc134c659e6aa117364d116d
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -311,7 +318,7 @@
 - commits:
     - subject: Update nodejs to 14.17.2
       hash: cc11cc5654ee0bf85af40882a567c9b7fb644f48
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -322,7 +329,7 @@
 - commits:
     - subject: Delete .github directory
       hash: d4d32ee5b021b1dd8864e2a2285530f1f4a85829
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -333,7 +340,7 @@
 - commits:
     - subject: Update nodejs to 14.17.1
       hash: e0471dbbe042d4416ad3bba67ea50dcc4565de9f
-      body: ''
+      body: ""
       footer:
         Change-type: minor
         change-type: minor
@@ -346,7 +353,7 @@
 - commits:
     - subject: Update nodejs to 14.17.0 and npm to 6.14.13
       hash: d4a35f84c95db475b972aab4ed7781ce47515f39
-      body: ''
+      body: ""
       footer:
         Change-type: minor
         change-type: minor
@@ -357,7 +364,7 @@
 - commits:
     - subject: Update nodejs to 14.16.1 and npm to 6.14.12
       hash: 602c54358898ca38005824c748a0682df814d5a8
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -368,7 +375,7 @@
 - commits:
     - subject: Drop CircleCI
       hash: 35e8f707fac5767b1d85c30d3ad9244caef1efd1
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -379,7 +386,7 @@
 - commits:
     - subject: Update nodejs to 14.16.0
       hash: ed8a58f5db73244f75d2e10b6b8df9d883247558
-      body: ''
+      body: ""
       footer:
         Change-type: minor
         change-type: minor
@@ -390,7 +397,7 @@
 - commits:
     - subject: Update nodejs to 14.15.5 and npm to 6.14.11
       hash: 2e812ae8993ad13b1ac0d7a760e4c45ab8b8bd9d
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -401,7 +408,7 @@
 - commits:
     - subject: Update nodejs to 14.15.4 and npm to 6.14.10
       hash: 0a52eb67b211fdc31d73e279e6e871b2e803f485
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -412,7 +419,7 @@
 - commits:
     - subject: Update nodejs to 14.15.3 and npm to 6.14.9
       hash: 6d9ed96133ca1b4783eafc8b8698f10cd88aaad2
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -423,7 +430,7 @@
 - commits:
     - subject: Update nodejs to 14.15.1
       hash: cf533d8fa978bddd6650f129a010b285be485070
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -434,7 +441,7 @@
 - commits:
     - subject: Publish tagged versions of the no-systemd image
       hash: 30cd15a4e5fa065635b76f18b842a0dd43320778
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -445,7 +452,7 @@
 - commits:
     - subject: Update to nodejs 14
       hash: d2c0a6a0549b85ed9daa1d8f4085cd5dd96e6f86
-      body: ''
+      body: ""
       footer:
         Change-type: major
         change-type: major
@@ -456,7 +463,7 @@
 - commits:
     - subject: Fix no-systemd nodejs version
       hash: 3b3db51c6012342fb70f868b8fa747078c2f2294
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -467,7 +474,7 @@
 - commits:
     - subject: Update nodejs to 12.19.0
       hash: 8431b0e087367ac38454017f86bd1d6f8e8eb814
-      body: ''
+      body: ""
       footer:
         Change-type: minor
         change-type: minor
@@ -478,7 +485,7 @@
 - commits:
     - subject: Delete custom versionist.conf.js and add repo.yml
       hash: c09ff99185178766bf236b20b52c5a09cfeb8a69
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -491,7 +498,7 @@
 - commits:
     - subject: Update nodejs to 12.18.4 and npm to 6.14.8
       hash: 98ba722e6cc1ca083aaeacb270a6d6b1f2288a02
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -501,7 +508,7 @@
 - commits:
     - subject: remove support for etcd-based confd config
       hash: 0d01099afeb30cb3693b554174ef2443f4d745a2
-      body: ''
+      body: ""
       footer:
         Change-type: major
         change-type: major
@@ -513,7 +520,7 @@
 - commits:
     - subject: Update nodejs to 12.18.3 and npm to 6.14.7
       hash: 4155244b8964625dac10c55f8e3cf7a6010e1ebc
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -523,7 +530,7 @@
 - commits:
     - subject: Update nodejs to 12.18.2
       hash: 7ca9da66bd3de13616642235a342f5b45feae96e
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -533,7 +540,7 @@
 - commits:
     - subject: Update nodejs to 12.18.1
       hash: 94c1803d479d80d3f9c1450bf0c3ea0d4639478b
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -543,7 +550,7 @@
 - commits:
     - subject: Update nodejs to 12.18.0
       hash: f7bf6f487ea64af6ffce821974ccddc5646bb6d8
-      body: ''
+      body: ""
       footer:
         Change-type: minor
         change-type: minor
@@ -553,7 +560,7 @@
 - commits:
     - subject: Update nodejs to 12.17.0 and npm to 6.14.5
       hash: 66675b45ed52a14775a1d0d01bcf6658ee9f0aca
-      body: ''
+      body: ""
       footer:
         Change-type: minor
         change-type: minor
@@ -563,7 +570,7 @@
 - commits:
     - subject: Update nodejs to 12.16.3
       hash: 069780c6c88a8247c684a574e57bf885c3b45be9
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -573,7 +580,7 @@
 - commits:
     - subject: Forward log from journald to console by default
       hash: 60d85f6207929eb0426979fb56e5238439a3a5b8
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -583,9 +590,9 @@
   version: 9.2.3
   date: 2020-04-15T10:39:48.849Z
 - commits:
-    - subject: 'Update nodejs to 12.16.2, npm to 6.14.4'
+    - subject: Update nodejs to 12.16.2, npm to 6.14.4
       hash: 116bbb6bf4f9a548a68b959c39d54c8abc2d5bd7
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -595,7 +602,7 @@
 - commits:
     - subject: Update nodejs to 12.16.1
       hash: 7662b09a46f2f24cfd0e9bf863132e318c997a30
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -605,7 +612,7 @@
 - commits:
     - subject: Update nodejs to 12.16.0
       hash: 2d290c934fae54993e435f82b22943570b1a106e
-      body: ''
+      body: ""
       footer:
         Change-type: minor
         change-type: minor
@@ -615,7 +622,7 @@
 - commits:
     - subject: Update nodejs to 12.15.0 and npm to 6.13.7
       hash: 4d1e2434b642a8f892246b0e9c3fd08bca774488
-      body: ''
+      body: ""
       footer:
         Change-type: minor
         change-type: minor
@@ -625,7 +632,7 @@
 - commits:
     - subject: Update nodejs to 12.14.1 and npm to 6.13.6
       hash: b2405095eadada2e8d8f23f258247482c99ea564
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -635,7 +642,7 @@
 - commits:
     - subject: Mask apt-daily-upgrade.timer
       hash: a714a4bebb2263baef4082c75ac42cf3e5fdf005
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -645,7 +652,7 @@
 - commits:
     - subject: Update nodejs to 12.14.0 and npm to 6.13.4
       hash: 8fad0b4262e0991b52dbe217c2df80fe533b628a
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -655,7 +662,7 @@
 - commits:
     - subject: Don't use UID used in node archive when unpacking as root
       hash: fa41cbe4adbb1355705f30d934fa4f8885d86d88
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -667,7 +674,7 @@
 - commits:
     - subject: Update node to 12 in no systemd variant
       hash: 3de89559505f2a10d94e4f0cc955c02651bdb8a3
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -679,7 +686,7 @@
 - commits:
     - subject: Update to nodejs 12
       hash: cde7021d266cfba7e6b7055421c7afb0c0dd2781
-      body: ''
+      body: ""
       footer:
         Change-type: major
         change-type: major
@@ -689,7 +696,7 @@
 - commits:
     - subject: Respect BALENA_TLD env variable in nosystemd variant
       hash: 66ad0ec93fadc749c3104443a3313ff73bf04946
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -698,7 +705,7 @@
       author: Roman Mazur
     - subject: Optimize for caching
       hash: 652a3e18545079de46bfe21c3891523467d6163f
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -707,7 +714,7 @@
       author: Roman Mazur
     - subject: Use balena node base image
       hash: b7c1e12773a414a5f843cfaaba943eabf3425e71
-      body: ''
+      body: ""
       footer:
         Change-type: minor
         change-type: minor
@@ -727,14 +734,14 @@
   version: 8.1.0
   date: 2019-09-24T16:07:27.946Z
 - commits:
-    - subject: "\U0001F512: Update Node to 10.16.3 and NPM to 6.10.3"
+    - subject: "🔒: Update Node to 10.16.3 and NPM to 6.10.3"
       hash: 8714ca3fee1ff44187e0a0c4b6c648d0c2fe550c
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
-        Connects-to: '#91'
-        connects-to: '#91'
+        Connects-to: "#91"
+        connects-to: "#91"
         Signed-off-by: Andreas Fitzek <andreas@balena.io>
         signed-off-by: Andreas Fitzek <andreas@balena.io>
       author: Andreas Fitzek
@@ -743,7 +750,7 @@
 - commits:
     - subject: Update nodejs to 10.16.1 and npm to 6.10.2
       hash: 11a141feb88985b698d5f4358505767e9065a200
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -751,7 +758,7 @@
   version: 8.0.2
   date: 2019-08-06T13:52:12.883Z
 - commits:
-    - subject: 'mdns: Ensure multipart subdomains are allowed'
+    - subject: "mdns: Ensure multipart subdomains are allowed"
       hash: bc5903d77867c3c969f1e7193cbef69dab12eeef
       body: |
         Debian Buster now uses Avahi 0.7 instead of
@@ -769,7 +776,7 @@
 - commits:
     - subject: Upgrade to debian buster
       hash: d090290e87b279482d7e3884a0a9e93a845152fe
-      body: ''
+      body: ""
       footer:
         Change-type: major
         change-type: major
@@ -777,9 +784,9 @@
   version: 8.0.0
   date: 2019-07-08T10:31:53.488Z
 - commits:
-    - subject: 'systemd: move StartLimitIntervalSec to proper conf section'
+    - subject: "systemd: move StartLimitIntervalSec to proper conf section"
       hash: d8e86fb27e02975a98ff271ec5c7f30c6f1dcd03
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -791,7 +798,7 @@
 - commits:
     - subject: Fix adding htoprc
       hash: 24f7afc3559227e3c58cfcf1483aab91f034be5f
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -801,7 +808,7 @@
 - commits:
     - subject: Add default htop settings to hide threads and use a tree view
       hash: c5d98f753b326b2b684ad997d470b0510eac86d2
-      body: ''
+      body: ""
       footer:
         Change-type: minor
         change-type: minor
@@ -811,7 +818,7 @@
 - commits:
     - subject: Update nodejs to 10.16.0 and npm to 6.9.0
       hash: 74815baf4ab2f617d2cd3301609ef21ea8aa4079
-      body: ''
+      body: ""
       footer:
         Change-type: minor
         change-type: minor
@@ -821,7 +828,7 @@
 - commits:
     - subject: Disable the apt daily timer
       hash: bbcc74a1b72886272bbec3071d79e0240c14a174
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -831,7 +838,7 @@
 - commits:
     - subject: Disable start limit for confd.service
       hash: 8ef586e573f77b06adaead91f47093757cc0584b
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -839,12 +846,12 @@
   version: 7.0.1
   date: 2019-05-06T10:05:10.962Z
 - commits:
-    - subject: 'hostname-vars: Ensure previous hostname envvars aren''t overwritten'
+    - subject: "hostname-vars: Ensure previous hostname envvars aren't overwritten"
       hash: 8eb1904dc5e5a99f5a92ab22e179f69636ce9e3b
-      body: ''
+      body: ""
       footer:
-        Connects-to: '#78'
-        connects-to: '#78'
+        Connects-to: "#78"
+        connects-to: "#78"
         Change-type: major
         change-type: major
         Signed-off-by: Heds Simons <heds@balena.io>
@@ -853,9 +860,9 @@
   version: 7.0.0
   date: 2019-03-14T16:05:18.429Z
 - commits:
-    - subject: 'versionbot: Add CHANGELOG.yml (for nested changelogs)'
+    - subject: "versionbot: Add CHANGELOG.yml (for nested changelogs)"
       hash: f7150cae490a106e8cf3d77bd0b19d2687b93a07
-      body: ''
+      body: ""
       footer:
         Change-type: patch
         change-type: patch
@@ -873,56 +880,56 @@
         hostnames with it.
       footers:
         change-type: major
-        connects-to: '#74'
+        connects-to: "#74"
         signed-off-by: Heds Simons <heds@balena.io>
       hash: 2ed66320598b446c385a53264f837e5545ff4317
-      subject: 'envvars: Add Monitor host and use balena UUID'
-  date: '2019-03-11T16:58:28Z'
+      subject: "envvars: Add Monitor host and use balena UUID"
+  date: 2019-03-11T16:58:28Z
   version: 6.0.0
 - commits:
     - author: Pagan Gazzard
-      body: ''
+      body: ""
       footers:
         change-type: patch
       hash: 1ed86955d086c676efe0e8a6ca90a35b300322fc
       subject: Update node to v10.15.3
-  date: '2019-03-11T14:47:02Z'
+  date: 2019-03-11T14:47:02Z
   version: 5.3.3
 - commits:
     - author: Heds Simons
-      body: ''
+      body: ""
       footers:
         change-type: patch
-        connects-to: '#72'
+        connects-to: "#72"
         signed-off-by: Heds Simons <heds@balena.io>
       hash: eb08a461be029693071daa7b50b14b2cc3f9516a
-      subject: 'codeowners: Add backend team as owners'
-  date: '2019-03-08T11:40:00Z'
+      subject: "codeowners: Add backend team as owners"
+  date: 2019-03-08T11:40:00Z
   version: 5.3.2
 - commits:
     - author: Pagan Gazzard
-      body: ''
+      body: ""
       footers:
         change-type: patch
       hash: e446fe63fbc13004ec3adf426f2dd9651ef96d94
       subject: Update nodejs to 10.15.2 and npm to 6.8.0
-  date: '2019-03-01T13:57:28Z'
+  date: 2019-03-01T13:57:28Z
   version: 5.3.1
 - commits:
     - author: Pagan Gazzard
-      body: ''
+      body: ""
       footers:
         change-type: patch
       hash: cb1b9a791bdf38ed4c978793949ddc45db0b4eef
       subject: Update nodejs to 10.15.1
     - author: Will Boyce
-      body: ''
+      body: ""
       footers:
         change-type: minor
         signed-off-by: Will Boyce <will@balena.io>
       hash: b5b092ae2eedeca1e5449e5cb8e2ac0b679a538d
-      subject: 'journald: set RuntimeMaxUse=100M'
-  date: '2019-02-06T10:33:48Z'
+      subject: "journald: set RuntimeMaxUse=100M"
+  date: 2019-02-06T10:33:48Z
   version: 5.3.0
 - commits:
     - author: Michael Angelos Simos
@@ -933,52 +940,51 @@
 
         `confd.service`. This way, backslash characters were "consumed" as
 
-        described
-        [here](https://www.freedesktop.org/software/systemd/man/systemd.exec.html#EnvironmentFile=)
+        described [here](https://www.freedesktop.org/software/systemd/man/systemd.exec.html#EnvironmentFile=)
       footers:
         change-type: patch
         signed-off-by: Michael Angelos Simos <michalis@balena.io>
       hash: fd82073cdd505f3f3bfe0a28232529ca5e283a0b
-      subject: 'confd: Fix backslashes being removed from envvars'
-  date: '2019-02-05T16:48:59Z'
+      subject: "confd: Fix backslashes being removed from envvars"
+  date: 2019-02-05T16:48:59Z
   version: 5.2.1
 - commits:
     - author: Will Boyce
-      body: ''
+      body: ""
       footers:
         change-type: minor
         signed-off-by: Will Boyce <will@balena.io>
       hash: 3094d980c60009d630f4ae7e84223abf5dbab5b3
-      subject: 'confd: Update to v0.16.0'
-  date: '2019-02-04T11:27:18Z'
+      subject: "confd: Update to v0.16.0"
+  date: 2019-02-04T11:27:18Z
   version: 5.2.0
 - commits:
     - author: Pagan Gazzard
-      body: ''
+      body: ""
       footers:
         change-type: minor
       hash: 3840b4b1094b833507435da546644ce305c1f10a
       subject: Update nodejs to 10.15.0 and npm to 6.7.0
-  date: '2019-01-29T12:32:42Z'
+  date: 2019-01-29T12:32:42Z
   version: 5.1.0
 - commits:
     - author: Pagan Gazzard
-      body: ''
+      body: ""
       footers:
         change-type: patch
       hash: f30d1d90d4544fac5868fad76b5ac7c55d753061
       subject: Update to node 10.14.1
-  date: '2018-12-03T12:13:15Z'
+  date: 2018-12-03T12:13:15Z
   version: 5.0.1
 - commits:
     - author: Pagan Gazzard
-      body: ''
+      body: ""
       footers:
         change-type: major
         signed-off-by: Pagan Gazzard <page@resin.io>
       hash: 1901c25ddd2d3af98c64548c58d91c91e3913f94
       subject: Update nodejs to 10.x
-  date: '2018-10-30T13:20:39Z'
+  date: 2018-10-30T13:20:39Z
   version: 5.0.0
 - commits:
     - author: Heds Simons
@@ -989,11 +995,11 @@
         envvar is present.
       footers:
         change-type: minor
-        connects-to: '#61'
+        connects-to: "#61"
         signed-off-by: Heds Simons <heds@balena.io>
       hash: fa56c916cdb7efb9f7d5a7e3f2d1803b16c153a7
-      subject: 'subdomains: Autoset subdomain envvars based on device UUID'
-  date: '2018-10-24T11:54:50Z'
+      subject: "subdomains: Autoset subdomain envvars based on device UUID"
+  date: 2018-10-24T11:54:50Z
   version: 4.5.0
 - commits:
     - author: Will Boyce
@@ -1002,8 +1008,8 @@
         change-type: patch
         signed-off-by: Will Boyce <will@balena.io>
       hash: 3f09996efc89b131b70a0bf691424ea76b49f977
-      subject: 'rename: s/resin/balena'
-  date: '2018-10-23T15:01:00Z'
+      subject: "rename: s/resin/balena"
+  date: 2018-10-23T15:01:00Z
   version: 4.4.2
 - commits:
     - author: Heds Simons
@@ -1036,11 +1042,11 @@
         will not use `.local` suffixes.
       footers:
         change-type: patch
-        connects-to: '#59'
+        connects-to: "#59"
         signed-off-by: Heds Simons <heds@resin.io>
       hash: 953bbd6b2c375831e45fecfe26ca28f6b7338230
-      subject: 'dns: Prioritise DNS over MDNS lookups for aliases'
-  date: '2018-09-28T08:37:57Z'
+      subject: "dns: Prioritise DNS over MDNS lookups for aliases"
+  date: 2018-09-28T08:37:57Z
   version: 4.4.1
 - commits:
     - author: Heds Simons
@@ -1050,40 +1056,40 @@
         Also adds a ResinCI config to allow builds to be pushed.
       footers:
         change-type: minor
-        connects-to: '#57'
+        connects-to: "#57"
         signed-off-by: Heds Simons <heds@resin.io>
       hash: 94d9496b4ae447de85db2dcfeeea257ee552c370
       subject: "logging: Allow child components\tto log to the console"
-  date: '2018-09-24T13:05:40Z'
+  date: 2018-09-24T13:05:40Z
   version: 4.4.0
 - commits:
     - author: Pagan Gazzard
-      body: ''
+      body: ""
       footers:
         change-type: minor
         signed-off-by: Pagan Gazzard <page@resin.io>
       hash: 72d6b7d45beed6853ae6d02ac0df066ad79d5335
       subject: Update to nodejs 8.12.0 and npm 6.4.1
-  date: '2018-09-11T11:04:26Z'
+  date: 2018-09-11T11:04:26Z
   version: 4.3.0
 - commits:
     - author: Pagan Gazzard
-      body: ''
+      body: ""
       footers:
         change-type: patch
         signed-off-by: Pagan Gazzard <page@resin.io>
       hash: 88729b4a687dd66ebffe4ded2b430aac0caa8e0a
       subject: Update to nodejs 8.11.4
-  date: '2018-08-20T17:34:41Z'
+  date: 2018-08-20T17:34:41Z
   version: 4.2.2
 - commits:
     - author: Pagan Gazzard
-      body: ''
+      body: ""
       footers:
         change-type: patch
       hash: df71f3465fcdf922e7db0a0fc6e2e57ad848a3b3
       subject: Update to nodejs 8.11.3
-  date: '2018-07-03T16:11:37Z'
+  date: 2018-07-03T16:11:37Z
   version: 4.2.1
 - commits:
     - author: Heds Simons
@@ -1092,38 +1098,38 @@
         Also moves CircleCI config to correct directory.
       footers:
         change-type: minor
-        connects-to: '#51'
+        connects-to: "#51"
         signed-off-by: Heds Simons <heds@whaleway.net>
       hash: 772ed9c19242b7b5d0785cc490eebdee46404e06
       subject: Add `libnss-mdns` to base images for MDNS lookups.
-  date: '2018-07-03T12:14:11Z'
+  date: 2018-07-03T12:14:11Z
   version: 4.2.0
 - commits:
     - author: Pagan Gazzard
-      body: ''
+      body: ""
       footers:
         change-type: minor
       hash: 018fbc55bc21723547cfb837603ce801129d3fd6
       subject: Update to nodejs 8.11.2 and npm 5.10.0
-  date: '2018-05-16T17:14:02Z'
+  date: 2018-05-16T17:14:02Z
   version: 4.1.0
 - commits:
     - author: Pagan Gazzard
-      body: ''
+      body: ""
       footers:
         change-type: major
       hash: 232711a2cbe3eebae76481d9247eb7ba50cc02b3
       subject: Update to debian stretch
-  date: '2018-04-26T20:09:44Z'
+  date: 2018-04-26T20:09:44Z
   version: 4.0.0
 - commits:
     - author: Pagan Gazzard
-      body: ''
+      body: ""
       footers:
         change-type: patch
       hash: 828470cc6f56055c921a8745e2ce4d840712b18f
       subject: Fix disabling systemd rate limiting.
-  date: '2018-04-24T17:04:13Z'
+  date: 2018-04-24T17:04:13Z
   version: 3.4.1
 - commits:
     - author: Heds Simons
@@ -1136,19 +1142,17 @@
 
         Downstream components can then check the presence of the environment
 
-        variable and point `NODE_EXTRA_CA_CERTS` to
-        `/etc/ssl/certs/balenaRootCA.pem`
+        variable and point `NODE_EXTRA_CA_CERTS` to `/etc/ssl/certs/balenaRootCA.pem`
 
-        if required, ensuring they Require/Want `balena-root-ca.service` in
-        their
+        if required, ensuring they Require/Want `balena-root-ca.service` in their
 
         own service.
       footers:
         change-type: minor
-        connects-to: '#46'
+        connects-to: "#46"
       hash: e6071936531fda927089599f3d26489ce389a770
       subject: Add `balena-root-ca.service` unit file for self-signed CA handling.
-  date: '2018-04-11T09:09:53Z'
+  date: 2018-04-11T09:09:53Z
   version: 3.4.0
 - commits:
     - author: Michael Angelos Simos
@@ -1158,12 +1162,12 @@
       footers:
         change-type: minor
       hash: 851bb8edb8ee75ff09b860f5edfee99f33ecc6e7
-      subject: 'Support confd env back-end switch,'
+      subject: Support confd env back-end switch,
     - author: Michael Angelos Simos
-      body: ''
+      body: ""
       hash: e2bd3083fe7fab2666ca467bacdd92a78b320996
       subject: Merge branch 'master' into 43-confd-env-backend-support
-  date: '2018-03-12T11:05:27Z'
+  date: 2018-03-12T11:05:27Z
   version: 3.3.0
 - commits:
     - author: Michael Angelos Simos
@@ -1172,16 +1176,16 @@
         change-type: minor
       hash: 9029fdb9d7325dcd08eadddbd194976b565da675
       subject: Upgrade confd to v0.15.0
-  date: '2018-03-09T12:59:45Z'
+  date: 2018-03-09T12:59:45Z
   version: 3.2.0
 - commits:
     - author: Pagan Gazzard
-      body: ''
+      body: ""
       footers:
         change-type: minor
       hash: 34f6887e50d00f6a3282a1a126bbb2321fb72bf7
       subject: Update nodejs to 8.10.0 and npm to 5.6.0
-  date: '2018-03-08T08:05:50Z'
+  date: 2018-03-08T08:05:50Z
   version: 3.1.0
 - commits:
     - author: Cameron Diver
@@ -1193,65 +1197,64 @@
         signed-off-by: Cameron Diver <cameron@resin.io>
       hash: d9a5868eaa94a264bade7fa3cb015ec6f2a23c05
       subject: Turn off journald rate limiting
-  date: '2017-11-29T20:06:10Z'
+  date: 2017-11-29T20:06:10Z
   version: 3.0.1
 - commits:
     - author: Pagan Gazzard
-      body: ''
+      body: ""
       footers:
         change-type: major
       hash: 6608b8db39617e38b87b04a3ec10ff7f39aa3372
       subject: Update nodejs to 8.9.0 and npm to 5.5.1
-  date: '2017-11-01T20:16:09Z'
+  date: 2017-11-01T20:16:09Z
   version: 3.0.0
 - commits:
     - author: Andreas Fitzek
-      body: ''
+      body: ""
       footers:
         change-type: patch
-        connects-to: '#38'
+        connects-to: "#38"
         signed-off-by: Andreas Fitzek <andreas@resin.io>
       hash: 6068d4e93dc4bd860b39e376d0568a16c41259a7
       subject: Update node to 6.11.5
-  date: '2017-10-25T17:25:53Z'
+  date: 2017-10-25T17:25:53Z
   version: 2.9.2
 - commits:
     - author: John (Jack) Brown
-      body: ''
+      body: ""
       footers:
         change-type: patch
       hash: 20480c5c993ebb4ecda22b354da27e030540ad66
       subject: Fix tag detection on circle builds
-  date: '2017-09-12T15:33:56Z'
+  date: 2017-09-12T15:33:56Z
   version: 2.9.1
 - commits:
     - author: Lucian Buzzo
       body: >-
         Connects to #34
 
-        This version introduces support for default values in the `getv`
-        template function
+        This version introduces support for default values in the `getv` template function
       footers:
         change-type: minor
       hash: 09d70541e02bfb8640b559e8faa9c2a66caa5451
       subject: Update confd to version 0.13.0
-  date: '2017-09-11T21:32:59Z'
+  date: 2017-09-11T21:32:59Z
   version: 2.9.0
 - commits:
     - author: John (Jack) Brown
-      body: ''
+      body: ""
       footers:
         change-type: patch
       hash: adc037f931336408f6115ea88c3c639b9b406d1c
       subject: Add CircleCI integration
-  date: '2017-09-08T17:03:25Z'
+  date: 2017-09-08T17:03:25Z
   version: 2.8.5
 - commits:
     - author: John (Jack) Brown
-      body: ''
+      body: ""
       footers:
         change-type: patch
       hash: 168f59352e2ed59bbda7caf21ba25d5e13024de2
       subject: Add versionist config
-  date: '2017-07-27T15:54:28Z'
+  date: 2017-07-27T15:54:28Z
   version: 2.8.4
