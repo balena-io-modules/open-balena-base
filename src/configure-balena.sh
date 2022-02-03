@@ -4,12 +4,14 @@
 set -a
 
 DNS_TLD=${DNS_TLD:-$BALENA_TLD}
+
 if [[ -n "${BALENA_DEVICE_UUID}" ]]; then
 	# prepend the device UUID if running on balenaOS
 	TLD="${BALENA_DEVICE_UUID}.${DNS_TLD}"
 else
 	TLD="${DNS_TLD}"
 fi
+
 ROOT_CA=${ROOT_CA:-$BALENA_ROOT_CA}
 CONF=${CONF:-/balena/${TLD}.env}
 CERTS=${CERTS:-/certs}
@@ -20,52 +22,63 @@ TOKENS_CONFIG=${TOKENS_CONFIG:-API_SERVICE_API_KEY:hex,AUTH_RESINOS_REGISTRY_COD
 declare -A HOST_ENVVARS
 hosts_config=($(echo "${HOSTS_CONFIG}" | tr ',' ' '))
 for kv in ${hosts_config[*]}; do
-    varname="$(echo "${kv}" | awk -F':' '{print $1}')"
-    varval="$(echo "${kv}" | awk -F':' '{print $2}')"
-    if [[ -n $varname ]] && [[ -n $varval ]]; then
-        HOST_ENVVARS[${varname}]="${varval}"
-    fi
+	varname="$(echo "${kv}" | awk -F':' '{print $1}')"
+	varval="$(echo "${kv}" | awk -F':' '{print $2}')"
+	if [[ -n $varname ]] && [[ -n $varval ]]; then
+		HOST_ENVVARS[${varname}]="${varval}"
+	fi
 done
 
 declare -A SENTRY_ENVVARS
 sentry_config=($(echo "${SENTRY_CONFIG}" | tr ',' ' '))
 for kv in ${sentry_config[*]}; do
-    varname="$(echo "${kv}" | awk -F':' '{print $1}')"
-    varval="$(echo "${kv}" | awk -F':' '{print $2}')"
-    if [[ -n $varname ]] && [[ -n $varval ]]; then
-        SENTRY_ENVVARS[${varname}]="${varval}"
-    fi
+	varname="$(echo "${kv}" | awk -F':' '{print $1}')"
+	varval="$(echo "${kv}" | awk -F':' '{print $2}')"
+	if [[ -n $varname ]] && [[ -n $varval ]]; then
+		SENTRY_ENVVARS[${varname}]="${varval}"
+	fi
 done
 
 declare -A API_KEYS
 tokens_config=($(echo "${TOKENS_CONFIG}" | tr ',' ' '))
 for kv in ${tokens_config[*]}; do
-    varname="$(echo "${kv}" | awk -F':' '{print $1}')"
-    varval="$(echo "${kv}" | awk -F':' '{print $2}')"
-    if [[ -n $varname ]] && [[ -n $varval ]]; then
-        if [[ $varval =~ rand|random|hex ]]; then
-            API_KEYS[${varname}]="$(openssl rand -hex 16)"
-        else
-            API_KEYS[${varname}]="${API_KEYS[${varval}]}"
-        fi
-    fi
+	varname="$(echo "${kv}" | awk -F':' '{print $1}')"
+	varval="$(echo "${kv}" | awk -F':' '{print $2}')"
+	if [[ -n $varname ]] && [[ -n $varval ]]; then
+		if [[ $varval =~ rand|random|hex ]]; then
+			API_KEYS[${varname}]="$(openssl rand -hex 16)"
+		else
+			API_KEYS[${varname}]="${API_KEYS[${varval}]}"
+		fi
+	fi
 done
 
 function upsert_ca_root {
+	# (legacy) explicitly defined ROOT_CA
 	if test -n "${ROOT_CA}"; then
 		echo "Installing custom CA bundle..."
 		echo "${ROOT_CA}" | base64 -d > /usr/local/share/ca-certificates/balenaRootCA.crt
+	# dynamically issued by balena-ca
 	elif [[ -e "${CERTS}/ca-bundle.pem" ]]; then
-		cat < "${CERTS}/ca-bundle.pem" > /usr/local/share/ca-certificates/balenaRootCA.crt
-		sed -i /^ROOT_CA=/d /etc/docker.env
-		echo "ROOT_CA=$(cat < "${CERTS}/ca-bundle.pem" | openssl base64 -A)" >> /etc/docker.env
+		# ... but only if using private certificates
+		if [[ "$(readlink -f "${CERTS}/${TLD}-chain.pem")" =~ \/private\/ ]]; then
+			cat < "${CERTS}/ca-bundle.pem" > /usr/local/share/ca-certificates/balenaRootCA.crt
+			sed -i /^ROOT_CA=/d /etc/docker.env
+			echo "ROOT_CA=$(cat < "${CERTS}/ca-bundle.pem" | openssl base64 -A)" >> /etc/docker.env
+		# ... we are running public DNS/SSL, no need to expose private CA bundle(s)
+		else
+			echo 'Running LetsEncrypt/ACME/public SSL/DNS configuration.'
+		fi
 	else
-		echo "Custom CA bundle not found, nothing to do."
+		echo 'Custom CA bundle not found, nothing to do.'
 	fi
 
 	if [[ -e /usr/local/share/ca-certificates/balenaRootCA.crt ]]; then
 		grep -q 'NODE_EXTRA_CA_CERTS=/etc/ssl/certs/balenaRootCA.pem' /etc/docker.env \
 		  || echo 'NODE_EXTRA_CA_CERTS=/etc/ssl/certs/balenaRootCA.pem' >> /etc/docker.env
+
+		grep -q 'CURL_CA_BUNDLE=/etc/ssl/certs/balenaRootCA.pem' /etc/docker.env \
+		  || echo 'CURL_CA_BUNDLE=/etc/ssl/certs/balenaRootCA.pem' >> /etc/docker.env
 
 		update-ca-certificates
 	fi
@@ -275,7 +288,7 @@ function upsert_all {
 # always run, as the function includes legacy ROOT_CA processing
 upsert_ca_root
 
-if [[ -n "${DNS_TLD}" ]]; then
+if [[ -n "${TLD}" ]]; then
 	# inject *_HOST environment variables into local environment
 	for VARNAME in "${!HOST_ENVVARS[@]}"; do
 		VARVALUE=${!VARNAME}
