@@ -1,4 +1,18 @@
 - commits:
+    - subject: Avoid cryptic names and rename bcr to registry-proxy
+      hash: c3d6787df9412883b8706f6edf7db80ed885b71f
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 13.0.7
+  title: "'Avoid cryptic names and rename bcr to registry-proxy'"
+  date: 2022-02-16T16:48:08.416Z
+- commits:
     - subject: Add new balena container registry (bcr) host
       hash: 67769b8c23c562120aeee32ce38e3f80519370cb
       body: ""
