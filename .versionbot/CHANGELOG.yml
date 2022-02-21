@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update nodejs to 16.14.0 and npm to 8.5.1
+      hash: 96344108de1f79799132f47ad59643658590d582
+      body: ""
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Pagan Gazzard
+      nested: []
+  version: 13.1.0
+  title: "'Update nodejs to 16.14.0 and npm to 8.5.1'"
+  date: 2022-02-21T16:05:34.829Z
+- commits:
     - subject: Avoid cryptic names and rename bcr to registry-proxy
       hash: c3d6787df9412883b8706f6edf7db80ed885b71f
       body: ""
