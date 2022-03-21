@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update nodejs to 16.14.2 and npm to 8.5.5
+      hash: 165c44a52b291b9c335d3fe139d82ff0c99a5e96
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+      nested: []
+  version: 13.2.1
+  title: "'Update nodejs to 16.14.2 and npm to 8.5.5'"
+  date: 2022-03-21T14:38:46.073Z
+- commits:
     - subject: Consistent SENTRY environment names
       hash: 6677d1a2cc99657dc9070f2b392d39eddfe72a08
       body: ""
