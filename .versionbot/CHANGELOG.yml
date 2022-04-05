@@ -1,4 +1,18 @@
 - commits:
+    - subject: Remove redundant package-lock.json
+      hash: 88a2c6f3315746b94d769bae81002482ba5d4b98
+      body: >
+        VersionBot used to create that file because of a bug. The bug has long
+        been fixed and the file is redundant.
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Akis Kesoglou
+      nested: []
+  version: 13.2.2
+  title: "'Remove redundant package-lock.json'"
+  date: 2022-04-05T18:47:41.535Z
+- commits:
     - subject: Update nodejs to 16.14.2 and npm to 8.5.5
       hash: 165c44a52b291b9c335d3fe139d82ff0c99a5e96
       body: ""
