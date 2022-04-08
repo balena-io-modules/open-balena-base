@@ -1,4 +1,19 @@
 - commits:
+    - subject: Add support to map tokens from existing env
+      hash: e78d0887a9f859c0763f4875d990a3cc4186ac7e
+      body: |
+        * if global config already contains the value(s) for the map, use them
+        * don't explicitly require BALENA_DEVICE_UID (openBalena/dockerd)
+        * add REGISTRY S3 secrets
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: ab77
+      nested: []
+  version: 13.2.3
+  title: "'Add support to map tokens from existing env'"
+  date: 2022-04-08T18:03:20.929Z
+- commits:
     - subject: Remove redundant package-lock.json
       hash: 88a2c6f3315746b94d769bae81002482ba5d4b98
       body: >
