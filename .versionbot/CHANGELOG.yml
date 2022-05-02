@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update nodejs to 16.15.0 and npm to 8.8.0
+      hash: a7454fb62d845e444e3e798c577a264979da574a
+      body: ""
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Pagan Gazzard
+      nested: []
+  version: 13.3.0
+  title: "'Update nodejs to 16.15.0 and npm to 8.8.0'"
+  date: 2022-05-02T16:14:06.385Z
+- commits:
     - subject: Add support to map tokens from existing env
       hash: e78d0887a9f859c0763f4875d990a3cc4186ac7e
       body: |
