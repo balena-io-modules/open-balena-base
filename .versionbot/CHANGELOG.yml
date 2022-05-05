@@ -1,4 +1,16 @@
 - commits:
+    - subject: Add SystemMaxUse for journald.conf
+      hash: 59543bf6b8b1faf2914be1ff2302982c0d269b33
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+      nested: []
+  version: 13.3.1
+  title: "'Add SystemMaxUse for journald.conf'"
+  date: 2022-05-05T09:33:37.847Z
+- commits:
     - subject: Update nodejs to 16.15.0 and npm to 8.8.0
       hash: a7454fb62d845e444e3e798c577a264979da574a
       body: ""
