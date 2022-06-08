@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update nodejs to 16.15.1 and npm to 8.12.1
+      hash: af560ea9e6bd682c4c1eca56b5dce4ed95c56158
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+      nested: []
+  version: 13.3.2
+  title: "'Update nodejs to 16.15.1 and npm to 8.12.1'"
+  date: 2022-06-08T15:00:20.717Z
+- commits:
     - subject: Add SystemMaxUse for journald.conf
       hash: 59543bf6b8b1faf2914be1ff2302982c0d269b33
       body: ""
