@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update nodejs to 16.16.0 and npm to 8.13.2
+      hash: 1e2f05bb44e7d25fbb52f8a738e2707d2915d340
+      body: ""
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Pagan Gazzard
+      nested: []
+  version: 13.4.0
+  title: "'Update nodejs to 16.16.0 and npm to 8.13.2'"
+  date: 2022-07-09T08:32:33.121Z
+- commits:
     - subject: Update nodejs to 16.15.1 and npm to 8.12.1
       hash: af560ea9e6bd682c4c1eca56b5dce4ed95c56158
       body: ""
