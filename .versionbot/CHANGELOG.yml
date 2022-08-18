@@ -1,4 +1,19 @@
 - commits:
+    - subject: Update balenalib/amd64-debian-node Docker tag to v16.17.0
+      hash: def1d2e6db189ce01390bd48c3c99a2fadf5486a
+      body: |
+        Update balenalib/amd64-debian-node to 16.17.0
+
+        Update balenalib/amd64-debian-node from 16.16.0 to 16.17.0
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Renovate Bot
+      nested: []
+  version: 13.5.0
+  title: "'Update balenalib/amd64-debian-node Docker tag to v16.17.0'"
+  date: 2022-08-18T20:08:44.059Z
+- commits:
     - subject: Update nodejs to 16.16.0 and npm to 8.13.2
       hash: 1e2f05bb44e7d25fbb52f8a738e2707d2915d340
       body: ""
