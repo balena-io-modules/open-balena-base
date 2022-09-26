@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update to nodejs 16.17.1
+      hash: e6e486ef5eb2a497c635701fceaba719af24f041
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+      nested: []
+  version: 13.5.2
+  title: "'Update to nodejs 16.17.1'"
+  date: 2022-09-26T13:08:05.210Z
+- commits:
     - subject: Update nodejs to 16.17.0 and npm to 8.18.0
       hash: 85d075b8f2e251515fd79500f72e4d8ab6fbb5d2
       body: ""
