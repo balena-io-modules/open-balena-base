@@ -1,4 +1,19 @@
 - commits:
+    - subject: Update balenalib/amd64-debian-node Docker tag to v16.18.0
+      hash: 7f559f02f542427fe457175b974a6194038f6f6f
+      body: |
+        Update balenalib/amd64-debian-node to 16.18.0
+
+        Update balenalib/amd64-debian-node from 16.17.1 to 16.18.0
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Renovate Bot
+      nested: []
+  version: 13.6.0
+  title: ""
+  date: 2022-10-14T18:09:18.515Z
+- commits:
     - subject: Switch to Flowzone for CI/CD
       hash: 2723e0e9b01d81e2c41bb79232ab0d101f8ebe71
       body: ""
