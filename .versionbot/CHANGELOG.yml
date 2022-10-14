@@ -1,4 +1,18 @@
 - commits:
+    - subject: Switch to Flowzone for CI/CD
+      hash: 2723e0e9b01d81e2c41bb79232ab0d101f8ebe71
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 13.5.3
+  title: ""
+  date: 2022-10-14T17:47:53.889Z
+- commits:
     - subject: Update to nodejs 16.17.1
       hash: e6e486ef5eb2a497c635701fceaba719af24f041
       body: ""
@@ -270,9 +284,9 @@
     - subject: Fix configuration for non-BoB deployments
       hash: be5d9722d47b65ca511cfb66ab13ed1f3ddff372
       body: >
-        The default value on the BALENA_DEVICE_UUID variable forced all code
-        paths that used to run optionally depending on whether deployment was on
-        a balenaOS device to run.
+        The default value on the BALENA_DEVICE_UUID variable forced all code paths
+        that used to run optionally depending on whether deployment was on a
+        balenaOS device to run.
       footer:
         Change-type: patch
         change-type: patch
