@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update nodejs to 18.18.0
+      hash: 6e6ba93463f9020b200f242881fe5de27c1426fc
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+      nested: []
+  version: 13.6.1
+  title: ""
+  date: 2022-10-24T09:22:00.512Z
+- commits:
     - subject: Update balenalib/amd64-debian-node Docker tag to v16.18.0
       hash: 7f559f02f542427fe457175b974a6194038f6f6f
       body: |
