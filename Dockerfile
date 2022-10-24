@@ -45,8 +45,8 @@ RUN apt-get update \
 		wget \
 	&& rm -rf /var/lib/apt/lists/*
 
-ENV NODE_VERSION 16.17.1
-ENV NPM_VERSION 8.18.0
+ENV NODE_VERSION 16.18.0
+ENV NPM_VERSION 8.19.1
 
 RUN curl -SL "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" | tar xz -C /usr/local --strip-components=1 --no-same-owner \
 	&& npm install -g npm@"$NPM_VERSION" \
