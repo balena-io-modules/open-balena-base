@@ -1,4 +1,4 @@
-FROM balenalib/amd64-debian-node:18.12.0-bullseye-run
+FROM balenalib/amd64-debian-node:18.12.1-bullseye-run
 
 ENV TERM xterm
 
