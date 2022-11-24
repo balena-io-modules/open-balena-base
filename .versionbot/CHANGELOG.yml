@@ -1,4 +1,18 @@
 - commits:
+    - subject: Enable builds of no-systemd variant for arm64
+      hash: eb0e7644ae148ef34901fefab6a9c45d22688a9a
+      body: ""
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 14.1.0
+  title: ""
+  date: 2022-11-24T11:14:20.809Z
+- commits:
     - subject: Update nodejs to 18.12.1
       hash: 27b5a62d68a121e4856aefeca6f575cb44b01d40
       body: ""
