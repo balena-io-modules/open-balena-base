@@ -1,4 +1,7 @@
-FROM balenalib/amd64-debian-node:18.12.1-bullseye-run
+# use TARGETARCH from buildkit to select the appropriate base image
+FROM balenalib/amd64-debian-node:18.12.1-bullseye-run as amd64
+FROM balenalib/aarch64-debian-node:18.12.1-bullseye-run as arm64
+FROM ${TARGETARCH}
 
 ENV TERM xterm
 
@@ -29,7 +32,9 @@ COPY src/confd-entry.sh /usr/bin/confd-entry.sh
 # balenaMachine automatic configuration script.
 COPY src/configure-balena.sh /usr/bin/configure-balena.sh
 
+ARG TARGETARCH
+
 # Confd binary installation.
 ENV CONFD_VERSION 0.16.0
-RUN wget -O /usr/local/bin/confd https://github.com/kelseyhightower/confd/releases/download/v${CONFD_VERSION}/confd-${CONFD_VERSION}-linux-amd64 \
+RUN wget -qO /usr/local/bin/confd https://github.com/kelseyhightower/confd/releases/download/v${CONFD_VERSION}/confd-${CONFD_VERSION}-linux-${TARGETARCH} \
 	&& chmod a+x /usr/local/bin/confd

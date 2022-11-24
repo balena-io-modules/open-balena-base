@@ -17,4 +17,8 @@ target "no-systemd" {
     "docker.io/balena/open-balena-base:no-systemd-latest",
     "docker.io/balena/open-balena-base:no-systemd-master",
   ]
+  platforms = [
+    "linux/amd64",
+    "linux/arm64"
+  ]
 }
