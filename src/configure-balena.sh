@@ -5,11 +5,11 @@ set -a
 
 DNS_TLD=${DNS_TLD:-$BALENA_TLD}
 
-if [[ -n "${BALENA_DEVICE_UUID}" ]]; then
-	# prepend the device UUID if running on balenaOS
-	TLD="${BALENA_DEVICE_UUID}.${DNS_TLD}"
+if [[ -n $BALENA_DEVICE_UUID ]]; then
+    # prepend the device UUID if running on balenaOS
+    TLD="${TLD:-${BALENA_DEVICE_UUID}.${DNS_TLD}}"
 else
-	TLD="${DNS_TLD}"
+    TLD="${TLD:-${DNS_TLD}}"
 fi
 
 ROOT_CA=${ROOT_CA:-$BALENA_ROOT_CA}
