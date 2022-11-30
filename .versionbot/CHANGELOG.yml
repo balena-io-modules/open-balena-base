@@ -1,4 +1,16 @@
 - commits:
+    - subject: Allow plain TLD certs without UUID
+      hash: 2101ccfcf256a0da7b9fda27ce390d655214d4db
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: ab77
+      nested: []
+  version: 14.1.2
+  title: ""
+  date: 2022-11-30T02:06:27.321Z
+- commits:
     - subject: Correct public|private cert. check
       hash: a22b6b42b38c5423578117e8d03c3a25ce02cd5d
       body: ""
