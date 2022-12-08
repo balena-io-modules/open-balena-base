@@ -36,5 +36,5 @@ ARG TARGETARCH
 
 # Confd binary installation.
 ENV CONFD_VERSION 0.16.0
-RUN wget -qO /usr/local/bin/confd https://github.com/kelseyhightower/confd/releases/download/v${CONFD_VERSION}/confd-${CONFD_VERSION}-linux-${TARGETARCH} \
+RUN curl -fsSL -o /usr/local/bin/confd "https://github.com/kelseyhightower/confd/releases/download/v${CONFD_VERSION}/confd-${CONFD_VERSION}-linux-${TARGETARCH}" \
 	&& chmod a+x /usr/local/bin/confd
