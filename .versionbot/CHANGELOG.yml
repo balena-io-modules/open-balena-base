@@ -1,4 +1,28 @@
 - commits:
+    - subject: Update Flowzone workflow to support external contributions
+      hash: 3739ae929bdf588638b2f1849dff98c7f596c5c1
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+    - subject: Build systemd variant for both amd64 and arm64
+      hash: 983dd18bfc389faefeb9ccd54a152b1365824b81
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 14.1.3
+  title: ""
+  date: 2022-12-08T18:56:05.586Z
+- commits:
     - subject: Allow plain TLD certs without UUID
       hash: 2101ccfcf256a0da7b9fda27ce390d655214d4db
       body: ""
