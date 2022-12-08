@@ -45,19 +45,28 @@ RUN apt-get update \
 		wget \
 	&& rm -rf /var/lib/apt/lists/*
 
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+ARG TARGETARCH
+
 ENV NODE_VERSION 18.12.1
 ENV NPM_VERSION 8.19.2
 
-RUN curl -SL "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" | tar xz -C /usr/local --strip-components=1 --no-same-owner \
+RUN if [ "${TARGETARCH}" = "amd64" ] ; \
+	then \
+		NODE_URL="https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" ; \
+	else \
+		NODE_URL="https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-${TARGETARCH}.tar.gz" ; \
+	fi && \
+	curl -fsSL "${NODE_URL}" | tar xz -C /usr/local --strip-components=1 --no-same-owner \
 	&& npm install -g npm@"$NPM_VERSION" \
 	&& npm cache clear --force \
 	&& rm -rf /tmp/*
 
+# Confd binary installation.
 ENV CONFD_VERSION 0.16.0
-
-RUN wget -O /usr/local/bin/confd https://github.com/kelseyhightower/confd/releases/download/v${CONFD_VERSION}/confd-${CONFD_VERSION}-linux-amd64 \
-	&& chmod a+x /usr/local/bin/confd \
-	&& ln -s /usr/src/app/config/confd /etc/confd
+RUN curl -fsSL -o /usr/local/bin/confd "https://github.com/kelseyhightower/confd/releases/download/v${CONFD_VERSION}/confd-${CONFD_VERSION}-linux-${TARGETARCH}" \
+	&& chmod a+x /usr/local/bin/confd
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
