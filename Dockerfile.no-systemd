@@ -1,6 +1,6 @@
 # use TARGETARCH from buildkit to select the appropriate base image
 FROM balenalib/amd64-debian-node:18.12.1-bullseye-run as amd64
-FROM balenalib/aarch64-debian-node:18.12.1-bullseye-run as arm64
+FROM balenalib/aarch64-debian-node:19.2.0-bullseye-run as arm64
 FROM ${TARGETARCH}
 
 ENV TERM xterm
