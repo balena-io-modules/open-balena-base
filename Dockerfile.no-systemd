@@ -1,12 +1,12 @@
-# use TARGETARCH from buildkit to select the appropriate base image
-FROM balenalib/amd64-debian-node:18.12.1-bullseye-run as amd64
-FROM balenalib/aarch64-debian-node:18.12.1-bullseye-run as arm64
-FROM ${TARGETARCH}
+FROM node:18.12.1-bullseye
 
+ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm
 
 # Install ops/sre related packages.
-RUN install_packages \
+# hadolint ignore=DL3008
+RUN apt-get update && apt-get install --no-install-recommends -y \
+		ca-certificates \
 		htop \
 		ifupdown \
 		jq \
@@ -15,7 +15,10 @@ RUN install_packages \
 		netcat \
 		strace \
 		vim \
-		wget
+		wget \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/*
+
 # And configure them.
 COPY src/htoprc /root/.config/htop/
 
