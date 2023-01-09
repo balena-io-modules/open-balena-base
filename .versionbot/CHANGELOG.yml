@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update to nodejs 18.13.0
+      hash: 93d27af823100a75822e20f29f41dc4d576aa8e1
+      body: ""
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Pagan Gazzard
+      nested: []
+  version: 14.2.0
+  title: ""
+  date: 2023-01-09T15:46:31.806Z
+- commits:
     - subject: "no-systemd: Use official node base image"
       hash: eb9e3e329a78fb29eb4351814b99be23be6d68c6
       body: ""
