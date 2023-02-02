@@ -1,4 +1,19 @@
 - commits:
+    - subject: Update dependency node to 18.14.0
+      hash: 94316b8e029eaf1a15ec303b5e6887261971c4a3
+      body: |
+        Update node to 18.14.0
+
+        Update node from 18.13.0 to 18.14.0
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Renovate Bot
+      nested: []
+  version: 14.3.0
+  title: ""
+  date: 2023-02-02T20:01:11.681Z
+- commits:
     - subject: Update to nodejs 18.13.0
       hash: 93d27af823100a75822e20f29f41dc4d576aa8e1
       body: ""
