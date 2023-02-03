@@ -1,4 +1,30 @@
 - commits:
+    - subject: Resolve some apt warnings by adding protection flags
+      hash: e2209f980026ad64548587f35ddc5e0e2e102ad1
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+    - subject: Clear the npm cache manually before running cache clear
+      hash: 21ba9cdef0659106d034b04ac051400f7c043439
+      body: |
+        On emulated builds like arm64 the cache clear command
+        can fail and this seems to unblock it.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 14.4.1
+  title: ""
+  date: 2023-02-03T22:36:31.788Z
+- commits:
     - subject: Update nodejs to 18.14.0 and npm to 9.4.1
       hash: 8f8ff1c68b4d1973f3e6c03e4ac4b5ab8ee70592
       body: ""
