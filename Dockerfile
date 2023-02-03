@@ -6,9 +6,9 @@ ENV TERM xterm
 COPY src/01_nodoc /etc/dpkg/dpkg.cfg.d/
 COPY src/01_buildconfig /etc/apt/apt.conf.d/
 
+#hadolint ignore=DL3008
 RUN apt-get update \
-	&& apt-get dist-upgrade \
-	&& apt-get install \
+	&& apt-get install -y --no-install-recommends \
 		apt-transport-https \
 		build-essential \
 		ca-certificates \
