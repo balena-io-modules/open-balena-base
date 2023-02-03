@@ -60,6 +60,7 @@ RUN if [ "${TARGETARCH}" = "amd64" ] ; \
 	fi && \
 	curl -fsSL "${NODE_URL}" | tar xz -C /usr/local --strip-components=1 --no-same-owner \
 	&& npm install -g npm@"$NPM_VERSION" \
+	&& rm -rf /root/.npm/_cacache \
 	&& npm cache clear --force \
 	&& rm -rf /tmp/*
 
