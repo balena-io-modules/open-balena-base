@@ -1,4 +1,19 @@
 - commits:
+    - subject: Update dependency node to 18.14.2
+      hash: e700e1d25da951c94f48e1656fafcf7c15a65f51
+      body: |
+        Update node to 18.14.2
+
+        Update node from 18.14.1 to 18.14.2
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Renovate Bot
+      nested: []
+  version: 14.5.2
+  title: ""
+  date: 2023-02-21T20:50:44.948Z
+- commits:
     - subject: Update no-systemd nodejs to 18.14.1
       hash: ca8e18a969db856881cbfedc23a3144747d2f782
       body: ""
