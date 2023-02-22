@@ -1,4 +1,19 @@
 - commits:
+    - subject: Update dependency npm to 9.5.1
+      hash: 0ebdfd84ae9b56b0f14936d0292f744156869f81
+      body: |
+        Update npm to 9.5.1
+
+        Update npm from 9.5.0 to 9.5.1
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Renovate Bot
+      nested: []
+  version: 14.5.3
+  title: ""
+  date: 2023-02-22T20:50:21.405Z
+- commits:
     - subject: Update dependency node to 18.14.2
       hash: e700e1d25da951c94f48e1656fafcf7c15a65f51
       body: |
