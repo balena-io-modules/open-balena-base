@@ -1,4 +1,19 @@
 - commits:
+    - subject: Update dependency npm to 9.6.0
+      hash: 2690a6a9440f14a4342ed01e4084181e110fa705
+      body: |
+        Update npm to 9.6.0
+
+        Update npm from 9.5.1 to 9.6.0
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Renovate Bot
+      nested: []
+  version: 14.6.0
+  title: ""
+  date: 2023-03-02T10:50:07.443Z
+- commits:
     - subject: Update Node.js to v18.14.2
       hash: fecd463bab599ff231d4ce49a78a18ef93e7feeb
       body: |
