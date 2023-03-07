@@ -7,6 +7,8 @@ StartLimitIntervalSec=0
 Type=oneshot
 EnvironmentFile=/etc/docker.env
 ExecStart=/usr/sbin/configure-balena.sh
+Restart=on-failure
+RestartSec=5
 
 [Install]
 WantedBy=basic.target
