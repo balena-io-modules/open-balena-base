@@ -1,4 +1,16 @@
 - commits:
+    - subject: Restart confd if it fails to start
+      hash: 016e1648f87140697929352e48e26268d3da6641
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Anton Belodedenko
+      nested: []
+  version: 14.6.1
+  title: ""
+  date: 2023-03-14T18:06:32.094Z
+- commits:
     - subject: Update dependency npm to 9.6.0
       hash: 2690a6a9440f14a4342ed01e4084181e110fa705
       body: |
