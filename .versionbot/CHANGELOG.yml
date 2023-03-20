@@ -1,4 +1,19 @@
 - commits:
+    - subject: Update dependency node
+      hash: 506cc28914b6e972a008ce4d4ec059bd03600eaf
+      body: |
+        Update node to 18.15.0
+
+        Update node from 18.14.2 to 18.15.0
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Renovate Bot
+      nested: []
+  version: 14.7.0
+  title: ""
+  date: 2023-03-20T19:49:51.262Z
+- commits:
     - subject: Restart confd if it fails to start
       hash: 016e1648f87140697929352e48e26268d3da6641
       body: ""
