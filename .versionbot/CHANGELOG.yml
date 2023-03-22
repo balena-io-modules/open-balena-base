@@ -1,4 +1,18 @@
 - commits:
+    - subject: Maintain legacy docker tags behaviour
+      hash: 34b2de3df298c53120ad714329ab2344657a7078
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 14.7.2
+  title: ""
+  date: 2023-03-22T16:00:23.319Z
+- commits:
     - subject: Update dependency npm to v9.6.2
       hash: 0761d839de2e00e3c0248b4cd386b02c24ed041b
       body: |
