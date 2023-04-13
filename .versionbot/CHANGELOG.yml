@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update dependency node to v18.16.0
+      hash: f37a37f174c62492c80922bcefed890dcd79ca63
+      body: |
+        Update node from 18.15.0 to 18.16.0
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Renovate Bot
+      nested: []
+  version: 14.8.0
+  title: ""
+  date: 2023-04-13T01:30:31.432Z
+- commits:
     - subject: Update dependency npm to v9.6.4
       hash: f462624984894f5b556b1c14596804f6f3775f10
       body: |
