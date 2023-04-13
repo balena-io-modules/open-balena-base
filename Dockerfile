@@ -49,7 +49,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 ARG TARGETARCH
 
-ENV NODE_VERSION 18.15.0
+ENV NODE_VERSION 18.16.0
 ENV NPM_VERSION 9.6.4
 
 RUN if [ "${TARGETARCH}" = "amd64" ] ; \
