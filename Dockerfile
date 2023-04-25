@@ -33,6 +33,7 @@ RUN apt-get update \
 		openssh-client \
 		openssh-server \
 		openvpn \
+		procmail \
 		python \
 		python-dev \
 		python3 \
