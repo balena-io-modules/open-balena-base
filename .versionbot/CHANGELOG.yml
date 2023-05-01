@@ -1,4 +1,17 @@
 - commits:
+    - subject: lock to prevent concurrent config updates
+      hash: 7c43074805b0ef670bbe4654cb727d4fd3a4998a
+      body: >
+        * leading to duplicate entries and
+        https://github.com/balena-io/balena-cloud/actions/runs/4801183207/jobs/8543115448
+      footer:
+        change-type: patch
+      author: ab77
+      nested: []
+  version: 14.8.1
+  title: ""
+  date: 2023-05-01T14:48:09.368Z
+- commits:
     - subject: Update dependency node to v18.16.0
       hash: f37a37f174c62492c80922bcefed890dcd79ca63
       body: |
@@ -671,9 +684,9 @@
     - subject: Fix configuration for non-BoB deployments
       hash: be5d9722d47b65ca511cfb66ab13ed1f3ddff372
       body: >
-        The default value on the BALENA_DEVICE_UUID variable forced all code paths
-        that used to run optionally depending on whether deployment was on a
-        balenaOS device to run.
+        The default value on the BALENA_DEVICE_UUID variable forced all code
+        paths that used to run optionally depending on whether deployment was on
+        a balenaOS device to run.
       footer:
         Change-type: patch
         change-type: patch
