@@ -65,6 +65,28 @@ for kv in ${tokens_config[*]}; do
 	fi
 done
 
+function cleanup() {
+   remove_update_lock
+}
+trap 'cleanup' EXIT
+
+function set_update_lock {
+    if [[ -d "$(dirname "${CONF}")" ]]; then
+        lockfile "${CONF}.lock"
+    fi
+}
+
+function check_update_lock() {
+    if [[ -d "$(dirname "${CONF}")" ]]; then
+        [[ -f "${CONF}.lock" ]] || return 0
+        ! test -f "${CONF}.lock"
+    fi
+}
+
+function remove_update_lock() {
+    rm -f "${CONF}.lock"
+}
+
 function upsert_ca_root {
 	# (legacy) explicitly defined ROOT_CA
 	if test -n "${ROOT_CA}"; then
@@ -296,6 +318,10 @@ function upsert_all {
 	upsert_ssh_private_keys proxy "${tld}"
 	upsert_git_ssh_keys_bundle "${tld}"
 }
+
+# lock to prevent global config corruption due to concurrent updates
+until check_update_lock; do echo 'critical section locked, retrying...'; sleep $(((RANDOM%5)+5)); done
+set_update_lock
 
 # always run, as the function includes legacy ROOT_CA processing
 upsert_ca_root
