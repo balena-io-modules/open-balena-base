@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update dependency npm to v9.6.7
+      hash: bac91d35160c081c4724034f4c49f26079119b04
+      body: |
+        Update npm from 9.6.6 to 9.6.7
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Renovate Bot
+      nested: []
+  version: 14.9.3
+  title: ""
+  date: 2023-05-18T15:18:26.274Z
+- commits:
     - subject: Update dependency npm to v9.6.6
       hash: 87d78dfed5c1dc471dfa6499485b9fa52d81a0ab
       body: |
