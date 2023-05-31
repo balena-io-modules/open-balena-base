@@ -1,4 +1,16 @@
 - commits:
+    - subject: Set systemd stopsignal to SIGRTMIN+3
+      hash: 5c69245959e57bcb4c033bc027d817801f7a1428
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+      nested: []
+  version: 14.9.4
+  title: ""
+  date: 2023-05-31T16:09:26.999Z
+- commits:
     - subject: Update dependency npm to v9.6.7
       hash: bac91d35160c081c4724034f4c49f26079119b04
       body: |
