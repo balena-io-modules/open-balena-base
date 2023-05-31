@@ -79,6 +79,9 @@ RUN sed -i "s/rlimit-nproc=3//" /etc/avahi/avahi-daemon.conf
 # systemd configuration
 ENV container lxc
 
+# Set the stop signal to SIGRTMIN+3 which systemd understands as the signal to halt
+STOPSIGNAL SIGRTMIN+3
+
 # We want to use the multi-user.target not graphical.target
 RUN systemctl set-default multi-user.target \
 	# We never want these to run in a container
