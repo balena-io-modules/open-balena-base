@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update dependency npm to v9.7.1
+      hash: 6af4dabea40287d9bac00f001ea5cb2e228d2277
+      body: |
+        Update npm from 9.6.7 to 9.7.1
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Self-hosted Renovate Bot
+      nested: []
+  version: 14.10.0
+  title: ""
+  date: 2023-06-07T16:02:28.180Z
+- commits:
     - subject: Set systemd stopsignal to SIGRTMIN+3
       hash: 5c69245959e57bcb4c033bc027d817801f7a1428
       body: ""
