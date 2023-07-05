@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update Node.js to v18.16.1
+      hash: f503c520c701649745a9f8fe16a9e00abe9330ca
+      body: |
+        Update node from 18.16.0 to 18.16.1
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Self-hosted Renovate Bot
+      nested: []
+  version: 14.11.1
+  title: ""
+  date: 2023-07-05T22:04:23.263Z
+- commits:
     - subject: Update dependency npm to v9.8.0
       hash: 08daab22e7497506c6d426900952ed186d273b0b
       body: |
