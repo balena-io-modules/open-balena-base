@@ -1,4 +1,16 @@
 - commits:
+    - subject: Upgrade to debian bookworm
+      hash: 492ce2808a7fafe6df99256948a6366fee6836fc
+      body: ""
+      footer:
+        Change-type: major
+        change-type: major
+      author: Pagan Gazzard
+      nested: []
+  version: 15.0.0
+  title: ""
+  date: 2023-07-06T16:19:57.969Z
+- commits:
     - subject: Update Node.js to v18.16.1
       hash: f503c520c701649745a9f8fe16a9e00abe9330ca
       body: |
