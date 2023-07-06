@@ -1,4 +1,4 @@
-FROM debian:bullseye
+FROM debian:bookworm
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm
@@ -8,8 +8,9 @@ COPY src/01_buildconfig /etc/apt/apt.conf.d/
 
 #hadolint ignore=DL3008
 RUN apt-get update \
-	&& apt-get install -y --no-install-recommends \
+	&& apt-get install \
 		apt-transport-https \
+		avahi-daemon \
 		build-essential \
 		ca-certificates \
 		curl \
@@ -29,13 +30,10 @@ RUN apt-get update \
 		libsqlite3-dev \
 		nano \
 		net-tools \
-		netcat \
 		openssh-client \
 		openssh-server \
 		openvpn \
 		procmail \
-		python \
-		python-dev \
 		python3 \
 		python3-dev \
 		rsyslog \
