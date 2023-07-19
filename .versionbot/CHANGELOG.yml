@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update dependency npm to v9.8.1
+      hash: 14e64ec6eaccc3112f1d25a15ee1507db42c3fbb
+      body: |
+        Update npm from 9.8.0 to 9.8.1
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Self-hosted Renovate Bot
+      nested: []
+  version: 15.0.2
+  title: ""
+  date: 2023-07-19T18:00:51.261Z
+- commits:
     - subject: Update dependency node to v18.17.0
       hash: e3470e98ffc31cd64dc59a1e3590ee2733e3263b
       body: |
