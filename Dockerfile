@@ -66,7 +66,8 @@ RUN if [ "${TARGETARCH}" = "amd64" ] ; \
 	&& rm -rf /tmp/*
 
 # Confd binary installation.
-ENV CONFD_VERSION 0.16.0
+# renovate: datasource=github-releases depName=kelseyhightower/confd
+ARG CONFD_VERSION=0.16.0
 RUN curl -fsSL -o /usr/local/bin/confd "https://github.com/kelseyhightower/confd/releases/download/v${CONFD_VERSION}/confd-${CONFD_VERSION}-linux-${TARGETARCH}" \
 	&& chmod a+x /usr/local/bin/confd
 
