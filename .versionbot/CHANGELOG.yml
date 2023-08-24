@@ -1,4 +1,16 @@
 - commits:
+    - subject: Add WEBRESOURCES_S3 ACCESS_KEY, SECRET_KEY and HOST to en configuration
+      hash: fddc756fe24a0e097d440da362ddc074d54bda1b
+      body: ""
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Otávio Jacobi
+      nested: []
+  version: 15.1.0
+  title: ""
+  date: 2023-08-24T16:35:11.511Z
+- commits:
     - subject: Update dependency node to v18.17.1
       hash: dcb6e3d103e646827312f7e33c8d5654511e25b7
       body: |
