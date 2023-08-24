@@ -48,8 +48,10 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 ARG TARGETARCH
 
-ENV NODE_VERSION 18.17.0
-ENV NPM_VERSION 9.8.1
+# renovate: datasource=node-version depName=node
+ARG NODE_VERSION=18.17.0
+# renovate: datasource=npm depName=npm
+ARG NPM_VERSION=9.8.1
 
 RUN if [ "${TARGETARCH}" = "amd64" ] ; \
 	then \
@@ -64,7 +66,8 @@ RUN if [ "${TARGETARCH}" = "amd64" ] ; \
 	&& rm -rf /tmp/*
 
 # Confd binary installation.
-ENV CONFD_VERSION 0.16.0
+# renovate: datasource=github-releases depName=kelseyhightower/confd
+ARG CONFD_VERSION=0.16.0
 RUN curl -fsSL -o /usr/local/bin/confd "https://github.com/kelseyhightower/confd/releases/download/v${CONFD_VERSION}/confd-${CONFD_VERSION}-linux-${TARGETARCH}" \
 	&& chmod a+x /usr/local/bin/confd
 

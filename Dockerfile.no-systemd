@@ -1,4 +1,4 @@
-FROM node:18.17.0-bookworm
+FROM debian:bookworm
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm
@@ -8,9 +8,10 @@ COPY src/01_buildconfig /etc/apt/apt.conf.d/
 
 # Install ops/sre related packages.
 # hadolint ignore=DL3008
-RUN apt-get update && apt-get install \
+RUN apt-get update && apt-get install -y --no-install-recommends \
 		avahi-daemon \
 		ca-certificates \
+		curl \
 		htop \
 		ifupdown \
 		jq \
@@ -40,9 +41,29 @@ COPY src/confd-entry.sh /usr/bin/confd-entry.sh
 # balenaMachine automatic configuration script.
 COPY src/configure-balena.sh /usr/bin/configure-balena.sh
 
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 ARG TARGETARCH
 
+# renovate: datasource=node-version depName=node
+ARG NODE_VERSION=18.17.0
+# renovate: datasource=npm depName=npm
+ARG NPM_VERSION=9.8.1
+
+RUN if [ "${TARGETARCH}" = "amd64" ] ; \
+	then \
+		NODE_URL="https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" ; \
+	else \
+		NODE_URL="https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-${TARGETARCH}.tar.gz" ; \
+	fi && \
+	curl -fsSL "${NODE_URL}" | tar xz -C /usr/local --strip-components=1 --no-same-owner \
+	&& npm install -g npm@"$NPM_VERSION" \
+	&& rm -rf /root/.npm/_cacache \
+	&& npm cache clear --force \
+	&& rm -rf /tmp/*
+
 # Confd binary installation.
-ENV CONFD_VERSION 0.16.0
+# renovate: datasource=github-releases depName=kelseyhightower/confd
+ARG CONFD_VERSION=0.16.0
 RUN curl -fsSL -o /usr/local/bin/confd "https://github.com/kelseyhightower/confd/releases/download/v${CONFD_VERSION}/confd-${CONFD_VERSION}-linux-${TARGETARCH}" \
 	&& chmod a+x /usr/local/bin/confd
