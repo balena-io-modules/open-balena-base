@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update dependency node to v18.17.1
+      hash: dcb6e3d103e646827312f7e33c8d5654511e25b7
+      body: |
+        Update node from 18.17.0 to 18.17.1
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Self-hosted Renovate Bot
+      nested: []
+  version: 15.0.5
+  title: ""
+  date: 2023-08-24T15:48:28.223Z
+- commits:
     - subject: Use renovate regex annotations to manage confd releases
       hash: eedbc17be7ea813b8b6880acff6bc85740559cc5
       body: ""
