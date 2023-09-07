@@ -6,10 +6,10 @@ set -a
 DNS_TLD=${DNS_TLD:-$BALENA_TLD}
 
 if [[ -n $BALENA_DEVICE_UUID ]]; then
-    # prepend the device UUID if running on balenaOS
-    TLD="${TLD:-${BALENA_DEVICE_UUID}.${DNS_TLD}}"
+	# prepend the device UUID if running on balenaOS
+	TLD="${TLD:-${BALENA_DEVICE_UUID}.${DNS_TLD}}"
 else
-    TLD="${TLD:-${DNS_TLD}}"
+	TLD="${TLD:-${DNS_TLD}}"
 fi
 
 ROOT_CA=${ROOT_CA:-$BALENA_ROOT_CA}
@@ -45,22 +45,26 @@ for kv in ${tokens_config[*]}; do
 	varname="$(echo "${kv}" | awk -F':' '{print $1}')"
 	varval="$(echo "${kv}" | awk -F':' '{print $2}')"
 	if [[ -n $varname ]] && [[ -n $varval ]]; then
-		if [[ $varval =~ rand|random|hex ]]; then
-			API_KEYS[${varname}]="$(openssl rand -hex 16)"
-		else
-			# source from environment
-			if [[ -n ${!varval} ]]; then
-				API_KEYS[${varname}]="${!varval}"
-			# look for value in global environment config
-			elif grep -qE "^${varname}=.*$" "${CONF}"; then
-				declare "$(grep -E "^${varname}=.*$" "${CONF}")"
-				API_KEYS[${varname}]="${varname}"
-			# source from TOKENS_CONFIG map
-			elif [[ -n ${API_KEYS[${varval}]} ]]; then
-				API_KEYS[${varname}]="${API_KEYS[${varval}]}"
-			else
-				echo "${varname}:${varval} not set"
+		# replace from runtime environment
+		if [[ -n ${!varval} ]]; then
+			API_KEYS[${varname}]="${!varval}"
+		elif [[ -n ${!varname} ]]; then
+			API_KEYS[${varname}]="${!varname}"
+
+		# replace from global environment
+		elif grep -qE "^${varname}=.*$" "${CONF}"; then
+			varval="$(grep -E "^${varname}=.*$" "${CONF}" | sed -r 's/(^[^=]*)=(.*)$/\2/')"
+			if [[ -n $varval ]]; then
+				API_KEYS[${varname}]="${varval}"
 			fi
+
+		# generate
+		elif [[ $varval =~ rand|random|hex ]]; then
+			API_KEYS[${varname}]="$(openssl rand -hex 16)"
+
+		# resolve from array
+		else
+			API_KEYS[${varname}]="${API_KEYS[${varval}]}"
 		fi
 	fi
 done
@@ -71,20 +75,20 @@ function cleanup() {
 trap 'cleanup' EXIT
 
 function set_update_lock {
-    if [[ -d "$(dirname "${CONF}")" ]]; then
-        lockfile "${CONF}.lock"
-    fi
+	if [[ -d "$(dirname "${CONF}")" ]]; then
+		lockfile "${CONF}.lock"
+	fi
 }
 
 function check_update_lock() {
-    if [[ -d "$(dirname "${CONF}")" ]]; then
-        [[ -f "${CONF}.lock" ]] || return 0
-        ! test -f "${CONF}.lock"
-    fi
+	if [[ -d "$(dirname "${CONF}")" ]]; then
+		[[ -f "${CONF}.lock" ]] || return 0
+		! test -f "${CONF}.lock"
+	fi
 }
 
 function remove_update_lock() {
-    rm -f "${CONF}.lock"
+	rm -f "${CONF}.lock"
 }
 
 function upsert_ca_root {
@@ -356,10 +360,9 @@ if [[ -n "${TLD}" ]]; then
 
 	# inject API keys into stack global environment
 	for VARNAME in "${!API_KEYS[@]}"; do
-		VARVALUE=${!VARNAME}
-		if [[ -z "$VARVALUE" ]]; then
-			grep -Eq "^${VARNAME}=" "${CONF}" \
-			  || echo "${VARNAME}=${API_KEYS[${VARNAME}]}" >> "${CONF}"
+		VARVALUE="${API_KEYS[${VARNAME}]}"
+		if [[ -n $VARVALUE ]]; then
+			grep -Eq "^${VARNAME}=" "${CONF}" || echo "${VARNAME}=${VARVALUE}" >> "${CONF}"
 		fi
 	done
 
@@ -370,9 +373,9 @@ fi
 if [[ -f "${CONF}" ]]; then
 	cat < "${CONF}" | while IFS= read -r EV
 	do
-		VARNAME="$(echo "${EV}" | awk -F'=' '{print $1}')"
-		VARVALUE=${!VARNAME}
-		if [[ -z "$VARVALUE" ]]; then
+		VARNAME="$(echo "${EV}" | sed -r 's/(^[^=]*)=(.*)$/\1/')"
+		VARVALUE="$(echo "${EV}" | sed -r 's/(^[^=]*)=(.*)$/\2/')"
+		if [[ -n $VARNAME ]] && [[ -n $VARVALUE ]]; then
 			grep -Eq "^${VARNAME}=" /etc/docker.env || echo "${EV}" >> /etc/docker.env
 		fi
 	done
