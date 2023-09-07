@@ -1,4 +1,15 @@
 - commits:
+    - subject: fix env var resolution from token map
+      hash: 1be02cb7bc4e3229c1d452caa638bc9739125e3c
+      body: ""
+      footer:
+        change-type: patch
+      author: ab77
+      nested: []
+  version: 15.1.1
+  title: ""
+  date: 2023-09-07T18:25:15.173Z
+- commits:
     - subject: Add WEBRESOURCES_S3 ACCESS_KEY, SECRET_KEY and HOST to en configuration
       hash: fddc756fe24a0e097d440da362ddc074d54bda1b
       body: ""
