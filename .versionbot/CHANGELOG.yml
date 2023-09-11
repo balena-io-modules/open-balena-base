@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update nodejs to 20.6.1 and npm to 10.1.0
+      hash: 7de3033a0fdbfe7942718532a105321d532541d6
+      body: ""
+      footer:
+        Change-type: major
+        change-type: major
+      author: Pagan Gazzard
+      nested: []
+  version: 16.0.0
+  title: ""
+  date: 2023-09-11T10:26:55.870Z
+- commits:
     - subject: fix env var resolution from token map
       hash: 1be02cb7bc4e3229c1d452caa638bc9739125e3c
       body: ""
