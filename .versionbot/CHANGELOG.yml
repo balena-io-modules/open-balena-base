@@ -1,4 +1,17 @@
 - commits:
+    - subject: don't clobber existing values
+      hash: c7f97c2749f0b3c638a8a8686ccf9b4e36154502
+      body: >
+        - don't overwrite existing non-null values in the API_KEYS array with
+        null values
+      footer:
+        change-type: patch
+      author: Anton Belodedenko
+      nested: []
+  version: 16.0.1
+  title: ""
+  date: 2023-09-12T23:15:08.184Z
+- commits:
     - subject: Update nodejs to 20.6.1 and npm to 10.1.0
       hash: 7de3033a0fdbfe7942718532a105321d532541d6
       body: ""
