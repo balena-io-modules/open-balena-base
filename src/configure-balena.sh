@@ -64,7 +64,9 @@ for kv in ${tokens_config[*]}; do
 
 		# resolve from array
 		else
-			API_KEYS[${varname}]="${API_KEYS[${varval}]}"
+			if [[ -n ${API_KEYS[${varval}]} ]]; then
+				API_KEYS[${varname}]="${API_KEYS[${varval}]}"
+			fi
 		fi
 	fi
 done
