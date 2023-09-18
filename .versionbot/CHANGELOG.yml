@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update dependency node to v20.7.0
+      hash: 4e0c577fe7372e90b0a8787b72a5fff41f48e4d8
+      body: |
+        Update node from 20.6.1 to 20.7.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Self-hosted Renovate Bot
+      nested: []
+  version: 16.0.2
+  title: ""
+  date: 2023-09-18T19:08:54.386Z
+- commits:
     - subject: don't clobber existing values
       hash: c7f97c2749f0b3c638a8a8686ccf9b4e36154502
       body: >
