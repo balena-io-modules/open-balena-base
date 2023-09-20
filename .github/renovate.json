@@ -1,0 +1,8 @@
+{
+  "packageRules": [
+    {
+      "matchPackageNames": ["golang"],
+      "enabled": false
+    }
+  ]
+}
