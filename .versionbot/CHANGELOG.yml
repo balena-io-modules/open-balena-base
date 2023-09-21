@@ -1,4 +1,16 @@
 - commits:
+    - subject: Bump no-systemd image to node 20/npm 10 matching systemd
+      hash: 9240224742ab2b6bd0694a709df53bebd88295da
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Page-
+      nested: []
+  version: 16.0.4
+  title: ""
+  date: 2023-09-21T11:00:30.491Z
+- commits:
     - subject: Update dependency node to v18.18.0
       hash: 9c41d0beafb959c21ffadbc8f8cb0cb8cf58ad8d
       body: |
