@@ -1,4 +1,22 @@
 - commits:
+    - subject: Build confd from source to avoid upx issues in released binaries
+      hash: 96e9eb4d3e94c2848ef6a5e83d51d9c71835139f
+      body: |
+        upx v3.96 (2020) fixes this issue, but that was released after the
+        v0.16.0 confd release in 2018
+      footer:
+        Resolves: https://github.com/balena-io/balena-monitor/issues/549
+        resolves: https://github.com/balena-io/balena-monitor/issues/549
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 16.0.5
+  title: ""
+  date: 2023-09-21T13:03:29.817Z
+- commits:
     - subject: Bump no-systemd image to node 20/npm 10 matching systemd
       hash: 9240224742ab2b6bd0694a709df53bebd88295da
       body: ""
