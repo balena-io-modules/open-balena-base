@@ -1,4 +1,17 @@
-FROM debian:bookworm
+FROM golang:1.10.2 AS confd-build
+
+ARG CONFD_VERSION=v0.16.0
+ARG CGO_ENABLED=0
+
+WORKDIR $GOPATH/src/github.com/kelseyhightower
+
+RUN git clone https://github.com/kelseyhightower/confd.git confd -c advice.detachedHead=false
+
+WORKDIR $GOPATH/src/github.com/kelseyhightower/confd
+
+RUN git checkout ${CONFD_VERSION} && make && make install
+
+FROM debian:bookworm AS runtime
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm
@@ -66,10 +79,7 @@ RUN if [ "${TARGETARCH}" = "amd64" ] ; \
 	&& rm -rf /tmp/*
 
 # Confd binary installation.
-# renovate: datasource=github-releases depName=kelseyhightower/confd
-ARG CONFD_VERSION=0.16.0
-RUN curl -fsSL -o /usr/local/bin/confd "https://github.com/kelseyhightower/confd/releases/download/v${CONFD_VERSION}/confd-${CONFD_VERSION}-linux-${TARGETARCH}" \
-	&& chmod a+x /usr/local/bin/confd
+COPY --from=confd-build /usr/local/bin/confd /usr/local/bin/confd
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
