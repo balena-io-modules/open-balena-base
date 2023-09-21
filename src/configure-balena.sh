@@ -377,8 +377,12 @@ if [[ -f "${CONF}" ]]; then
 	do
 		VARNAME="$(echo "${EV}" | sed -r 's/(^[^=]*)=(.*)$/\1/')"
 		VARVALUE="$(echo "${EV}" | sed -r 's/(^[^=]*)=(.*)$/\2/')"
+		# prefer the local value if there is one
+		if [[ -n $VARNAME ]] && [[ -n ${!VARNAME} ]]; then
+			VARVALUE=${!VARNAME}
+		fi
 		if [[ -n $VARNAME ]] && [[ -n $VARVALUE ]]; then
-			grep -Eq "^${VARNAME}=" /etc/docker.env || echo "${EV}" >> /etc/docker.env
+			grep -Eq "^${VARNAME}=" /etc/docker.env || echo "${VARNAME}=${VARVALUE}" >> /etc/docker.env
 		fi
 	done
 fi
