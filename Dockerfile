@@ -5,11 +5,12 @@ ARG CGO_ENABLED=0
 
 WORKDIR $GOPATH/src/github.com/kelseyhightower
 
-RUN git clone https://github.com/kelseyhightower/confd.git confd -c advice.detachedHead=false
+RUN git clone https://github.com/kelseyhightower/confd.git confd
 
 WORKDIR $GOPATH/src/github.com/kelseyhightower/confd
 
-RUN git checkout ${CONFD_VERSION} && make && make install
+RUN git checkout ${CONFD_VERSION} -c advice.detachedHead=false \
+	&& make && make install
 
 FROM debian:bookworm AS runtime
 
