@@ -1,4 +1,18 @@
 - commits:
+    - subject: Prefer using local env var values before falling back to defaults
+      hash: 3012af05ce93203768e661c77e4a322ac3147b85
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        See: https://github.com/balena-io-modules/open-balena-base/pull/316/files#diff-95ccd7ac2401d4f914cf825fabd8648b9db8a1f5436aafcedf3a640e9a1b73b6R376-R378
+        see: https://github.com/balena-io-modules/open-balena-base/pull/316/files#diff-95ccd7ac2401d4f914cf825fabd8648b9db8a1f5436aafcedf3a640e9a1b73b6R376-R378
+      author: Thodoris Greasidis
+      nested: []
+  version: 16.0.7
+  title: ""
+  date: 2023-10-02T14:41:18.394Z
+- commits:
     - subject: Update dependency node to v20.8.0
       hash: 84dcf871b68935e6c4c43682edd24b53f5c34e2e
       body: |
