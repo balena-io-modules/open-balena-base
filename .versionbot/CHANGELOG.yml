@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update dependency npm to v10.2.3
+      hash: 01f85340e6131d54f8c6eed7a74c37ff68b8d902
+      body: |
+        Update npm from 10.2.2 to 10.2.3
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Self-hosted Renovate Bot
+      nested: []
+  version: 16.0.13
+  title: ""
+  date: 2023-11-02T21:00:19.215Z
+- commits:
     - subject: Update dependency node to v20.9.0
       hash: 82aeef20c95240809512c443e59cb177db7a1f4f
       body: |
