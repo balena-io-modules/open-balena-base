@@ -1,4 +1,16 @@
 - commits:
+    - subject: remove self-hosted Sentry config
+      hash: 3f390363034c3d9ceeacaa78c93ceee927a9aaff
+      body: |
+        * components can be manually configuired to point to SaaS Sentry
+      footer:
+        change-type: patch
+      author: ab77
+      nested: []
+  version: 16.0.16
+  title: ""
+  date: 2023-12-05T00:24:26.689Z
+- commits:
     - subject: Update dependency node to v20.10.0
       hash: c5a98cbac21692a085efd4d6118e080a1351222e
       body: |
