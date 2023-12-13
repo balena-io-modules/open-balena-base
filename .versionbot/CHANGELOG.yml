@@ -1,4 +1,15 @@
 - commits:
+    - subject: add missing data. host
+      hash: 76608ddf5578f54a4dda563f4c8a2a35f303110a
+      body: ""
+      footer:
+        change-type: patch
+      author: ab77
+      nested: []
+  version: 16.0.18
+  title: ""
+  date: 2023-12-13T01:16:22.659Z
+- commits:
     - subject: Update dependency npm to v10.2.5
       hash: 12dc1b4934e4a50fc68841717588b8704041b964
       body: |
