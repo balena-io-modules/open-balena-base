@@ -61,7 +61,7 @@ ARG TARGETARCH
 # renovate: datasource=node-version depName=node
 ARG NODE_VERSION=21.5.0
 # renovate: datasource=npm depName=npm
-ARG NPM_VERSION=10.2.5
+ARG NPM_VERSION=10.3.0
 
 RUN if [ "${TARGETARCH}" = "amd64" ] ; \
 	then \
