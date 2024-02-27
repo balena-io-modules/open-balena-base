@@ -1,4 +1,18 @@
 - commits:
+    - subject: Fix docker cache-from for no-system variants
+      hash: 47989bd29164aaef2f78c2642aeaf64185df5561
+      body: ""
+      footer:
+        See: https://github.com/balena-io-modules/open-balena-base/pull/343
+        see: https://github.com/balena-io-modules/open-balena-base/pull/343
+        Change-type: patch
+        change-type: patch
+      author: Kyle Harding
+      nested: []
+  version: 17.0.7
+  title: ""
+  date: 2024-02-27T21:40:13.465Z
+- commits:
     - subject: Move the no-systemd compatibility tag to a suffix
       hash: a869fb57fe2866a16aecfc75f33eb679696de3dd
       body: >
