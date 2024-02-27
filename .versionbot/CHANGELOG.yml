@@ -1,4 +1,18 @@
 - commits:
+    - subject: Move the no-systemd compatibility tag to a suffix
+      hash: a869fb57fe2866a16aecfc75f33eb679696de3dd
+      body: >
+        We kept it as a prefix for historical reasons, but renovate versioning
+        expects the docker compatibility tag to follow the semver.
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Kyle Harding
+      nested: []
+  version: 17.0.6
+  title: ""
+  date: 2024-02-27T15:03:10.991Z
+- commits:
     - subject: Update dependency node to v21.6.2
       hash: faafec8bb43b315b2d565dfb924e4dc91195a6ec
       body: |
