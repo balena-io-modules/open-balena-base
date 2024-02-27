@@ -25,4 +25,3 @@ jobs:
       bake_targets: |
         default,
         no-systemd
-      docker_invert_tags: true
