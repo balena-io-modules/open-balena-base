@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update dependency npm to v10.5.0
+      hash: 7151fd9008f9443c677441177c2959a0e35b952d
+      body: |
+        Update npm from 10.4.0 to 10.5.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Self-hosted Renovate Bot
+      nested: []
+  version: 17.0.8
+  title: ""
+  date: 2024-02-28T18:58:05.433Z
+- commits:
     - subject: Fix docker cache-from for no-system variants
       hash: 47989bd29164aaef2f78c2642aeaf64185df5561
       body: ""
