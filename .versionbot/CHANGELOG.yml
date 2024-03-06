@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update dependency node to v21.7.0
+      hash: 090c5b72737c4849076108d38b84b77b482822f1
+      body: |
+        Update node from 21.6.2 to 21.7.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Self-hosted Renovate Bot
+      nested: []
+  version: 17.0.9
+  title: ""
+  date: 2024-03-06T18:58:19.803Z
+- commits:
     - subject: Update dependency npm to v10.5.0
       hash: 7151fd9008f9443c677441177c2959a0e35b952d
       body: |
@@ -1317,16 +1330,21 @@
         + allows balenaMachine(s)/BoB(s) to automatically configure itself
         (without bob-cli)
 
-        + auto-configuration requires balena-ca and cert-manager to do the heavy lifting prior
+        + auto-configuration requires balena-ca and cert-manager to do the heavy
+        lifting prior
 
-        + corresponding [balena-on-balena PR](https://github.com/balena-io/balena-on-balena/pull/261)
+        + corresponding [balena-on-balena
+        PR](https://github.com/balena-io/balena-on-balena/pull/261)
 
 
-        * refactor confd.service to include both root-ca and host-envvars handling
+        * refactor confd.service to include both root-ca and host-envvars
+        handling
 
-        * add systemd path watcher to restart confd if keys/certs change during runtime
+        * add systemd path watcher to restart confd if keys/certs change during
+        runtime
 
-        * store stack configuration available to all services in a persistent/shared volume (/balena)
+        * store stack configuration available to all services in a
+        persistent/shared volume (/balena)
 
         * change resolver order to dns => mdns (ipv4) => mdns (ipv6) => return
 
@@ -2150,7 +2168,8 @@
 
         `confd.service`. This way, backslash characters were "consumed" as
 
-        described [here](https://www.freedesktop.org/software/systemd/man/systemd.exec.html#EnvironmentFile=)
+        described
+        [here](https://www.freedesktop.org/software/systemd/man/systemd.exec.html#EnvironmentFile=)
       footers:
         change-type: patch
         signed-off-by: Michael Angelos Simos <michalis@balena.io>
@@ -2352,9 +2371,11 @@
 
         Downstream components can then check the presence of the environment
 
-        variable and point `NODE_EXTRA_CA_CERTS` to `/etc/ssl/certs/balenaRootCA.pem`
+        variable and point `NODE_EXTRA_CA_CERTS` to
+        `/etc/ssl/certs/balenaRootCA.pem`
 
-        if required, ensuring they Require/Want `balena-root-ca.service` in their
+        if required, ensuring they Require/Want `balena-root-ca.service` in
+        their
 
         own service.
       footers:
@@ -2443,7 +2464,8 @@
       body: >-
         Connects to #34
 
-        This version introduces support for default values in the `getv` template function
+        This version introduces support for default values in the `getv`
+        template function
       footers:
         change-type: minor
       hash: 09d70541e02bfb8640b559e8faa9c2a66caa5451
