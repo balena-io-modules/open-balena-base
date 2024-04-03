@@ -62,7 +62,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ARG TARGETARCH
 
 # renovate: datasource=node-version depName=node
-ARG NODE_VERSION=21.7.1
+ARG NODE_VERSION=21.7.2
 # renovate: datasource=npm depName=npm
 ARG NPM_VERSION=10.5.1
 
