@@ -25,3 +25,8 @@ jobs:
       bake_targets: |
         default,
         no-systemd
+      docker_runs_on: >
+        {
+          "linux/amd64": ["actuated-4cpu-8gb"],
+          "linux/arm64": ["actuated-arm64-4cpu-8gb"]
+        }
