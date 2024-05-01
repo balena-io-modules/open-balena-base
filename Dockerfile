@@ -1,4 +1,4 @@
-FROM ghcr.io/balena-io-modules/confd-releases:0.0.2-confd-v0-16-0 AS confd
+FROM ghcr.io/balena-io-modules/confd-releases:0.0.3-confd-v0-16-0 AS confd
 
 FROM debian:bookworm AS runtime
 
