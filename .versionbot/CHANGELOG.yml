@@ -1,4 +1,20 @@
 - commits:
+    - subject: Install confd from pre-packaged OCI
+      hash: cd777808200b730bfc2cd0cd1af7909fce48c196
+      body: |
+        This avoids building the same, unchanging golang
+        binary on every CI run.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 17.0.17
+  title: ""
+  date: 2024-05-01T20:08:59.927Z
+- commits:
     - subject: Update dependency npm to v10.7.0
       hash: 97503aea6564b140ee7e6a88a67abd4f07452b7b
       body: |
