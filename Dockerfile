@@ -1,15 +1,4 @@
-FROM golang:1.10.2 AS confd-build
-
-ARG CONFD_VERSION=v0.16.0
-ARG CGO_ENABLED=0
-
-WORKDIR $GOPATH/src/github.com/kelseyhightower
-
-RUN git clone https://github.com/kelseyhightower/confd.git confd -c advice.detachedHead=false
-
-WORKDIR $GOPATH/src/github.com/kelseyhightower/confd
-
-RUN git checkout ${CONFD_VERSION} && make && make install
+FROM ghcr.io/balena-io-modules/confd-releases:0.0.2-confd-v0-16-0 AS confd
 
 FROM debian:bookworm AS runtime
 
@@ -19,7 +8,7 @@ ENV TERM xterm
 COPY src/01_nodoc /etc/dpkg/dpkg.cfg.d/
 COPY src/01_buildconfig /etc/apt/apt.conf.d/
 
-#hadolint ignore=DL3008
+#hadolint ignore=DL3008,DL3014,DL3015
 RUN apt-get update \
 	&& apt-get install \
 		apt-transport-https \
@@ -79,7 +68,7 @@ RUN if [ "${TARGETARCH}" = "amd64" ] ; \
 	&& rm -rf /tmp/*
 
 # Confd binary installation.
-COPY --from=confd-build /usr/local/bin/confd /usr/local/bin/confd
+COPY --from=confd /confd /usr/local/bin/confd
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
