@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update ghcr.io/balena-io-modules/confd-releases Docker tag to v0.0.4
+      hash: e4421805b3dfbfb3eebfc0dabd3d036deae6ffa3
+      body: |
+        Update ghcr.io/balena-io-modules/confd-releases from 0.0.3 to 0.0.4
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Self-hosted Renovate Bot
+      nested: []
+  version: 17.0.19
+  title: ""
+  date: 2024-05-09T16:52:52.843Z
+- commits:
     - subject: Update ghcr.io/balena-io-modules/confd-releases Docker tag to v0.0.3
       hash: 3f22162c3a2eaf8143ad94244d5e259fe8212a2e
       body: |
