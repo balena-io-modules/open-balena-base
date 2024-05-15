@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update dependency npm to v10.8.0
+      hash: 33e1332d098407d973f87617e2b2d106c54ad207
+      body: |
+        Update npm from 10.7.0 to 10.8.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Self-hosted Renovate Bot
+      nested: []
+  version: 17.0.20
+  title: ""
+  date: 2024-05-15T22:53:32.529Z
+- commits:
     - subject: Update ghcr.io/balena-io-modules/confd-releases Docker tag to v0.0.4
       hash: e4421805b3dfbfb3eebfc0dabd3d036deae6ffa3
       body: |
