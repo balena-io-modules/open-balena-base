@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update dependency node to v22.4.0
+      hash: 7bded6599bb6aedd8457300de40e53710fdd8754
+      body: |
+        Update node from 22.3.0 to 22.4.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Self-hosted Renovate Bot
+      nested: []
+  version: 18.0.4
+  title: ""
+  date: 2024-07-02T09:51:58.600Z
+- commits:
     - subject: Empty commit to rebuild open-balena-base to fix CVE-2024-6387.
       hash: 4d7156be75e535ad5ab4a2bf2d574fde1b86d45c
       body: >
