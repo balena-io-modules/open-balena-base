@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update dependency node to v22.5.1
+      hash: 7af6c3746bc53c96f9807010bf18a1f8198bc5a1
+      body: |
+        Update node from 22.4.1 to 22.5.1
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Self-hosted Renovate Bot
+      nested: []
+  version: 18.0.7
+  title: ""
+  date: 2024-07-19T14:52:06.500Z
+- commits:
     - subject: Update dependency npm to v10.8.2
       hash: 360585a7115cbe3a85f55f7e722c24a08a7b416b
       body: |
