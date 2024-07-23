@@ -1,4 +1,15 @@
 - commits:
+    - subject: Switch to self-hosted
+      hash: 1e8c4f149cb14533de02307209e52095f5153b32
+      body: ""
+      footer:
+        change-type: patch
+      author: Anton Belodedenko
+      nested: []
+  version: 18.0.8
+  title: ""
+  date: 2024-07-23T18:29:28.474Z
+- commits:
     - subject: Update dependency node to v22.5.1
       hash: 7af6c3746bc53c96f9807010bf18a1f8198bc5a1
       body: |
