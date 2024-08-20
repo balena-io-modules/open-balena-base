@@ -17,6 +17,7 @@ CONF=${CONF:-/balena/${TLD}.env}
 CERTS=${CERTS:-/certs}
 HOSTS_CONFIG=${HOSTS_CONFIG:-ALERTMANAGER_HOST:alertmanager,ADMIN_HOST:admin,API_HOST:api,BUILDER_HOST:builder,DATA_HOST:data,DELTA_HOST:delta,DELTA_S3_HOST:s3,DEVICE_URLS_BASE:devices,FILES_HOST:files,GIT_HOST:git,GIT_HOSTNAME:git,IMAGE_MAKER_HOST:img,IMAGE_MAKER_S3_HOST:s3,LOKI_HOST:loki,MONITOR_HOST:monitor,PROXY_HOST:devices,REDIS_HOST:redis,REGISTRY2_HOST:registry2,REGISTRY_PROXY_HOST:registry-proxy,TOKEN_AUTH_CERT_ISSUER:api,REGISTRY2_TOKEN_AUTH_ISSUER:api,REGISTRY2_TOKEN_AUTH_REALM:api,UI_HOST:dashboard,VPN_HOST:cloudlink,WEBRESOURCES_S3_HOST:s3}
 TOKENS_CONFIG=${TOKENS_CONFIG:-API_SERVICE_API_KEY:hex,AUTH_RESINOS_REGISTRY_CODE:hex,BUILDER_SERVICE_API_KEY:hex,COOKIE_SESSION_SECRET:hex,DELTA_SERVICE_API_KEY:hex,DIGITIZER_API_KEY:hex,GEOIP_LICENCE_KEY:hex,GEOIP_USER_ID:hex,GIT_API_KEY:hex,IMG_S3_ACCESS_KEY:hex,IMG_S3_SECRET_KEY:hex,JF_OAUTH_APP_SECRET:hex,JSON_WEB_TOKEN_SECRET:hex,MAPS_API_KEY:hex,MIXPANEL_TOKEN:hex,MONITOR_OAUTH_COOKIE_SECRET:hex,MONITOR_SECRET_TOKEN:hex,PROXY_SERVICE_API_KEY:hex,REGISTRY2_SECRETKEY:hex,TOKEN_AUTH_BUILDER_TOKEN:hex,VPN_GUEST_API_KEY:hex,VPN_SERVICE_API_KEY:hex,API_VPN_SERVICE_API_KEY:API_SERVICE_API_KEY,DELTA_API_KEY:DELTA_SERVICE_API_KEY,DELTA_S3_KEY:IMG_S3_ACCESS_KEY,DELTA_S3_SECRET:IMG_S3_SECRET_KEY,GIT_SERVICE_API_KEY:GIT_API_KEY,MDNS_API_TOKEN:PROXY_SERVICE_API_KEY,REGISTRY2_TOKEN:TOKEN_AUTH_BUILDER_TOKEN,S3_MINIO_ACCESS_KEY:IMG_S3_ACCESS_KEY,S3_MINIO_SECRET_KEY:IMG_S3_SECRET_KEY,S3_MINIO_ACCESS_KEY:REGISTRY2_S3_KEY,S3_MINIO_SECRET_KEY:REGISTRY2_S3_SECRET,WEBRESOURCES_S3_ACCESS_KEY:IMG_S3_ACCESS_KEY,WEBRESOURCES_S3_SECRET_KEY:IMG_S3_SECRET_KEY}
+LOCK_TIMEOUT=${LOCK_TIMEOUT:-300}
 
 declare -A HOST_ENVVARS
 hosts_config=($(echo "${HOSTS_CONFIG}" | tr ',' ' '))
@@ -65,20 +66,44 @@ function cleanup() {
 }
 trap 'cleanup' EXIT
 
+function get_lock_age {
+	if [[ -d "$(dirname "${CONF}")" ]]; then
+		if [[ -f "${CONF}.lock" ]]; then
+			echo "$(( $(date +%s) - $(date -r "${CONF}.lock" +%s) ))"
+		fi
+	fi
+}
+
 function set_update_lock {
 	if [[ -d "$(dirname "${CONF}")" ]]; then
+		echo "create lockfile ${CONF}.lock with ${LOCK_TIMEOUT}s age timeout"
 		lockfile "${CONF}.lock"
 	fi
 }
 
 function check_update_lock() {
 	if [[ -d "$(dirname "${CONF}")" ]]; then
-		[[ -f "${CONF}.lock" ]] || return 0
+		if [[ -f "${CONF}.lock" ]]; then
+			# remove stale lockfile
+			if [[ $(get_lock_age) -gt $LOCK_TIMEOUT ]]; then
+				remove_update_lock
+				return 0
+			fi
+			return 1
+		else
+			return 0
+		fi
 		! test -f "${CONF}.lock"
 	fi
 }
 
 function remove_update_lock() {
+	if [[ -d "$(dirname "${CONF}")" ]]; then
+		if [[ -f "${CONF}.lock" ]]; then
+			lock_age="$(get_lock_age)"
+			echo "remove lockfile ${CONF}.lock, aged ${lock_age}s"
+		fi
+	fi
 	rm -f "${CONF}.lock"
 }
 
