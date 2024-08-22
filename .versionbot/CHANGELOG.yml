@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update dependency node to v22.7.0
+      hash: 027d3ffea41263fa6ec272715e7f535b86a329ba
+      body: |
+        Update node from 22.6.0 to 22.7.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Self-hosted Renovate Bot
+      nested: []
+  version: 18.0.11
+  title: ""
+  date: 2024-08-22T14:54:21.217Z
+- commits:
     - subject: Update dependency node to v22.6.0
       hash: a368a66765aad499fe4749dc837547dce54bb1b6
       body: |
