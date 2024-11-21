@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update dependency npm to v10.9.1
+      hash: ecc560e2b4745929bf03f6e2fee199dd68a7d0fd
+      body: |
+        Update npm from 10.9.0 to 10.9.1
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Self-hosted Renovate Bot
+      nested: []
+  version: 18.0.19
+  title: ""
+  date: 2024-11-21T22:54:55.391Z
+- commits:
     - subject: Update ghcr.io/balena-io-modules/confd-releases Docker tag to v0.0.6
       hash: 840445d0c20392cb1383a257b8818f90e42894ce
       body: |
@@ -194,11 +207,9 @@
 - commits:
     - subject: Empty commit to rebuild open-balena-base to fix CVE-2024-6387.
       hash: 4d7156be75e535ad5ab4a2bf2d574fde1b86d45c
-      body: >
+      body: |
         Causes a rebuild of the open-balena-base to include openssh-server
-
         1:9.2p1-2+deb12u3 (OpenSSH_9.2p1 Debian-2+deb12u3) which fixes
-
         [cve-2024-6387](https://www.qualys.com/2024/07/01/cve-2024-6387/regresshion.txt).
       footer:
         Change-type: patch
@@ -1026,9 +1037,8 @@
 - commits:
     - subject: lock to prevent concurrent config updates
       hash: 7c43074805b0ef670bbe4654cb727d4fd3a4998a
-      body: >
-        * leading to duplicate entries and
-        https://github.com/balena-io/balena-cloud/actions/runs/4801183207/jobs/8543115448
+      body: |
+        * leading to duplicate entries and https://github.com/balena-io/balena-cloud/actions/runs/4801183207/jobs/8543115448
       footer:
         change-type: patch
       author: ab77
@@ -2557,15 +2567,11 @@
   version: 5.3.0
 - commits:
     - author: Michael Angelos Simos
-      body: >-
+      body: |-
         We were using `env > /etc/docker.env` for storing a container's
-
         environment to an envfile, to be used as `EnvironmentFile` for
-
         `confd.service`. This way, backslash characters were "consumed" as
-
-        described
-        [here](https://www.freedesktop.org/software/systemd/man/systemd.exec.html#EnvironmentFile=)
+        described [here](https://www.freedesktop.org/software/systemd/man/systemd.exec.html#EnvironmentFile=)
       footers:
         change-type: patch
         signed-off-by: Michael Angelos Simos <michalis@balena.io>
