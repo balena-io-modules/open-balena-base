@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update dependency node to v22.13.0
+      hash: ea2d562f4cb039dfd446f7cdcc64debe790ed303
+      body: |
+        Update node from 22.12.0 to 22.13.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Self-hosted Renovate Bot
+      nested: []
+  version: 18.0.23
+  title: ""
+  date: 2025-01-07T21:01:09.294Z
+- commits:
     - subject: Update dependency npm to v11
       hash: 88c23f7fbe1b0abd1ec6d04e519ff15a9e93d2a9
       body: |
