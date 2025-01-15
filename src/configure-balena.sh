@@ -101,7 +101,7 @@ function remove_update_lock() {
 	if [[ -d "$(dirname "${CONF}")" ]]; then
 		if [[ -f "${CONF}.lock" ]]; then
 			lock_age="$(get_lock_age)"
-			echo "remove lockfile ${CONF}.lock, aged ${lock_age}s"
+			echo "removing lockfile ${CONF}.lock, aged ${lock_age}s"
 		fi
 	fi
 	rm -f "${CONF}.lock"
