@@ -93,7 +93,6 @@ function check_update_lock() {
 		else
 			return 0
 		fi
-		! test -f "${CONF}.lock"
 	fi
 }
 
