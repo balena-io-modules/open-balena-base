@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update Node.js to v22.16.0
+      hash: 0925abdd1d9147eff082f23e694eced77b6958b3
+      body: |
+        Update node from 22.15.1 to 22.16.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 18.0.32
+  title: ""
+  date: 2025-05-21T16:08:28.770Z
+- commits:
     - subject: Update dependency npm to v11.4.0
       hash: ce95654510c79023fec354850cb4954b9d9843cc
       body: |
