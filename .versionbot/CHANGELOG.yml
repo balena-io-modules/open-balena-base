@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update dependency npm to v11.5.0
+      hash: f134e92bf6857c904cf30b9126922e8e29493850
+      body: |
+        Update npm from 11.4.2 to 11.5.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 18.0.37
+  title: ""
+  date: 2025-07-24T18:06:33.895Z
+- commits:
     - subject: Update Node.js to v22.17.1
       hash: a5d9cfcc5ad8a564ece7da561252f7d49e8a6e84
       body: |
