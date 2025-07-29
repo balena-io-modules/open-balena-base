@@ -1,4 +1,14 @@
 - commits:
+    - subject: "patch: Remove obsolete/deprecated hosts"
+      hash: 931f46c68ff94779951fa2ef6775b18716e1b94b
+      body: ""
+      footer: {}
+      author: Anton Belodedenko
+      nested: []
+  version: 18.0.39
+  title: ""
+  date: 2025-07-29T14:22:29.581Z
+- commits:
     - subject: Update dependency npm to v11.5.1
       hash: c1b130b30252e296a4f04007382b8e594b56d77a
       body: |
