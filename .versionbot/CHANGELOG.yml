@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update dependency npm to v11.5.2
+      hash: 60b6f9ff86c0117c36158c794c8ad14a85e66a79
+      body: |
+        Update npm from 11.5.1 to 11.5.2
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 18.0.40
+  title: ""
+  date: 2025-07-30T21:05:28.793Z
+- commits:
     - subject: "patch: Remove obsolete/deprecated hosts"
       hash: 931f46c68ff94779951fa2ef6775b18716e1b94b
       body: ""
