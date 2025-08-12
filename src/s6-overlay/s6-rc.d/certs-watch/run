@@ -1,0 +1,15 @@
+#!/command/with-contenv bash
+# shellcheck shell=bash
+# shellcheck disable=SC2312
+
+# Watch /certs directory for changes and restart confd service when detected
+# Uses inotifywait to monitor for modifications in the /certs directory
+
+# Create /certs directory if it doesn't exist
+mkdir -p /certs
+
+# Watch for changes and restart confd when detected
+exec inotifywait -m -e modify,create,delete,move /certs --format '%w%f %e' | while read -r file event; do
+    echo "Certificate change detected: ${file} (${event})"
+    /etc/s6-overlay/scripts/confd-up.sh
+done
