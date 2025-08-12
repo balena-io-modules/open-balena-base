@@ -1,0 +1,15 @@
+#!/command/with-contenv sh
+# shellcheck shell=sh
+
+# Watch /certs directory for changes and restart confd service when detected
+# Uses inotifywait to monitor for modifications in the /certs directory
+
+# Create /certs directory if it doesn't exist
+mkdir -p /certs
+
+# Watch for changes and restart confd when detected
+exec inotifywait -m -e modify,create,delete,move /certs --format '%w%f %e' | while read -r file event; do
+    echo "Certificate change detected: ${file} (${event})"
+    # Send restart signal to confd service via s6-svc
+    s6-svc -r /var/run/s6/services/confd
+done
