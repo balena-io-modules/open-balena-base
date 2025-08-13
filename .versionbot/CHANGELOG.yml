@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update to nodejs 24.x
+      hash: 7a6c89f6fe6c3e38fdaaebc59ff082fc0e7a68b2
+      body: ""
+      footer:
+        Change-type: major
+        change-type: major
+      author: Pagan Gazzard
+      nested: []
+  version: 19.0.0
+  title: ""
+  date: 2025-08-13T12:50:17.613Z
+- commits:
     - subject: Update Node.js to v22.18.0
       hash: cd092ea8521051215e32f3f19b9bf18f57a3e30e
       body: |
