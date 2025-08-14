@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update Node.js to v24.6.0
+      hash: 29835c9130f7a3b822973790209aeffbfe8d97d7
+      body: |
+        Update node from 24.5.0 to 24.6.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 19.0.2
+  title: ""
+  date: 2025-08-14T22:03:37.983Z
+- commits:
     - subject: Add missing dependencies to no-systemd variant
       hash: 1271f7a7d950f6d3b09f2390f2bf33a6cab35ea1
       body: ""
