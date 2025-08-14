@@ -2,8 +2,8 @@ FROM ghcr.io/balena-io-modules/confd-releases:0.0.6-confd-v0-16-0 AS confd
 
 FROM debian:bookworm AS runtime
 
-ENV DEBIAN_FRONTEND noninteractive
-ENV TERM xterm
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TERM=xterm
 
 COPY src/01_nodoc /etc/dpkg/dpkg.cfg.d/
 COPY src/01_buildconfig /etc/apt/apt.conf.d/
@@ -77,7 +77,7 @@ WORKDIR /usr/src/app
 RUN sed -i "s/rlimit-nproc=3//" /etc/avahi/avahi-daemon.conf
 
 # systemd configuration
-ENV container lxc
+ENV container=lxc
 
 # Set the stop signal to SIGRTMIN+3 which systemd understands as the signal to halt
 STOPSIGNAL SIGRTMIN+3
