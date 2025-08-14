@@ -24,7 +24,8 @@ jobs:
         docker.io/balena/open-balena-base
       bake_targets: |
         default,
-        no-systemd
+        no-systemd,
+        s6-overlay
       docker_runs_on: >
         {
           "linux/amd64": ["self-hosted","X64"],

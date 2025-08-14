@@ -23,3 +23,12 @@ target "no-systemd" {
     "linux/arm64"
   ]
 }
+
+target "s6-overlay" {
+  inherits = ["default"]
+  dockerfile = "Dockerfile.s6-overlay"
+  platforms = [
+    "linux/amd64",
+    "linux/arm64"
+  ]
+}

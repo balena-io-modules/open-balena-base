@@ -1,0 +1,4 @@
+#!/command/with-contenv sh
+# shellcheck shell=sh
+
+exec /etc/s6-overlay/scripts/configure-balena.sh
