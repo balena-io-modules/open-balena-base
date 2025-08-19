@@ -1,4 +1,21 @@
 - commits:
+    - subject: Add s6-overlay variant to replace systemd
+      hash: ba3c19d5d04e8e02ed142d2d7d4b7dce5ad8c7c0
+      body: |
+        s6-overlay is a simple init process that does not
+        require a privileged container, and avoids conflicts with
+        hosts running cgroups v2
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 19.1.0
+  title: ""
+  date: 2025-08-19T20:00:03.167Z
+- commits:
     - subject: Update Node.js to v24.6.0
       hash: 29835c9130f7a3b822973790209aeffbfe8d97d7
       body: |
