@@ -1,0 +1,146 @@
+####################################################################################################
+
+FROM ghcr.io/balena-io-modules/confd-releases:0.0.6-confd-v0-16-0 AS confd
+
+####################################################################################################
+
+FROM golang:1.24.6 AS eget-build
+
+WORKDIR /src
+
+ARG EGET_VERSION=v1.3.3
+ARG CGO_ENABLED=0
+
+RUN git clone https://github.com/zyedidia/eget . \
+    && git checkout -q ${EGET_VERSION} \
+    && make build \
+    && make install
+
+WORKDIR /opt
+
+####################################################################################################
+
+FROM eget-build AS s6-overlay
+
+# renovate: datasource=github-releases depName=just-containers/s6-overlay versioning=loose
+ARG S6_OVERLAY_VERSION=v3.2.1.0
+
+RUN eget just-containers/s6-overlay \
+    --asset "s6-overlay-$(uname -m).tar.xz" \
+    --all --file "*" --to "./" \
+    --tag "${S6_OVERLAY_VERSION}"
+
+# hadolint ignore=DL3059
+RUN eget just-containers/s6-overlay \
+    --asset "s6-overlay-noarch.tar.xz" \
+    --all --file "*" --to "./" \
+    --tag "${S6_OVERLAY_VERSION}"
+
+# hadolint ignore=DL3059
+RUN eget just-containers/s6-overlay \
+    --asset "s6-overlay-symlinks-noarch.tar.xz" \
+    --all --file "*" --to "./" \
+    --tag "${S6_OVERLAY_VERSION}"
+
+# hadolint ignore=DL3059
+RUN eget just-containers/s6-overlay \
+    --asset "s6-overlay-symlinks-arch.tar.xz" \
+    --all --file "*" --to "./" \
+    --tag "${S6_OVERLAY_VERSION}"
+
+####################################################################################################
+
+FROM eget-build AS node
+
+# renovate: datasource=node-version depName=node
+ARG NODE_VERSION=24.6.0
+
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN eget "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-$(dpkg --print-architecture | sed 's/amd/x/').tar.gz" \
+    --all --file "*/*" --to "./" \
+    && ./bin/node --version
+
+####################################################################################################
+
+FROM debian:bookworm AS runtime
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TERM=xterm
+
+COPY src/01_nodoc /etc/dpkg/dpkg.cfg.d/
+COPY src/01_buildconfig /etc/apt/apt.conf.d/
+
+# Install ops/sre related packages.
+# hadolint ignore=DL3008
+RUN apt-get update && apt-get install -y --no-install-recommends \
+		avahi-daemon \
+		build-essential \
+		ca-certificates \
+		curl \
+		htop \
+		ifupdown \
+		inotify-tools \
+		jq \
+		libnss-mdns \
+		nano \
+		net-tools \
+		procmail \
+		python3 \
+		python3-dev \
+		strace \
+		vim \
+		wget \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/*
+
+# And configure them.
+COPY src/htoprc /root/.config/htop/
+COPY src/mdns.allow /etc/mdns.allow
+COPY src/nsswitch.conf /etc/nsswitch.conf
+
+# Directory where rendered environment files are stored
+RUN mkdir /balena
+
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+COPY --from=node /opt/ /usr/local/
+
+# renovate: datasource=npm depName=npm
+ARG NPM_VERSION=11.5.2
+
+# install npm
+RUN npm install -g "npm@${NPM_VERSION}" \
+    && rm -rf /root/.npm/_cacache \
+    && npm cache clear --force \
+    && rm -rf /tmp/*
+
+# Confd binary installation.
+COPY --from=confd /confd /usr/local/bin/confd
+
+# install s6-overlay framework
+COPY --from=s6-overlay /opt/ /
+
+# copy custom s6-overlay services and scripts
+COPY src/s6-overlay /etc/s6-overlay
+# balenaMachine automatic configuration script.
+COPY src/configure-balena.sh /etc/s6-overlay/scripts/configure-balena.sh
+
+RUN chmod +x /etc/s6-overlay/scripts/*
+
+WORKDIR /usr/src/app
+
+ENTRYPOINT [ "/init" ]
+
+# If set, then environment is not reset and whole supervision tree sees original set of env vars.
+# It switches with-contenv into a nop.
+ENV S6_KEEP_ENV=0
+# Determines what the container should do if one of the service scripts fails.
+# 0: Continue silently even if a script has failed.
+# 1: Continue but warn with an annoying error message.
+# 2: Stop the container.
+ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2
+# If this variable is 1 or more, signals are diverted from pid 1 to the CMD,
+# which means that docker stop will send a SIGTERM to the CMD instead,
+# and the container will only trigger its shutdown procedure when the CMD is dead.
+ENV S6_CMD_RECEIVE_SIGNALS=1
