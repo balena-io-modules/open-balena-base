@@ -1,4 +1,18 @@
 - commits:
+    - subject: Add dbus and avahi supervised services to s6-overlay
+      hash: 50a4108141b44ab5db5d0031f2e6560f83a8e286
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 19.1.1
+  title: ""
+  date: 2025-08-21T21:10:31.364Z
+- commits:
     - subject: Add s6-overlay variant to replace systemd
       hash: ba3c19d5d04e8e02ed142d2d7d4b7dce5ad8c7c0
       body: |
