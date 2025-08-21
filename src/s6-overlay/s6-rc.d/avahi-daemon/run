@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Avahi daemon service for mDNS/DNS-SD
+# Runs avahi-daemon in foreground mode for s6 supervision
+
+# Set up logging
+exec 2>&1
+
+# Wait for dbus
+count=0
+until [[ -S /run/dbus/system_bus_socket ]]; do
+    sleep 1
+    count=$((count + 1))
+    if [[ ${count} -gt 5 ]]; then
+        echo "Failed to find dbus socket"
+        exit 1
+    fi
+done
+
+# Start avahi-daemon in foreground
+exec avahi-daemon --no-chroot

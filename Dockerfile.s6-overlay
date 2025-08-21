@@ -78,6 +78,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		build-essential \
 		ca-certificates \
 		curl \
+        dbus \
 		htop \
 		ifupdown \
 		inotify-tools \
@@ -93,6 +94,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		wget \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
+
+# Remove default nproc limit for Avahi for it to work in-container
+RUN sed -i "s/rlimit-nproc=3//" /etc/avahi/avahi-daemon.conf
 
 # And configure them.
 COPY src/htoprc /root/.config/htop/

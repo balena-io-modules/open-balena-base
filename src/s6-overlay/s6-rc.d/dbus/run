@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Set up logging
+exec 2>&1
+
+mkdir -p /run/dbus
+
+# Start dbus in foreground mode
+exec dbus-daemon --system --nofork --nopidfile
