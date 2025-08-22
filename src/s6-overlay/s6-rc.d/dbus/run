@@ -5,5 +5,16 @@ exec 2>&1
 
 mkdir -p /run/dbus
 
+# Generate machine-id only if it doesn't exist (persistent across restarts)
+if [[ ! -f /var/lib/dbus/machine-id ]]; then
+    dbus-uuidgen > /var/lib/dbus/machine-id
+    chmod 644 /var/lib/dbus/machine-id
+fi
+
+# Link machine-id to /etc if needed (some apps expect it there)
+if [[ ! -f /etc/machine-id ]]; then
+    ln -sf /var/lib/dbus/machine-id /etc/machine-id
+fi
+
 # Start dbus in foreground mode
 exec dbus-daemon --system --nofork --nopidfile
