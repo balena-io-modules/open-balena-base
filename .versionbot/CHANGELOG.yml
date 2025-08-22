@@ -1,4 +1,18 @@
 - commits:
+    - subject: Add /etc/machine-id symlink for node exporters
+      hash: a414bc7f557c67c37788f9d6602768b71fd66ad4
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 19.1.2
+  title: ""
+  date: 2025-08-22T18:08:42.096Z
+- commits:
     - subject: Add dbus and avahi supervised services to s6-overlay
       hash: 50a4108141b44ab5db5d0031f2e6560f83a8e286
       body: ""
