@@ -3,8 +3,8 @@
 # Avahi daemon service for mDNS/DNS-SD
 # Runs avahi-daemon in foreground mode for s6 supervision
 
-# Set up logging
-exec 2>&1
+# Redirect all future stdout/stderr to s6-log
+exec > >(exec s6-log -b p"avahi-daemon[$$]:" 1 || true) 2>&1
 
 # Wait for dbus
 count=0
