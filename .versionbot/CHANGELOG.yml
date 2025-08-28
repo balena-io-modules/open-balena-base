@@ -1,4 +1,18 @@
 - commits:
+    - subject: Set up logging prefixes for longrun services
+      hash: 9ca5f21435c6c82238bc93ef4095c5d75e590606
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 19.1.4
+  title: ""
+  date: 2025-08-28T16:29:06.774Z
+- commits:
     - subject: Update Node.js to v24.7.0
       hash: 61929e2e3ee19e66b8eb4c34324b3b349f585002
       body: |
