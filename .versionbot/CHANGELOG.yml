@@ -1,4 +1,20 @@
 - commits:
+    - subject: Install eget in the runtime image for convenience
+      hash: bda3c47838cfcfc63316f60b34fd14d36a10b57c
+      body: |
+        Downstream components can use open-balena-base in build stages
+        to install packages with eget rather than installing eget from source.
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 19.2.0
+  title: ""
+  date: 2025-09-03T14:15:57.893Z
+- commits:
     - subject: Add load_env_var shared function
       hash: 7c0a5185c884e105c86b616e7f134034b1cad0ab
       body: |
