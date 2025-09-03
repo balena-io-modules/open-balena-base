@@ -108,6 +108,8 @@ RUN mkdir /balena
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
+COPY --from=eget-build /go/bin/eget /usr/local/bin/eget
+
 COPY --from=node /opt/ /usr/local/
 
 # renovate: datasource=npm depName=npm
