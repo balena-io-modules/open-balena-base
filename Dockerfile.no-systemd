@@ -1,4 +1,24 @@
+####################################################################################################
+
 FROM ghcr.io/balena-io-modules/confd-releases:0.0.6-confd-v0-16-0 AS confd
+
+####################################################################################################
+
+FROM golang:1.24.6 AS eget-build
+
+WORKDIR /src
+
+ARG EGET_VERSION=v1.3.3
+ARG CGO_ENABLED=0
+
+RUN git clone https://github.com/zyedidia/eget . \
+    && git checkout -q ${EGET_VERSION} \
+    && make build \
+    && make install
+
+WORKDIR /opt
+
+####################################################################################################
 
 FROM debian:bookworm AS runtime
 
@@ -35,8 +55,7 @@ COPY src/htoprc /root/.config/htop/
 COPY src/mdns.allow /etc/mdns.allow
 COPY src/nsswitch.conf /etc/nsswitch.conf
 
-# === Confd part ===
-# May be removed once we switch to a different configuration mechanism.
+COPY --from=eget-build /go/bin/eget /usr/local/bin/eget
 
 # Directory where rendered environment files are store.
 RUN mkdir /balena
