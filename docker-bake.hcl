@@ -1,6 +1,6 @@
 
-target "no-systemd" {
-  dockerfile = "Dockerfile.no-systemd"
+target "no-init" {
+  dockerfile = "Dockerfile.no-init"
   platforms = [
     "linux/amd64",
     "linux/arm64"
