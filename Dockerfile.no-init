@@ -20,7 +20,7 @@ WORKDIR /opt
 
 ####################################################################################################
 
-FROM debian:bookworm AS runtime
+FROM debian:trixie AS runtime
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TERM=xterm
