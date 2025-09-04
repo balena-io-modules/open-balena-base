@@ -23,7 +23,6 @@ jobs:
       docker_images: |
         docker.io/balena/open-balena-base
       bake_targets: |
-        default,
         no-systemd,
         s6-overlay
       docker_runs_on: >
