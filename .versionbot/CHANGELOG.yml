@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update Node.js to v24.8.0
+      hash: 8319b18eecd27f78611e48f3b59f191e672ce2e7
+      body: |
+        Update node from 24.7.0 to 24.8.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 20.0.1
+  title: ""
+  date: 2025-09-10T21:07:41.437Z
+- commits:
     - subject: Rename no-systemd variant to no-init for clarity
       hash: f988174713d723624b5d1a455a899b1de4ff8c3d
       body: |
