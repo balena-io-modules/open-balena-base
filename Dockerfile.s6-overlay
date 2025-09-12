@@ -89,6 +89,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		procmail \
 		python3 \
 		python3-dev \
+		rsyslog \
 		strace \
 		vim \
 		wget \
@@ -102,6 +103,8 @@ RUN sed -i "s/rlimit-nproc=3//" /etc/avahi/avahi-daemon.conf
 COPY src/htoprc /root/.config/htop/
 COPY src/mdns.allow /etc/mdns.allow
 COPY src/nsswitch.conf /etc/nsswitch.conf
+COPY src/rsyslog.conf /etc/rsyslog.conf
+COPY src/rsyslog.d/ /etc/rsyslog.d/
 
 # Directory where rendered environment files are stored
 RUN mkdir /balena
