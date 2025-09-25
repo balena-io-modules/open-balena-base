@@ -2,8 +2,8 @@
 
 set -euo pipefail
 
-# Redirect all future stdout/stderr to s6-log
-exec > >(exec s6-log -b p"dbus[$$]:" 1 || true) 2>&1
+# This will be picked up by rsyslog and output to stdout
+exec > "/run/dbus.log.$$" 2>&1
 
 mkdir -p /run/dbus
 
