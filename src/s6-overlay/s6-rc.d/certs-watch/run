@@ -13,17 +13,17 @@ CERTS=${CERTS:-/certs}
 # Create /certs directory if it doesn't exist
 mkdir -p "${CERTS}"
 
-# Watch for changes with inotifywait events: modify, create, delete, move
+# Watch for changes with inotifywait events: modify, create
 # We specifically look for changes to the .ready file, which indicates that
 # cert-manager has finished it's work.
-exec inotifywait -m -e modify,create,delete,move "${CERTS}" --format '%w%f %e' | while read -r file event; do
+exec inotifywait -m -e modify,create "${CERTS}" --format '%w%f %e' | while read -r file event; do
     echo "Certificate(s) change detected: ${file} (${event})"
 
     # If the .ready file is modified/created, halt the container to pick up changes.
     # The .ready file is touched by cert-manager after it updates /certs.
     # On restart, configure-balena.sh will pick up any new/changed certificates and
     # update /etc/docker.env accordingly before other services start.
-    if [[ "${file}" = "${CERTS}/.ready" ]]; then
+    if [[ "${file}" = "${CERTS}/.ready" ]] && [[ "${event}" = "CREATE" ]]; then
         echo "Halting container to pick up changes..."
         echo 0 > /run/s6-linux-init-container-results/exitcode
         /run/s6/basedir/bin/halt
