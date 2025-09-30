@@ -136,7 +136,7 @@ RUN chmod +x /etc/s6-overlay/scripts/*
 
 WORKDIR /usr/src/app
 
-ENTRYPOINT [ "/init" ]
+ENTRYPOINT [ "/etc/s6-overlay/scripts/s6-init" ]
 
 # If set, then environment is not reset and whole supervision tree sees original set of env vars.
 # It switches with-contenv into a nop.

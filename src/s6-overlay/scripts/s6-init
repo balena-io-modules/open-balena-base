@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Populate /etc/docker.env with all container environment variables.
+# This file is updated by configure-balena.sh with zero-conf certificates
+# and other dynamic values, and is sourced before running confd again.
+for var in $(compgen -e); do
+	printf '%q=%q\n' "${var}" "${!var}"
+done > /etc/docker.env
+
+# Manually run confd once so we can use templates in s6-overlay
+/usr/local/bin/confd \
+  -onetime \
+  -confdir=/usr/src/app/config/confd \
+  -backend env
+
+# start s6 overlay
+exec /init "${@}"

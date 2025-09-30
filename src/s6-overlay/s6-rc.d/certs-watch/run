@@ -14,5 +14,5 @@ mkdir -p /certs
 # Watch for changes and restart confd when detected
 exec inotifywait -m -e modify,create,delete,move /certs --format '%w%f %e' | while read -r file event; do
     echo "Certificate change detected: ${file} (${event})"
-    /etc/s6-overlay/scripts/confd-up.sh
+    /etc/s6-overlay/scripts/configure-balena.sh
 done
