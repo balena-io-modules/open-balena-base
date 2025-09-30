@@ -17,3 +17,11 @@ load_env_file() {
         export "${k}=${v}"
     done < "${f}" 2>/dev/null
 }
+
+# https://skarnet.org/software/s6/s6-svstat.html
+is_up() {
+	local service="$1"
+	local result
+	result="$(s6-svstat -u "/run/service/${service}")"
+	test "${result}" = "true"
+}
