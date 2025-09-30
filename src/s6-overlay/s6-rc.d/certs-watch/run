@@ -2,17 +2,31 @@
 # shellcheck shell=bash
 # shellcheck disable=SC2312
 
-# Watch /certs directory for changes and restart confd service when detected
-# Uses inotifywait to monitor for modifications in the /certs directory
+# Watch /certs directory for changes and halt the container to apply environment changes on restart.
+# Uses inotifywait to monitor for modifications in the /certs directory.
 
 # Redirect all future stdout/stderr to s6-log
-exec > >(exec s6-log -b p"certs-watch[$$]:" 1 || true) 2>&1
+exec > >(exec s6-log p"certs-watch[$$]:" 1 || true) 2>&1
+
+CERTS=${CERTS:-/certs}
 
 # Create /certs directory if it doesn't exist
-mkdir -p /certs
+mkdir -p "${CERTS}"
 
-# Watch for changes and restart confd when detected
-exec inotifywait -m -e modify,create,delete,move /certs --format '%w%f %e' | while read -r file event; do
-    echo "Certificate change detected: ${file} (${event})"
-    /etc/s6-overlay/scripts/confd-up.sh
+# Watch for changes with inotifywait events: modify, create
+# We specifically look for changes to the .ready file, which indicates that
+# cert-manager has finished it's work.
+exec inotifywait -m -e modify,create "${CERTS}" --format '%w%f %e' | while read -r file event; do
+    echo "Certificate(s) change detected: ${file} (${event})"
+
+    # If the .ready file is modified/created, halt the container to pick up changes.
+    # The .ready file is touched by cert-manager after it updates /certs.
+    # On restart, configure-balena.sh will pick up any new/changed certificates and
+    # update /etc/docker.env accordingly before other services start.
+    if [[ "${file}" = "${CERTS}/.ready" ]] && [[ "${event}" = "CREATE" ]]; then
+        echo "Halting container to pick up changes..."
+        echo 0 > /run/s6-linux-init-container-results/exitcode
+        /run/s6/basedir/bin/halt
+    fi
+    
 done
