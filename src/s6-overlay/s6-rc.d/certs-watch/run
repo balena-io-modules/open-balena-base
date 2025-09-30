@@ -6,7 +6,7 @@
 # Uses inotifywait to monitor for modifications in the /certs directory
 
 # Redirect all future stdout/stderr to s6-log
-exec > >(exec s6-log -b p"certs-watch[$$]:" 1 || true) 2>&1
+exec > >(exec s6-log p"certs-watch[$$]:" 1 || true) 2>&1
 
 # Create /certs directory if it doesn't exist
 mkdir -p /certs
