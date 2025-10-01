@@ -3,6 +3,11 @@
     {
       "matchPackageNames": ["golang"],
       "enabled": false
+    },
+    {
+      "description": "Avoid [BUG] v11.6.1 fails to install optionalDependencies of inner package",
+      "matchPackageNames": ["npm"],
+      "allowedVersions": "<=11.6.0"
     }
   ]
 }
