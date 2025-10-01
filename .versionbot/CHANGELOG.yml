@@ -1,4 +1,19 @@
 - commits:
+    - subject: Revert "Update dependency npm to v11.6.1"
+      hash: 1d459c4e18a5f234a3c3a51a67f83f1e5889e03d
+      body: |
+        This reverts commit 12e3c9b70b635e860907aab56f8afff0b3c6f3c8.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 20.1.1
+  title: ""
+  date: 2025-10-01T20:39:35.435Z
+- commits:
     - subject: Halt container on certificate changes
       hash: 390ca9c23606d406d1430f743f2e57475cdc5f83
       body: >
