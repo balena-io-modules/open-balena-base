@@ -246,6 +246,7 @@ function upsert_devices_keys {
 
 		if [[ -f "${tmpubs}" ]]; then
 			replace_env_var DEVICE_CONFIG_SSH_AUTHORIZED_KEYS "$(cat < "${tmpubs}")"
+			replace_env_var PROXY_PUBLIC_KEYS "$(cat < "${tmpubs}")"
 		fi
 
 		rm -f "${tmpkeys}" "${tmpubs}"
