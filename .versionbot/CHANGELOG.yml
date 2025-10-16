@@ -1,4 +1,18 @@
 - commits:
+    - subject: Fix value mapping for Registry2 S3 API keys.
+      hash: 947464223e92c9ef2cbfee048c4b8e9dd37daaf1
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      author: Carlo Miguel F. Cruz
+      nested: []
+  version: 20.1.4
+  title: ""
+  date: 2025-10-16T14:10:12.766Z
+- commits:
     - subject: Update Node.js to v24.10.0
       hash: 97700f1177938d9f8444bf81565e368872d9bcb3
       body: |
