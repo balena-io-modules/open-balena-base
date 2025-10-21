@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  sut:
+    image: sut:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.s6-overlay
+    working_dir: /usr/src/app
+    volumes:
+      - ./tests:/usr/src/app/tests:ro
+    command:
+      - /bin/bash
+      - -c
+      - |
+        set -e
+        echo "=== Installing BATS test framework ==="
+        npm install -g bats bats-support bats-assert
+        echo ""
+
+        echo "=== Running load_env_file tests ==="
+        bats /usr/src/app/tests/load_env_file.bats
+
+        echo ""
+        echo "=== Running systemd comparison tests ==="
+        bats /usr/src/app/tests/systemd_comparison.bats

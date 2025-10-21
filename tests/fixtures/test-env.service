@@ -1,0 +1,13 @@
+[Unit]
+Description=Test service for EnvironmentFile comparison
+After=local-fs.target
+
+[Service]
+Type=oneshot
+EnvironmentFile=/usr/src/app/tests/fixtures/test.env
+ExecStart=/usr/bin/env
+StandardOutput=file:/usr/src/app/tests/fixtures/systemd-env.txt
+RemainAfterExit=no
+
+[Install]
+WantedBy=multi-user.target

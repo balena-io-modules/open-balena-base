@@ -1,0 +1,19 @@
+LANG=C.UTF-8
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+USER=root
+INVOCATION_ID=562ff6abf5804bf196080391dbb75a63
+SYSTEMD_EXEC_PID=68
+MEMORY_PRESSURE_WATCH=/sys/fs/cgroup/system.slice/test-env.service/memory.pressure
+MEMORY_PRESSURE_WRITE=c29tZSAyMDAwMDAgMjAwMDAwMAA=
+UNQUOTED=balena-images;balena-delta;balena-pine-web-resources
+DOUBLE_QUOTED=balena-images\;balena-delta\;balena-pine-web-resources
+SINGLE_QUOTED=balena-images\;balena-delta\;balena-pine-web-resources
+UNQUOTED_SPACE=value with space
+DOUBLE_WITH_TAB=value\twith\ttab
+SINGLE_WITH_TAB=value\twith\ttab
+DOUBLE_WITH_NEWLINE=line1\nline2
+DOUBLE_BACKSLASH=value\
+VALUE_WITH_EQUALS=key=value
+EQUALS_AT_END=ends with=
+MULTIPLE_EQUALS=foo=bar=baz
+BASE64_LIKE=dGVzdA==

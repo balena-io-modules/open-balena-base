@@ -2,6 +2,19 @@
 
 FROM ghcr.io/balena-io-modules/confd-releases:0.0.6-confd-v0-16-0 AS confd
 
+
+####################################################################################################
+
+FROM golang:1.24.6 AS xenv-build
+
+WORKDIR /src
+
+ARG CGO_ENABLED=0
+
+# https://github.com/michurin/systemd-env-file
+RUN go install github.com/michurin/systemd-env-file/cmd/xenv@1e826f3c7c7954df7c220e9bc1659a378f25521a \
+    && /go/bin/xenv -v
+
 ####################################################################################################
 
 FROM golang:1.24.6 AS eget-build
@@ -123,6 +136,8 @@ RUN npm install -g "npm@${NPM_VERSION}" \
 
 # Confd binary installation.
 COPY --from=confd /confd /usr/local/bin/confd
+
+COPY --from=xenv-build /go/bin/xenv /usr/local/bin/xenv
 
 # install s6-overlay framework
 COPY --from=s6-overlay /opt/ /
