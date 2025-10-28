@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update Node.js to v24.11.0
+      hash: 648b6cea5dd9e8023d9feaaf17059c02dea6aa0f
+      body: |
+        Update node from 24.10.0 to 24.11.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 20.2.1
+  title: ""
+  date: 2025-10-28T18:08:00.736Z
+- commits:
     - subject: Fix load_env_file to use xenv for exact systemd compatibility
       hash: a9535db87f71657857ffde88a59596690dec4048
       body: >
