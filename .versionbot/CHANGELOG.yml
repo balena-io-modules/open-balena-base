@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update Node.js to v24.11.1
+      hash: d0910640d5288bff9419fc4a0fb54d87ad376bcf
+      body: |
+        Update node from 24.11.0 to 24.11.1
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 20.2.2
+  title: ""
+  date: 2025-11-11T23:04:53.514Z
+- commits:
     - subject: Update Node.js to v24.11.0
       hash: 648b6cea5dd9e8023d9feaaf17059c02dea6aa0f
       body: |
