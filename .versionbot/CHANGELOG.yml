@@ -1,4 +1,14 @@
 - commits:
+    - subject: "patch: Use flock instead of lockfile in critical sesion"
+      hash: c26ce0f5736ab6817abdcd60f78729502180399d
+      body: ""
+      footer: {}
+      author: Anton Belodedenko
+      nested: []
+  version: 20.2.4
+  title: ""
+  date: 2025-12-12T17:29:51.399Z
+- commits:
     - subject: Update Node.js to v24.12.0
       hash: 1308020ca87b6124d664117b76a05e49b94b6d06
       body: |
