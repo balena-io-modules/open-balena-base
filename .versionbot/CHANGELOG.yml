@@ -1,4 +1,14 @@
 - commits:
+    - subject: "patch: DATA_HOST is requiredVar for balena-builder"
+      hash: 2bf14e1b161103992b30a348f81cd574ce9dac89
+      body: ""
+      footer: {}
+      author: Anton Belodedenko
+      nested: []
+  version: 20.2.5
+  title: ""
+  date: 2025-12-30T07:05:30.415Z
+- commits:
     - subject: "patch: Use flock instead of lockfile in critical sesion"
       hash: c26ce0f5736ab6817abdcd60f78729502180399d
       body: ""
