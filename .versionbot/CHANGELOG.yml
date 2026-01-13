@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update Node.js to v24.13.0
+      hash: 41a9162d567175b3702f425a87d58a66d98bdf4b
+      body: |
+        Update node from 24.12.0 to 24.13.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 20.2.6
+  title: ""
+  date: 2026-01-13T16:12:46.276Z
+- commits:
     - subject: "patch: DATA_HOST is requiredVar for balena-builder"
       hash: 2bf14e1b161103992b30a348f81cd574ce9dac89
       body: ""
