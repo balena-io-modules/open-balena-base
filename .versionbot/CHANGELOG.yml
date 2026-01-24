@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update dependency just-containers/s6-overlay to v3.2.2.0
+      hash: 07616b2420aaad57986035551751143768a5976e
+      body: |
+        Update just-containers/s6-overlay from 3.2.1.0 to 3.2.2.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 20.2.7
+  title: ""
+  date: 2026-01-24T21:57:07.513Z
+- commits:
     - subject: Update Node.js to v24.13.0
       hash: 41a9162d567175b3702f425a87d58a66d98bdf4b
       body: |
