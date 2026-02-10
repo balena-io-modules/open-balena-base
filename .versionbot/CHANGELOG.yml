@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update Node.js to v24.13.1
+      hash: cb7498e63d3643c394218659b0017d53f962a2c0
+      body: |
+        Update node from 24.13.0 to 24.13.1
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 20.2.8
+  title: ""
+  date: 2026-02-10T14:29:22.948Z
+- commits:
     - subject: Update dependency just-containers/s6-overlay to v3.2.2.0
       hash: 07616b2420aaad57986035551751143768a5976e
       body: |
