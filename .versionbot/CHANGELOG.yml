@@ -1,4 +1,16 @@
 - commits:
+    - subject: Remove DELTA_S3_HOST from HOSTS_CONFIG
+      hash: c75a3919ff744e6a4e4b42f45719cfb666a390a7
+      body: ""
+      footer:
+        Change-type: major
+        change-type: major
+      author: joshbwlng
+      nested: []
+  version: 21.0.0
+  title: ""
+  date: 2026-02-19T02:40:33.603Z
+- commits:
     - subject: Update Node.js to v24.13.1
       hash: cb7498e63d3643c394218659b0017d53f962a2c0
       body: |
