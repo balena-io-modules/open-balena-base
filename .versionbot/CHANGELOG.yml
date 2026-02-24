@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update Node.js to v24.14.0
+      hash: 0e5fc2dca054e7b6751f68b6d69e7ca51be9db01
+      body: |
+        Update node from 24.13.1 to 24.14.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 21.0.1
+  title: ""
+  date: 2026-02-24T16:24:20.567Z
+- commits:
     - subject: Remove DELTA_S3_HOST from HOSTS_CONFIG
       hash: c75a3919ff744e6a4e4b42f45719cfb666a390a7
       body: ""
