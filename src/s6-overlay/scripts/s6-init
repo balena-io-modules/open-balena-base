@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC1091
 
 # Populate /etc/docker.env with all container environment variables.
 # This file is updated by configure-balena.sh with zero-conf certificates
@@ -7,11 +8,17 @@ for var in $(compgen -e); do
 	printf '%q=%q\n' "${var}" "${!var}"
 done > /etc/docker.env
 
-# Manually run confd once so we can use templates in s6-overlay
-/usr/local/bin/confd \
-  -onetime \
-  -confdir=/usr/src/app/config/confd \
-  -backend env
+# Run configure-balena before s6 to ensure the env is populated with dynamic cert values.
+# This is necessary for zero-conf certificate generation.
+/etc/s6-overlay/scripts/configure-balena.sh
+
+# Load environment variables from /etc/docker.env for s6 services.
+# This is helpful for s6 services to have access to the same environment variables
+# as the confd templates, which are also sourced from /etc/docker.env.
+# s6 services can use `/command/with-contenv` to load these variables into their environment.
+set +a
+source /etc/docker.env
+set -a
 
 # start s6 overlay
 exec /init "${@}"
