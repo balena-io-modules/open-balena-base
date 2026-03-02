@@ -20,5 +20,8 @@ set -a
 source /etc/docker.env
 set +a
 
+# Manually run confd once before s6-init so we can use the generated templates in s6 services.
+/etc/s6-overlay/scripts/confd-up
+
 # start s6 overlay
 exec /init "${@}"
