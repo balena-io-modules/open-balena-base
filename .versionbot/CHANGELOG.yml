@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update Node.js to v24.14.1
+      hash: f6d8ec99ac622a2f71cca4fbbffa8f17c4c01758
+      body: |
+        Update node from 24.14.0 to 24.14.1
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 21.0.4
+  title: ""
+  date: 2026-03-25T21:46:58.335Z
+- commits:
     - subject: Pin product-os/flowzone action to eb703ea
       hash: c10d50f6d7bd3d7db069e4905bdae90a09e3b57b
       body: |
