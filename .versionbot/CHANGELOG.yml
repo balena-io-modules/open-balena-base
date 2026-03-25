@@ -1,4 +1,17 @@
 - commits:
+    - subject: Pin product-os/flowzone action to eb703ea
+      hash: c10d50f6d7bd3d7db069e4905bdae90a09e3b57b
+      body: |
+        Update product-os/flowzone
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 21.0.3
+  title: ""
+  date: 2026-03-25T20:27:40.571Z
+- commits:
     - subject: Update debian Docker tag to trixie-20260316
       hash: b2e5175b4d3b7898054a61566074b21e453da29d
       body: |
