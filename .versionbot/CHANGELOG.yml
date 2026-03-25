@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update product-os/flowzone digest to 8674dc5
+      hash: 6313d69e0e1aaa0158e75f6a67df82759e9867f1
+      body: |
+        Update product-os/flowzone
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 21.0.5
+  title: ""
+  date: 2026-03-25T22:43:03.508Z
+- commits:
     - subject: Update Node.js to v24.14.1
       hash: f6d8ec99ac622a2f71cca4fbbffa8f17c4c01758
       body: |
