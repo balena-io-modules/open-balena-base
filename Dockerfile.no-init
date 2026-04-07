@@ -20,7 +20,7 @@ WORKDIR /opt
 
 ####################################################################################################
 
-FROM debian:trixie-20260316 AS runtime
+FROM debian:trixie-20260406 AS runtime
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TERM=xterm
