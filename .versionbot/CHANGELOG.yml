@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update debian Docker tag to trixie-20260406
+      hash: c348b2abfd80eb6347d4000320c79a772b096e86
+      body: |
+        Update debian from trixie-20260316 to trixie-20260406
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 21.0.13
+  title: ""
+  date: 2026-04-07T02:54:08.216Z
+- commits:
     - subject: Revert flowzone pinning to master
       hash: b0434d2f26b715fad9aa3d025c109e2bb20d0800
       body: ""
