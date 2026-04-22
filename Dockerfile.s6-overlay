@@ -76,7 +76,7 @@ RUN eget "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-$
 
 ####################################################################################################
 
-FROM debian:trixie-20260406 AS runtime
+FROM debian:trixie-20260421 AS runtime
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TERM=xterm
