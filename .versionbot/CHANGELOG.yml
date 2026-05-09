@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update debian Docker tag to trixie-20260505
+      hash: 9fb03486b35522a9e6063899ec449019dfd94f15
+      body: |
+        Update debian from trixie-20260421 to trixie-20260505
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 21.0.17
+  title: ""
+  date: 2026-05-09T16:17:10.195Z
+- commits:
     - subject: Update dependency just-containers/s6-overlay to v3.2.3.0
       hash: bc01af916911e6aaeb6f115adb0edabb295481ff
       body: |
