@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update dependency just-containers/s6-overlay to v3.2.3.0
+      hash: bc01af916911e6aaeb6f115adb0edabb295481ff
+      body: |
+        Update just-containers/s6-overlay from 3.2.2.0 to 3.2.3.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 21.0.16
+  title: ""
+  date: 2026-05-09T15:37:18.283Z
+- commits:
     - subject: Update debian Docker tag to trixie-20260421
       hash: 48ba4b99a08f273d13c8ebb82b27ed248452c19f
       body: |
