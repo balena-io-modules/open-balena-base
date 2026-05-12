@@ -1,4 +1,17 @@
 - commits:
+    - subject: Pin debian Docker tag to e2d08da
+      hash: 80eaf869b00bd7caad8258fbf1d59ee885117562
+      body: |
+        Update debian
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 21.0.18
+  title: ""
+  date: 2026-05-12T17:55:10.860Z
+- commits:
     - subject: Update debian Docker tag to trixie-20260505
       hash: 9fb03486b35522a9e6063899ec449019dfd94f15
       body: |
