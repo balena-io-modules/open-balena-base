@@ -243,7 +243,6 @@ function upsert_ssh_private_keys {
 	if [[ -d "${CERTS}/private" ]]; then
 		for ev in PROXY_SSH_KEYS_RSA \
 		  PROXY_SSH_KEYS_ECDSA \
-		  PROXY_SSH_KEYS_DSA \
 		  PROXY_SSH_KEYS_ED25519; do
 			algo="$(echo "${ev}" | awk '{split($0,arr,"_"); print arr[4]}' | tr '[:upper:]' '[:lower:]')"
 			key="${CERTS}/private/${cn}.${tld}.${algo}.key"
@@ -264,8 +263,6 @@ function upsert_git_ssh_keys_bundle {
 		local encoded
 		encoded="$(tar --transform "s|.*\.rsa\.key|id_rsa|" \
 		  --transform "s|.*\.rsa\.key.pub|id_rsa\.pub|" \
-		  --transform "s|.*\.dsa\.key|id_dsa|" \
-		  --transform "s|.*\.dsa\.key\.pub|id_dsa\.pub|" \
 		  --transform "s|.*\.ecdsa\.key|id_ecdsa|" \
 		  --transform "s|.*\.ecdsa\.key\.pub|id_ecdsa\.pub|" \
 		  --transform "s|.*\.ed25519\.key|id_ed25519|" \
