@@ -1,4 +1,19 @@
 - commits:
+    - subject: Remove DSA key references
+      hash: 146c0d1d220f2c3e76872a4ce99ba7cdbac3670c
+      body: |
+        We recently dropped DSA key generation from cert-manager
+        as the latest ssh-keygen no longer supports it. Removing
+        references to those keys from this codebase as well.
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: joshbwlng
+      nested: []
+  version: 21.0.19
+  title: ""
+  date: 2026-05-13T14:46:58.611Z
+- commits:
     - subject: Pin debian Docker tag to e2d08da
       hash: 80eaf869b00bd7caad8258fbf1d59ee885117562
       body: |
