@@ -342,12 +342,4 @@ if [[ -f "${CONF}" ]]; then
 	done
 fi
 
-# shellcheck disable=SC1091
-source /etc/docker.env
-
-/usr/local/bin/confd \
-  -onetime \
-  -confdir=/usr/src/app/config/confd \
-  -backend env
-
 ) 200>"${CONF}.lock"

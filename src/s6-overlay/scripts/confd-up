@@ -4,4 +4,13 @@
 # Redirect all future stdout/stderr to s6-log
 exec > >(exec s6-log p"confd[$$]:" 1 || true) 2>&1
 
-exec /etc/s6-overlay/scripts/configure-balena.sh
+# This confd oneshot service is a dependency of other downstream services
+# so we can't easily remove it even if it doesn't serve as much purpose anymore.
+
+# However, it doesn't do any harm ensuring that templates have been generated
+# from the current env before other services start.
+
+exec /usr/local/bin/confd \
+  -onetime \
+  -confdir=/usr/src/app/config/confd \
+  -backend env
