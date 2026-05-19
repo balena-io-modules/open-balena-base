@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update debian Docker tag to trixie-20260518
+      hash: b5d245358558539be381f145dced9b508a5b2b93
+      body: |
+        Update debian from trixie-20260505 to trixie-20260518
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 21.0.20
+  title: ""
+  date: 2026-05-19T23:20:57.863Z
+- commits:
     - subject: Remove DSA key references
       hash: 146c0d1d220f2c3e76872a4ce99ba7cdbac3670c
       body: |
