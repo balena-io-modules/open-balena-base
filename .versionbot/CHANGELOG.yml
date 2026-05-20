@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update debian:trixie-20260518 Docker digest to 4ae6766
+      hash: 9e2fcd0e710d2b16071e6c2240ddd6496e4f9cd2
+      body: |
+        Update debian
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 21.0.21
+  title: ""
+  date: 2026-05-20T02:54:38.405Z
+- commits:
     - subject: Update debian Docker tag to trixie-20260518
       hash: b5d245358558539be381f145dced9b508a5b2b93
       body: |
