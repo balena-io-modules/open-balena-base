@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update Node.js to v24.16.0
+      hash: b7bcd031d09ba9bd37bf189f70a7ee530e8d94f0
+      body: |
+        Update node from 24.15.0 to 24.16.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 21.0.22
+  title: ""
+  date: 2026-05-21T14:04:30.230Z
+- commits:
     - subject: Update debian:trixie-20260518 Docker digest to 4ae6766
       hash: 9e2fcd0e710d2b16071e6c2240ddd6496e4f9cd2
       body: |
