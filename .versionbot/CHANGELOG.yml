@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update debian Docker tag to trixie-20260610
+      hash: 8ac0bf86cc8ad1b61e3821d18c8a6812d96b4fe0
+      body: |
+        Update debian from trixie-20260518 to trixie-20260610
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 21.0.23
+  title: ""
+  date: 2026-06-11T05:49:46.108Z
+- commits:
     - subject: Update Node.js to v24.16.0
       hash: b7bcd031d09ba9bd37bf189f70a7ee530e8d94f0
       body: |
