@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update debian:trixie-20260610 Docker digest to fe7312b
+      hash: 47203c360f92a5e243530036c78fca038c69e564
+      body: |
+        Update debian
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 21.0.25
+  title: ""
+  date: 2026-06-11T08:38:13.074Z
+- commits:
     - subject: Update debian:trixie-20260610 Docker digest to 50d8c6e
       hash: f06a51474782b3228dfad97681a8904e0c951aa9
       body: |
