@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update Node.js to v24.19.0
+      hash: 1c4baba720c4aed914e24a1da33239a2e1670b6a
+      body: |
+        Update node from 24.18.0 to 24.19.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 21.0.30
+  title: ""
+  date: 2026-08-03T14:54:00.184Z
+- commits:
     - subject: Update debian Docker tag to trixie-20260713
       hash: a0f2fe4ed56187cd28afa02ccd68bf3a526c700a
       body: |
