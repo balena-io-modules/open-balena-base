@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update debian:13 Docker digest to 34cd9e9
+      hash: d346d96ae4fefe721dd7cc6e8f363f349353e763
+      body: |
+        Update debian
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 21.0.32
+  title: ""
+  date: 2026-08-05T02:52:37.645Z
+- commits:
     - subject: Update dependency just-containers/s6-overlay to v3.2.3.2
       hash: 7ac98dbdf60bc7ad3070fdee79be7c298b788f3a
       body: |
