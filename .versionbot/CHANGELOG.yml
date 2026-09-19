@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update debian:13 Docker digest to 9cc0800
+      hash: 58886934d6fd56a8a57b6c3a12862fd48123029a
+      body: |
+        Update debian
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 21.0.37
+  title: ""
+  date: 2026-09-19T06:06:05.329Z
+- commits:
     - subject: Update debian:13 Docker digest to 181ecf0
       hash: 3b50c96632d4be0a6800b4d29332a13955d4e8b7
       body: |
