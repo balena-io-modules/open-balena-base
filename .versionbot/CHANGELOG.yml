@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update nodejs to 26.x
+      hash: c8c1938ee9c3e9d6ed02ddbe8ace6f6700284d40
+      body: |
+        https://balena.fibery.io/Work/Project/2985
+      footer:
+        Change-type: major
+        change-type: major
+      author: Pagan Gazzard
+      nested: []
+  version: 22.0.0
+  title: ""
+  date: 2026-09-23T15:17:14.355Z
+- commits:
     - subject: Update debian:13 Docker digest to 9cc0800
       hash: 58886934d6fd56a8a57b6c3a12862fd48123029a
       body: |
