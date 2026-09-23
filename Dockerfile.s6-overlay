@@ -66,7 +66,7 @@ RUN eget just-containers/s6-overlay \
 FROM eget-build AS node
 
 # renovate: datasource=node-version depName=node
-ARG NODE_VERSION=24.21.0
+ARG NODE_VERSION=26.10.0
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -125,7 +125,7 @@ COPY --from=eget-build /go/bin/eget /usr/local/bin/eget
 COPY --from=node /opt/ /usr/local/
 
 # renovate: datasource=npm depName=npm
-ARG NPM_VERSION=11.6.0
+ARG NPM_VERSION=11.19.1
 
 # install npm
 RUN npm install -g "npm@${NPM_VERSION}" \
