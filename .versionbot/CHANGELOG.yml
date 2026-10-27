@@ -1,4 +1,18 @@
 - commits:
+    - subject: Rebuild to pick up libbrotli1 fix for CVE-2026-111497
+      hash: 30cc6f6cc6e198188d2ea672622133a26fa3a0c1
+      body: >
+        Add a test that fails if libbrotli1 or Node.js's bundled brotli is older
+        than the fixed version.
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Harald Fischer
+      nested: []
+  version: 22.0.6
+  title: ""
+  date: 2026-10-27T13:13:24.264Z
+- commits:
     - subject: Update Node.js to v26.12.1
       hash: c14db6469a6673e0316b51351c289c3100c92bf3
       body: |
