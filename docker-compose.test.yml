@@ -24,3 +24,7 @@ services:
         echo ""
         echo "=== Running systemd comparison tests ==="
         bats /usr/src/app/tests/systemd_comparison.bats
+
+        echo ""
+        echo "=== Running vulnerable package tests ==="
+        bats /usr/src/app/tests/vulnerable_packages.bats
