@@ -51,3 +51,75 @@ setup() {
     run bash -c 'set -e; set -a; source /etc/docker.env'
     assert_success
 }
+
+# Values that bash would expand or split if /etc/docker.env held them unquoted.
+# shellcheck disable=SC2016
+HOSTILE_VALUE='$(touch /tmp/pwned) `touch /tmp/pwned` it'"'"'s "quoted"'
+BASE64_VALUE='dGVzdA+/Zm9vYmFy='
+
+# Runs configure-balena.sh in the container env, with CONF and CERTS fixtures from the test tmpdir.
+# The script rewrites /etc/docker.env, so back the file up for teardown.
+run_configure_balena() {
+    [[ -f "${BATS_TEST_TMPDIR}/docker.env.bak" ]] \
+        || cp -p /etc/docker.env "${BATS_TEST_TMPDIR}/docker.env.bak"
+    /command/with-contenv env \
+        CONF="${BATS_TEST_TMPDIR}/conf.env" CERTS="${BATS_TEST_TMPDIR}/certs" \
+        /etc/s6-overlay/scripts/configure-balena.sh
+}
+
+# Prints one variable after sourcing /etc/docker.env in a clean shell.
+docker_env_value() {
+    # shellcheck disable=SC2016
+    env -i PATH="${PATH}" bash -c 'source /etc/docker.env && printf %s "${!1}"' _ "$1"
+}
+
+teardown() {
+    rm -f /tmp/pwned
+    [[ -f "${BATS_TEST_TMPDIR}/docker.env.bak" ]] || return 0
+    cp -p "${BATS_TEST_TMPDIR}/docker.env.bak" /etc/docker.env
+}
+
+@test "CONF values stay literal in /etc/docker.env" {
+    mkdir -p "${BATS_TEST_TMPDIR}/certs"
+    printf 'TEST_HOSTILE=%s\nTEST_BASE64=%s\n' "${HOSTILE_VALUE}" "${BASE64_VALUE}" \
+        > "${BATS_TEST_TMPDIR}/conf.env"
+    run_configure_balena
+
+    run docker_env_value TEST_HOSTILE
+    assert_output "${HOSTILE_VALUE}"
+    run docker_env_value TEST_BASE64
+    assert_output "${BASE64_VALUE}"
+    assert [ ! -e /tmp/pwned ]
+}
+
+@test "CONF file keeps raw KEY=VALUE lines" {
+    mkdir -p "${BATS_TEST_TMPDIR}/certs"
+    printf 'TEST_HOSTILE=%s\n' "${HOSTILE_VALUE}" > "${BATS_TEST_TMPDIR}/conf.env"
+    run_configure_balena
+
+    run grep -x "TEST_HOSTILE=${HOSTILE_VALUE}" "${BATS_TEST_TMPDIR}/conf.env"
+    assert_success
+}
+
+@test "rerun writes each CONF var once" {
+    mkdir -p "${BATS_TEST_TMPDIR}/certs"
+    printf 'TEST_HOSTILE=%s\n' "${HOSTILE_VALUE}" > "${BATS_TEST_TMPDIR}/conf.env"
+    run_configure_balena
+    run_configure_balena
+
+    run grep -c '^TEST_HOSTILE=' /etc/docker.env
+    assert_output "1"
+}
+
+# replace_env_var copies the public key file as-is, so newlines reach the helper.
+@test "replace_env_var values stay literal in /etc/docker.env" {
+    mkdir -p "${BATS_TEST_TMPDIR}/certs/private"
+    printf '%s\nssh-rsa AAAA second key\n' "${HOSTILE_VALUE}" \
+        > "${BATS_TEST_TMPDIR}/certs/private/devices.example.test.rsa.key.pub"
+    : > "${BATS_TEST_TMPDIR}/conf.env"
+    run_configure_balena
+
+    run docker_env_value PROXY_PUBLIC_KEYS
+    assert_output "${HOSTILE_VALUE}"$'\n'"ssh-rsa AAAA second key"
+    assert [ ! -e /tmp/pwned ]
+}
