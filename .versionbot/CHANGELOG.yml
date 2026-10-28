@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update Node.js to v26.13.0
+      hash: 1d7c79c7d5dc8454f8e93f972dae65d1fd73f130
+      body: |
+        Update node from 26.12.1 to 26.13.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 22.0.8
+  title: ""
+  date: 2026-10-28T17:25:32.756Z
+- commits:
     - subject: Update debian:13 Docker digest to 8c4733a
       hash: 195ff54bc82060608ded8313a7b31c3a9647772b
       body: |
