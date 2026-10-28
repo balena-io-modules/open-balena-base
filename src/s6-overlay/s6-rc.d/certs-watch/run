@@ -21,8 +21,8 @@ exec inotifywait -m -e modify,create "${CERTS}" --format '%w%f %e' | while read 
 
     # If the .ready file is modified/created, halt the container to pick up changes.
     # The .ready file is touched by cert-manager after it updates /certs.
-    # On restart, configure-balena.sh will pick up any new/changed certificates and
-    # update /etc/docker.env accordingly before other services start.
+    # On restart, s6-init runs configure-balena.sh before s6 starts.
+    # configure-balena.sh picks up new/changed certificates.
     if [[ "${file}" = "${CERTS}/.ready" ]] && [[ "${event}" = "CREATE" ]]; then
         echo "Halting container to pick up changes..."
         echo 0 > /run/s6-linux-init-container-results/exitcode

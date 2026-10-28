@@ -152,8 +152,7 @@ WORKDIR /usr/src/app
 
 ENTRYPOINT [ "/etc/s6-overlay/scripts/s6-init" ]
 
-# If set, then environment is not reset and whole supervision tree sees original set of env vars.
-# It switches with-contenv into a nop.
+# 0 resets the env of every service. Only with-contenv services see the container env. See README.md.
 ENV S6_KEEP_ENV=0
 # Determines what the container should do if one of the service scripts fails.
 # 0: Continue silently even if a script has failed.
