@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update debian:13 Docker digest to 8c4733a
+      hash: 195ff54bc82060608ded8313a7b31c3a9647772b
+      body: |
+        Update debian
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 22.0.7
+  title: ""
+  date: 2026-10-28T03:04:34.211Z
+- commits:
     - subject: Rebuild to pick up libbrotli1 fix for CVE-2026-111497
       hash: 30cc6f6cc6e198188d2ea672622133a26fa3a0c1
       body: >
