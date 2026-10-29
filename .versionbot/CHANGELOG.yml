@@ -1,4 +1,27 @@
 - commits:
+    - subject: Run configure-balena before s6 init and export its env
+      hash: 76851befbf2b82afcf6fabb66a1c07b5ad42867b
+      body: |
+        configure-balena.sh now runs in s6-init, before /init. s6-init exports
+        /etc/docker.env, so generated values reach /run/s6/container_environment
+        and every with-contenv service. config/env and load_env_file are now
+        optional for with-contenv services.
+
+        The confd oneshot runs true, kept so dependencies.d/confd resolves.
+
+        Images with a custom ENTRYPOINT must exec
+        /etc/s6-overlay/scripts/s6-init instead of /init.
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 22.1.0
+  title: ""
+  date: 2026-10-29T14:17:39.025Z
+- commits:
     - subject: Update debian:13 Docker digest to 2dc419c
       hash: c36f3a8940e2d704398ecfa34763c742e48f102b
       body: |
