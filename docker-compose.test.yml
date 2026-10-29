@@ -12,26 +12,28 @@ services:
       UI_HOST: preset.example.test
     volumes:
       - ./tests:/usr/src/app/tests:ro
+      - ./bats/package.json:/opt/bats/package.json:ro
+      - ./bats/package-lock.json:/opt/bats/package-lock.json:ro
     command:
       - /bin/bash
       - -c
       - |
         set -e
         echo "=== Installing BATS test framework ==="
-        npm install -g bats bats-support bats-assert
+        npm ci --prefix /opt/bats
         echo ""
 
         echo "=== Running load_env_file tests ==="
-        bats /usr/src/app/tests/load_env_file.bats
+        /opt/bats/node_modules/.bin/bats /usr/src/app/tests/load_env_file.bats
 
         echo ""
         echo "=== Running systemd comparison tests ==="
-        bats /usr/src/app/tests/systemd_comparison.bats
+        /opt/bats/node_modules/.bin/bats /usr/src/app/tests/systemd_comparison.bats
 
         echo ""
         echo "=== Running s6 env tests ==="
-        bats /usr/src/app/tests/s6_env.bats
+        /opt/bats/node_modules/.bin/bats /usr/src/app/tests/s6_env.bats
 
         echo ""
         echo "=== Running vulnerable package tests ==="
-        bats /usr/src/app/tests/vulnerable_packages.bats
+        /opt/bats/node_modules/.bin/bats /usr/src/app/tests/vulnerable_packages.bats

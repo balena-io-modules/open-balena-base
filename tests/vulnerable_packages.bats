@@ -1,7 +1,7 @@
 #!/usr/bin/env bats
 
-load '/usr/local/lib/node_modules/bats-support/load.bash'
-load '/usr/local/lib/node_modules/bats-assert/load.bash'
+load '/opt/bats/node_modules/bats-support/load.bash'
+load '/opt/bats/node_modules/bats-assert/load.bash'
 
 # Fails if the installed version is older than the given fixed version.
 assert_version_at_least() {
