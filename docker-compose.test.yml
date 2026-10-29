@@ -7,6 +7,9 @@ services:
       context: .
       dockerfile: Dockerfile.s6-overlay
     working_dir: /usr/src/app
+    environment:
+      DNS_TLD: example.test
+      UI_HOST: preset.example.test
     volumes:
       - ./tests:/usr/src/app/tests:ro
     command:
@@ -24,6 +27,10 @@ services:
         echo ""
         echo "=== Running systemd comparison tests ==="
         bats /usr/src/app/tests/systemd_comparison.bats
+
+        echo ""
+        echo "=== Running s6 env tests ==="
+        bats /usr/src/app/tests/s6_env.bats
 
         echo ""
         echo "=== Running vulnerable package tests ==="
