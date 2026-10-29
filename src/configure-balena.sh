@@ -60,6 +60,12 @@ for kv in ${tokens_config[*]}; do
 	fi
 done
 
+# Replaces NAME in /etc/docker.env with a line that bash sources back to the literal VALUE.
+function set_docker_env_var {
+	sed -i "/^${1}=/d" /etc/docker.env
+	printf '%s=%q\n' "${1}" "${2}" >> /etc/docker.env
+}
+
 function upsert_ca_root {
 	# (legacy) explicitly defined ROOT_CA
 	if test -n "${ROOT_CA}"; then
@@ -70,8 +76,7 @@ function upsert_ca_root {
 		# ... but only if using private certificates
 		if [[ "$(readlink -f "${CERTS}/export/chain.pem")" =~ \/private\/ ]]; then
 			cat < "${CERTS}/ca-bundle.pem" > /usr/local/share/ca-certificates/balenaRootCA.crt
-			sed -i /^ROOT_CA=/d /etc/docker.env
-			echo "ROOT_CA=$(cat < "${CERTS}/ca-bundle.pem" | openssl base64 -A)" >> /etc/docker.env
+			set_docker_env_var ROOT_CA "$(cat < "${CERTS}/ca-bundle.pem" | openssl base64 -A)"
 		# ... we are running public DNS/SSL, no need to expose private CA bundle(s)
 		else
 			echo 'Running LetsEncrypt/ACME/public SSL/DNS configuration.'
@@ -82,10 +87,10 @@ function upsert_ca_root {
 
 	if [[ -e /usr/local/share/ca-certificates/balenaRootCA.crt ]]; then
 		grep -q 'NODE_EXTRA_CA_CERTS=/etc/ssl/certs/balenaRootCA.pem' /etc/docker.env \
-		  || echo 'NODE_EXTRA_CA_CERTS=/etc/ssl/certs/balenaRootCA.pem' >> /etc/docker.env
+		  || set_docker_env_var NODE_EXTRA_CA_CERTS /etc/ssl/certs/balenaRootCA.pem
 
 		grep -q 'CURL_CA_BUNDLE=/etc/ssl/certs/balenaRootCA.pem' /etc/docker.env \
-		  || echo 'CURL_CA_BUNDLE=/etc/ssl/certs/balenaRootCA.pem' >> /etc/docker.env
+		  || set_docker_env_var CURL_CA_BUNDLE /etc/ssl/certs/balenaRootCA.pem
 
 		update-ca-certificates
 	fi
@@ -177,10 +182,7 @@ function replace_env_var {
 	ev="${1}"
 	[[ -n "${ev}" ]] || return
 
-	local value
-	value="${2// /\\ }"
-
-	[[ -n "${value}" ]] || return
+	[[ -n "${2}" ]] || return
 
 	local varname
 	varname="$(echo "${ev}" | awk -F'=' '{print $1}')"
@@ -188,8 +190,7 @@ function replace_env_var {
 	varvalue="${!varname}"
 
 	if [[ -z "$varvalue" ]]; then
-		sed -i "/^${varname}=/d" /etc/docker.env
-		echo "${varname}=${value}" >> /etc/docker.env
+		set_docker_env_var "${varname}" "${2}"
 	fi
 }
 
@@ -337,7 +338,7 @@ if [[ -f "${CONF}" ]]; then
 			VARVALUE=${!VARNAME}
 		fi
 		if [[ -n $VARNAME ]] && [[ -n $VARVALUE ]]; then
-			grep -Eq "^${VARNAME}=" /etc/docker.env || echo "${VARNAME}=${VARVALUE}" >> /etc/docker.env
+			grep -Eq "^${VARNAME}=" /etc/docker.env || set_docker_env_var "${VARNAME}" "${VARVALUE}"
 		fi
 	done
 fi
