@@ -1,4 +1,24 @@
 - commits:
+    - subject: Quote values configure-balena writes to /etc/docker.env
+      hash: 4812e27acb59f3c824697edf7e65b60e1ed76c31
+      body: |
+        s6-init sources /etc/docker.env as root before /init, and
+        configure-balena appended raw KEY=VALUE lines to it. A value with
+        $(...), backticks, quotes or a newline ran or broke the source.
+
+        All writes now go through set_docker_env_var, which uses printf %q
+        like the s6-init dump. The CONF file format is unchanged.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 22.1.1
+  title: ""
+  date: 2026-10-29T14:59:12.786Z
+- commits:
     - subject: Run configure-balena before s6 init and export its env
       hash: 76851befbf2b82afcf6fabb66a1c07b5ad42867b
       body: |
