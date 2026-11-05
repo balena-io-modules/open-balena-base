@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update debian:13 Docker digest to 9c6e381
+      hash: b778859e85fba11afe9aa7ca0a610d5387277b81
+      body: |
+        Update debian
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 22.1.3
+  title: ""
+  date: 2026-11-05T09:04:54.835Z
+- commits:
     - subject: Pin bats test tools with a lockfile
       hash: 61489ffca266a90666199c8cbc079051b7cef518
       body: |
