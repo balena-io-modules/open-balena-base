@@ -1,4 +1,23 @@
 - commits:
+    - subject: Generate the token-auth key ID from the API certificate
+      hash: 33030e7504907ecd0d21c3aba312148bf5a486a5
+      body: |
+        configure-balena.sh now derives the libtrust key ID (KID) from
+        api.${TLD}.pem (public key only) and sets TOKEN_AUTH_CERT_KID and
+        REGISTRY_TOKEN_AUTH_CERT_KID, but only when those env vars are not
+        already set and no api.${TLD}.kid file is provided. This removes the
+        need to derive the KID from the certificate manually.
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      author: Carlo Miguel F. Cruz
+      nested: []
+  version: 22.2.0
+  title: ""
+  date: 2026-11-23T16:39:25.211Z
+- commits:
     - subject: Update Node.js to v26.13.1
       hash: ef33eff21efc8f4ca990480d0f6a104236ab881a
       body: |
