@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update dependency zyedidia/eget to v1.3.4
+      hash: 5331139570c1434feec7e6fcac03ae2219bc0b39
+      body: |
+        Update zyedidia/eget from 1.3.3 to 1.3.4
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 22.2.2
+  title: ""
+  date: 2026-11-23T23:06:12.357Z
+- commits:
     - subject: Install eget with go install at a pinned version
       hash: 57859b4c38055b418a08bcceeb7739511aa87620
       body: |
