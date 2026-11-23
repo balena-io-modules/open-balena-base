@@ -1,4 +1,25 @@
 - commits:
+    - subject: Install eget with go install at a pinned version
+      hash: 57859b4c38055b418a08bcceeb7739511aa87620
+      body: |
+        The eget-build stages cloned the repo and checked out a mutable tag.
+        Install it with `go install` instead, so the go command verifies the
+        module zip against sum.golang.org and the content of the version cannot
+        change under us even if upstream moves the tag.
+
+        Set main.Version with ldflags, since the v1.3.3 tag reports 1.3.2+src,
+        and add a Renovate annotation for EGET_VERSION.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 22.2.1
+  title: ""
+  date: 2026-11-23T22:22:38.077Z
+- commits:
     - subject: Generate the token-auth key ID from the API certificate
       hash: 33030e7504907ecd0d21c3aba312148bf5a486a5
       body: |
