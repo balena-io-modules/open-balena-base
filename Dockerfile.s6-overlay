@@ -20,7 +20,7 @@ RUN go install github.com/michurin/systemd-env-file/cmd/xenv@1e826f3c7c7954df7c2
 FROM golang:1.24.6 AS eget-build
 
 # renovate: datasource=github-releases depName=zyedidia/eget
-ARG EGET_VERSION=v1.3.3
+ARG EGET_VERSION=v1.3.4
 ARG CGO_ENABLED=0
 
 # The go command verifies the module and its dependencies against the Go checksum database (sum.golang.org).
