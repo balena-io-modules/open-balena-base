@@ -35,5 +35,9 @@ services:
         /opt/bats/node_modules/.bin/bats /usr/src/app/tests/s6_env.bats
 
         echo ""
+        echo "=== Running configure-balena kid tests ==="
+        /opt/bats/node_modules/.bin/bats /usr/src/app/tests/configure_balena_kid.bats
+
+        echo ""
         echo "=== Running vulnerable package tests ==="
         /opt/bats/node_modules/.bin/bats /usr/src/app/tests/vulnerable_packages.bats

@@ -127,12 +127,57 @@ function upsert_api_kid {
 	tld="${1}"
 	[[ -n "${tld}" ]] || return
 
-	if [[ -f "${CERTS}/private/api.${tld}.kid" ]]; then
-		keyid="$(cat < "${CERTS}/private/api.${tld}.kid" | openssl base64 -A)"
+	local kidfile pemfile keyid
+	kidfile="${CERTS}/private/api.${tld}.kid"
+	pemfile="${CERTS}/private/api.${tld}.pem"
+
+	if [[ -f "${kidfile}" ]]; then
+		keyid="$(cat < "${kidfile}" | openssl base64 -A)"
+	# derive the key ID from the certificate's public key (the private key is never read)
+	elif [[ -f "${pemfile}" ]]; then
+		keyid="$(generate_api_kid "${pemfile}" | openssl base64 -A)"
+	fi
+
+	if [[ -n "${keyid}" ]]; then
 		# (TBC) rename/combine environment variables (JF/balenaCloud)
 		replace_env_var TOKEN_AUTH_CERT_KID "${keyid}"
 		replace_env_var REGISTRY_TOKEN_AUTH_CERT_KID "${keyid}"
 	fi
+}
+
+# Prints the libtrust key ID of the public key in the given PEM certificate
+# (the first certificate, if the file holds a chain). The format is the one
+# Docker Distribution matches token "kid" headers against: SHA-256 of the DER
+# public key, first 240 bits, base32, groups of 4 joined by ':'.
+# See keyIDEncode in https://github.com/docker/libtrust/blob/master/util.go
+# This reproduces what _keyid.js in balena-io/cert-manager does, with openssl
+# and coreutils instead of Node.js:
+# https://github.com/balena-io/cert-manager/blob/6a888da2b7fbe5b173c2d42f82632dc8cfd9e26c/_keyid.js
+# On failure, prints nothing and returns 1.
+function generate_api_kid {
+	local pemfile="${1}" pubkey="" b32="" kid=""
+
+	# Extract the public key as text first, so a failure cannot reach the
+	# hash below as empty input, which would yield a valid-looking key ID.
+	if pubkey="$(openssl x509 -in "${pemfile}" -pubkey -noout)" \
+	  && [[ "${pubkey}" == *"-----BEGIN PUBLIC KEY-----"* ]]; then
+		b32="$(
+			set -o pipefail
+			printf '%s\n' "${pubkey}" \
+			  | openssl pkey -pubin -outform DER \
+			  | openssl dgst -sha256 -binary \
+			  | base32 -w0
+		)" || b32=""
+	fi
+
+	# The first 30 bytes of the digest are exactly the first 48 base32 characters.
+	kid="$(printf '%s' "${b32:0:48}" | sed -E 's/(.{4})/\1:/g; s/:$//')"
+
+	if [[ ! "${kid}" =~ ^([A-Z2-7]{4}:){11}[A-Z2-7]{4}$ ]]; then
+		echo "Failed to generate key ID from ${pemfile}" >&2
+		return 1
+	fi
+	printf '%s' "${kid}"
 }
 
 function upsert_vpn_key {
