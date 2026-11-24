@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update debian:13 Docker digest to 3cda3ca
+      hash: fac6ceabdcf82ae2094fd9b3450c7b66efe4a5de
+      body: |
+        Update debian
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 22.2.3
+  title: ""
+  date: 2026-11-24T06:04:54.200Z
+- commits:
     - subject: Update dependency zyedidia/eget to v1.3.4
       hash: 5331139570c1434feec7e6fcac03ae2219bc0b39
       body: |
